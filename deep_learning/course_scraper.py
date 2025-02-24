@@ -63,5 +63,5 @@ def course_info_scrape(my_file):
 
 #courses_url_by_faculty(['https://www.queensu.ca/academic-calendar/arts-science/course-descriptions/', 'https://www.queensu.ca/academic-calendar/engineering-applied-sciences/courses-instruction/'])
 
-course_info_scrape('links.csv')
+course_info_scrape('courses.csv')
 
