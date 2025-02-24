@@ -65,4 +65,3 @@ def course_info_scrape(my_file):
 
 course_info_scrape('links.csv')
 
-#"https://www.queensu.ca/academic-calendar/arts-science/course-descriptions/chem/"
