@@ -23,7 +23,7 @@ classrooms = [
 base_url = "https://www.queensu.ca/classrooms/classrooms/"
 
 # CSV File Path
-csv_filename = "352-Course-Project/classroom_tables.csv"
+csv_filename = "352-Course-Project/classrooms.csv"
 
 # Open CSV file for writing
 with open(csv_filename, mode="w", newline="", encoding="utf-8") as file:
