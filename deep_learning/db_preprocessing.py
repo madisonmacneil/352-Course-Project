@@ -22,7 +22,7 @@ df['requirements'] = df['requirements'].astype(str)
 prereqs = []
 
 def extract_prerequisites(text):
-    pattern = r"Prerequisites?:?\s*(.*?)(?=\s*(Corequisites|Exclusions|$))"
+    pattern = r"Prerequisites?:?\s*(.*?)(?=\s*(Corequisites|Corequisite|Exclusion|Exclusions|Recommended|$))"
     match = re.search(pattern, text, re.IGNORECASE)  # re.IGNORECASE makes it case insensitive
     if match:
         extracted = match.group(1).strip()
@@ -35,10 +35,9 @@ for elem in df['requirements']:
 
 df['prerequisites'] = prereqs
 
-print(df.head(5))
 
 def extract_corequisites(text):
-    pattern = r"Corequisites?:?\s*(.*?)(?=\s*(Exclusions|$))"
+    pattern = r"Corequisites?:?\s*(.*?)(?=\s*(Exclusion|Exclusio|Exclusions|Recommended|$))"
     match = re.search(pattern, text, re.IGNORECASE)  # re.IGNORECASE makes it case insensitive
     if match:
         extracted = match.group(1).strip()
@@ -52,6 +51,35 @@ for elem in df['requirements']:
 
 df['corequisites'] = coreqs
 
-print(df.head(5))
+def extract_exclusions(text):
+    pattern = r"Exclusions?:?\s*(.*?)(?=\s*(?:Prerequisite|Corequisite|Corequisites|Recommended|$))"
+    match = re.search(pattern, text, re.IGNORECASE)  # re.IGNORECASE makes it case insensitive
+    if match:
+        extracted = match.group(1).strip()
+        return extracted
+    return None
+
+exclusions = []
+for elem in df['requirements']: 
+    exclusion = extract_exclusions(elem)
+    exclusions.append(exclusion)
+
+df['exclusions'] = exclusions
+
+def extract_recommended(text):
+    pattern = r"Recommended:?\s*(.*?)(?=\s*(Exclusion|Exclusions|Corequisite|Corequisites|$))"
+    match = re.search(pattern, text, re.IGNORECASE) 
+    if match:
+        return match.group(1).strip()
+    return None
+
+recommendations = []
+for elem in df['requirements']: 
+    recommended = extract_recommended(elem)
+    recommendations.append(recommended)
+
+df['recommended'] = recommendations
+
+df.to_csv('ProcessedDB.csv')
 
 
