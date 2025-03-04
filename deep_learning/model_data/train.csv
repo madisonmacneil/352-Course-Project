@@ -1,0 +1,11 @@
+nl,sql
+Find all third-year CS courses.,SELECT * FROM courses WHERE department = 'Computer Science' AND year = 3;
+List courses taught by Randy Ellis.,SELECT * FROM courses WHERE instructor = 'Randy Ellis';
+I need a full-year psychology course.,SELECT * FROM courses WHERE department = 'Psychology' AND is_full_year = TRUE;
+What courses have no prerequisites?,SELECT * FROM courses WHERE prerequisites IS NULL OR prerequisites = '';
+Show me all winter term courses.,SELECT * FROM courses WHERE term = 'Winter';
+List second-year math courses.,SELECT * FROM courses WHERE department = 'Mathematics' AND year = 2;
+Find humanities electives with no prerequisites.,SELECT * FROM courses WHERE department = 'Humanities' AND prerequisites IS NULL;
+I need a philosophy course on ethics.,SELECT * FROM courses WHERE department = 'Philosophy' AND course_name LIKE '%ethics%';
+Show me all courses with 6 credits.,SELECT * FROM courses WHERE credits = 6;
+Find full-year science courses.,SELECT * FROM courses WHERE department = 'Science' AND is_full_year = TRUE;

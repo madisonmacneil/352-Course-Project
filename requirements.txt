@@ -3,4 +3,5 @@ webdriver_manager
 numpy 
 pandas
 ortools
-
+spacy
+torch 

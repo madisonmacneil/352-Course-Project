@@ -1,0 +1,11 @@
+nl,sql
+Show me all physics courses in first year.,SELECT * FROM courses WHERE department = 'Physics' AND year = 1;
+Find courses in the winter term with no prerequisites.,SELECT * FROM courses WHERE term = 'Winter' AND (prerequisites IS NULL OR prerequisites = '');
+List all third-year psychology courses.,SELECT * FROM courses WHERE department = 'Psychology' AND year = 3;
+What courses does Dr. Smith teach?,SELECT * FROM courses WHERE instructor = 'Dr. Smith';
+Get me third-year courses with at least 6 credits.,SELECT * FROM courses WHERE year = 3 AND credits >= 6;
+Any ethics courses with no prerequisites?,SELECT * FROM courses WHERE course_name LIKE '%ethics%' AND prerequisites IS NULL;
+I need an elective without prerequisites.,SELECT * FROM courses WHERE prerequisites IS NULL;
+List courses available in the fall term.,SELECT * FROM courses WHERE term = 'Fall';
+Find all computer science courses.,SELECT * FROM courses WHERE department = 'Computer Science';
+Which history courses are available in the winter?,SELECT * FROM courses WHERE department = 'History' AND term = 'Winter';
