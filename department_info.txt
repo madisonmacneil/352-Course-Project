@@ -1,0 +1,98 @@
+ANAT: Anatomy & Cell Biology
+ANIM: Animation
+ANSH: Anishinaabe
+ARAB: Arabic Language
+ARTH: Art History
+ARIN: Artificial Intelligence
+ASCX: Arts & Science: Interdisciplinary
+ASTR: Astronomy
+BADR: Bader College
+BCHM: Biochemistry
+BIOL: Biology
+BLCK: Black Studies
+CANC: Cancer Research
+CRSS: Cardiorespiratory Science
+CHEM: Chemistry
+CHIN: Chinese
+CLST: Classical Studies
+COGS: Cognitive Science
+EPID: Community Health & Epidemiology
+CISC: Computing & Information Science
+COCA: Computing & the Creative Arts
+COMP: Computing
+CWRI: Creative Writing
+DISC: Discovery Lab
+DRAM: Drama
+DDHT: Drug Development & Human Toxicology
+ECON: Economics
+EMPR: Employment Relations
+ENGL: English Language & Literature
+ENIN: Entrepreneurship & Innovation
+ENSC: Environmental Science
+FILM: Film & Media
+ARTF: Fine Art
+FREN: French Language & Literature
+FRST: French Studies
+GNDS: Gender Studies
+GPHY: Geography
+GEOL: Geology
+GRMN: German
+DEVS: Global Development Studies
+GREK: Greek
+HLTH: Health Studies
+HEBR: Hebrew
+HIST: History
+INDG: Indigenous Knowledges & Perspectives
+IDIS: Interdisciplinary Studies
+INTS: International Studies
+INUK: Inuktitut
+ITLN: Italian
+JAPN: Japanese
+JWST: Jewish Studies
+KNPE: Kinesiology & Physical Education
+LANG: Language Acquisition
+LLCU: Languages, Literatures, and Cultures
+LATN: Latin
+LIBS: Liberal Studies
+LISC: Life Sciences
+LING: Linguistics
+MATH: Mathematics
+MAPP: Media & Performance Production
+MICR: Microbiology & Immunology
+MOHK: Mohawk
+MUSC: Music
+MUTH: Music Theatre
+NSCI: Neuroscience
+PATH: Pathology & Molecular Medicine
+PHAR: Pharmacology & Toxicology
+PHIL: Philosophy
+PHYS: Physics
+PHGY: Physiology
+POLS: Political Studies
+PPEC: Politics, Philosophy, and Economics
+PORT: Portuguese
+INTN: Professional Internship
+PSYC: Psychology
+QGSP: Queen's Global Summer Program
+RELS: Religious Studies
+REPD: Reproduction & Development
+SOCY: Sociology
+SPAN: Spanish
+STAT: Statistics
+STAM: Statistics Multi Disciplines
+ARTV: Visual Art
+WRIT: Writing
+APSC: Applied Science
+CHEE: Chemical Engineering
+CIVL: Civil Engineering
+CMPE: Computer Engineering
+ELEC: Electrical Engineering
+ENCH: Engineering Chemistry
+ENPH: Engineering Physics
+GEOE: Geological Engineering
+MTHE: Mathematics & Engineering
+MECH: Mechanical Engineering
+MREN: Mechatronics and Robotics Engineering
+MINE: Mining Engineering
+MNTC: Mining Technology
+SOFT: Software Engineering

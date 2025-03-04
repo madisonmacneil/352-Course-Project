@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 import csv 
 import pandas as pd 
 import os 
+import re 
 
 def program_urls(path):
     driver = webdriver.Chrome()
@@ -62,5 +63,27 @@ def course_info_scrape(my_file):
 
 #courses_url_by_faculty(['https://www.queensu.ca/academic-calendar/arts-science/course-descriptions/', 'https://www.queensu.ca/academic-calendar/engineering-applied-sciences/courses-instruction/'])
 
-course_info_scrape('courses.csv')
+#course_info_scrape('courses.csv')
 
+def get_department(pages):
+    department_codes = {}
+
+    for path in pages: 
+        driver = webdriver.Chrome()
+        driver.get(path)
+
+        departments = driver.find_elements(By.CSS_SELECTOR, ".sitemap li a")  
+
+        for dept in departments: 
+            dept_text = dept.text
+            department_name = re.match(r"(.*?)(?=\s?\()", dept_text).group(1)
+            department_code = re.search(r"\((.*?)\)", dept_text).group(1)
+            department_codes[department_code] = department_name
+        
+    with open('department_info.txt', 'w') as f: 
+        for key in department_codes:
+             f.write(f"{key}: {department_codes[key]}\n")
+
+    driver.quit()
+
+#get_department(['https://www.queensu.ca/academic-calendar/arts-science/course-descriptions/', 'https://www.queensu.ca/academic-calendar/engineering-applied-sciences/courses-instruction/'])

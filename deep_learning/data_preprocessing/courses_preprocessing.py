@@ -37,13 +37,20 @@ def extract_recommended(text):
 
 def remove_faculty_prefixes(text): 
     pattern = r".*?Offering Faculty:(Faculty of [^:]+)?\s*(.*)"
-    match = re.search(pattern, text, re.IGNORECASE) 
+    match = re.match(pattern, text)
+    faculty_name = match.group(1)
     if match:
-        return match.group(1).strip()
-    return None
+        if faculty_name:  # If there's a faculty name, return it
+            return faculty_name.strip()
+        else:  # If there's no faculty name, return the second group
+            return match.group(2).strip()
+    
+    return None  # Return None if no match is found
 
 def remove_outcome_prefix(text): 
-    pattern = r".*?Course Learning Outcomes:[^:]+)?\s*(.*)"
+    if not isinstance(text, str):
+        return None
+    pattern = r".*?Course Learning Outcomes:[^:]*\s*(.*)"
     match = re.search(pattern, text, re.IGNORECASE) 
     if match:
         return match.group(1).strip()
@@ -53,7 +60,7 @@ def remove_outcome_prefix(text):
 
 def main():
 
-    df = pd.read_csv('courses.csv')
+    df = pd.read_csv('db.csv')
     print(df.head(5))
 
     #df has 2911 observations 
@@ -115,6 +122,30 @@ def main():
     
     df['outcomes'] = cleaned_outcomes
 
-    df.to_csv('ProcessedDB.csv')
+    department_codes = {}
 
+    with open('department_info.txt', 'r') as f:
+        for line in f:
+            key, value = line.strip().split(': ', 1)
+            department_codes[key] = value
+        
+    course_codes = df['course_code'].to_list()
+    dep_names = []
+    years = []
+    for code in course_codes: 
+        dep_code = code.split(' ')[0]
+        number = code.split(' ')[1]
+        dep_names.append(department_codes[dep_code])
+        if number[0].isdigit():
+            year = int(number[0]) if int(number[0]) < 5 else None
+        else:
+            year = None  # Set year to None if it's not a valid digit
+    
+        years.append(year)
+    df['department'] = dep_names
+    df['year'] = years
 
+        
+    df.to_csv('myDB.csv')
+
+main()
