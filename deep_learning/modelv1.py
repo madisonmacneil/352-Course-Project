@@ -6,9 +6,9 @@ import re
 import pickle
 import collections
 
-class ImprovedSQLTokenizer:
+class EnhancedSQLTokenizer:
     def __init__(self):
-        # More comprehensive vocabulary with explicit semantic grouping
+        # More comprehensive vocabulary
         self.vocab = {
             '<PAD>': 0,
             '<UNK>': 1,
@@ -16,11 +16,11 @@ class ImprovedSQLTokenizer:
             '<END>': 3
         }
         
-        # Expanded and categorized tokens
+        # Expanded token categories with more SQL-specific tokens
         predefined_token_categories = {
             'sql_keywords': [
                 'SELECT', 'FROM', 'WHERE', 'AND', 'OR', 'NOT', 'IN', 'LIKE',
-                'IS', 'NULL', 'GROUP', 'BY', 'ORDER', 'HAVING', 'LIMIT'
+                'IS', 'NULL', 'GROUP', 'BY', 'ORDER', 'HAVING', 'LIMIT', '*'
             ],
             'sql_operators': [
                 '=', '!=', '<', '>', '<=', '>=', '<>', 'LIKE'
@@ -33,17 +33,18 @@ class ImprovedSQLTokenizer:
             ],
             'column_terms': [
                 'course_name', 'credits', 'semester', 'year', 'term', 
-                'prerequisites'
+                'prerequisites', 'department'
             ],
             'subject_domains': [
-                'physics', 'psychology', 'computer', 'science', 'ethics'
-            ],
-            'temporal_terms': [
-                'winter', 'fall', 'semester', 'term'
+                'physics', 'psychology', 'computer', 'science', 'ethics',
+                'computer science'
             ],
             'numeric_qualifiers': [
-                'first', 'second', 'third', 'fourth', 
+                'first', 'second', 'third', 'fourth',
                 '1st', '2nd', '3rd', '4th'
+            ],
+            'special_conditions': [
+                'no', 'with', 'without', 'all'
             ]
         }
         
@@ -57,18 +58,17 @@ class ImprovedSQLTokenizer:
         # Create reverse vocabulary
         self.reverse_vocab = {v: k for k, v in self.vocab.items()}
         
-        # Debugging: print vocabulary statistics
         print("Vocabulary Size:", len(self.vocab))
         print("Top 20 Tokens:", list(self.vocab.keys())[:20])
     
-    def tokenize(self, query, max_length=50):
+    def tokenize(self, query, max_length=75):
         # More sophisticated tokenization
         pattern = r'(\b[A-Za-z_]+\b|[*=<>]+|\d+|\(|\))'
         
         # Tokenize
         tokens = re.findall(pattern, query, re.IGNORECASE)
         
-        # Convert to lowercase for consistency
+        # Convert to lowercase
         tokens = [token.lower() for token in tokens]
         
         # Convert to indices
@@ -95,18 +95,18 @@ class ImprovedSQLTokenizer:
         return torch.tensor(token_indices, dtype=torch.long)
     
     def decode(self, indices):
-        # More informative decoding
         decoded_tokens = []
         seen_tokens = set()
         
         for idx in indices:
             if idx >= 4:  # Skip special tokens
                 token = self.reverse_vocab.get(idx, '<UNK>')
-                if token not in seen_tokens:
+                if token not in seen_tokens and token != '<unk>':
                     decoded_tokens.append(token)
                     seen_tokens.add(token)
         
         return ' '.join(decoded_tokens)
+
 
 class NLToSQLEncoder(nn.Module):
     def __init__(self, input_vocab_size, embedding_dim=128, hidden_dim=256, num_layers=2):
@@ -244,8 +244,8 @@ class NLToSQLTrainer:
         nl_queries, sql_queries = self.advanced_data_augmentation(nl_queries, sql_queries)
         
         # Create tokenizers
-        self.nl_tokenizer = ImprovedSQLTokenizer()
-        self.sql_tokenizer = ImprovedSQLTokenizer()
+        self.nl_tokenizer = EnhancedSQLTokenizer()
+        self.sql_tokenizer = EnhancedSQLTokenizer()
         
         # Encode sequences
         self.nl_sequences = torch.stack([
