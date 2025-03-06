@@ -60,7 +60,7 @@ def remove_outcome_prefix(text):
 
 def main():
 
-    df = pd.read_csv('db.csv')
+    df = pd.read_csv('data/working_dbs/db.csv')
     print(df.head(5))
 
     #df has 2911 observations 
@@ -131,10 +131,14 @@ def main():
         
     course_codes = df['course_code'].to_list()
     dep_names = []
+    dep_codes = []
+
     years = []
+
     for code in course_codes: 
         dep_code = code.split(' ')[0]
         number = code.split(' ')[1]
+        dep_codes.append(dep_code)
         dep_names.append(department_codes[dep_code])
         if number[0].isdigit():
             year = int(number[0]) if int(number[0]) < 5 else None
@@ -142,10 +146,9 @@ def main():
             year = None  # Set year to None if it's not a valid digit
     
         years.append(year)
-    df['department'] = dep_names
+    df['department_name'] = dep_names
     df['year'] = years
-
-        
-    df.to_csv('myDB.csv')
+    df['department_code'] = dep_codes
+    df.to_csv('data/myDB.csv')
 
 main()

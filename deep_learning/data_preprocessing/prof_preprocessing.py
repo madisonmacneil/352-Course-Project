@@ -82,8 +82,8 @@ def course_cross_check():
     print(len(courses_wo_profs))
 
 def instructors_to_main_db():
-    main_df = pd.read_csv('near_final_db.csv')
-    prof_df = pd.read_csv('filtered_course_instructors.csv')
+    main_df = pd.read_csv('data/working_dbs/interim_db.csv')
+    prof_df = pd.read_csv('data/working_dbs/filtered_course_instructors.csv')
 
     courses_taught_by = {}
     count = 0 
@@ -120,7 +120,11 @@ def instructors_to_main_db():
     print(f"Courses Processed: {count}")
 
 
-    main_df.to_csv('FINALDB.csv', index = False)
+    main_df.to_csv('data/Final_DB.csv', index = False)
 
 instructors_to_main_db()
+
+
+    
+
 
