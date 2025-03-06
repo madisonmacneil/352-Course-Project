@@ -36,12 +36,12 @@ class EnhancedSQLTokenizer:
                 'prerequisites', 'department'
             ],
             'subject_domains': [
-                'physics', 'psychology', 'computer', 'science', 'ethics',
+                "'physics'", "'psychology'", 'computer', 'science', "'ethics'",
                 'computer science'
             ],
             'numeric_qualifiers': [
                 'first', 'second', 'third', 'fourth',
-                '1st', '2nd', '3rd', '4th'
+                '1', '2', '3', '4'
             ],
             'special_conditions': [
                 'no', 'with', 'without', 'all'

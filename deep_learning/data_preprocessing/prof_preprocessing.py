@@ -1,5 +1,6 @@
 import pandas as pd 
 import ast
+import re 
 
 def only_valid_courses():
     courses_df = pd.read_csv('courses_db.csv')
@@ -46,6 +47,7 @@ def remove_profs_without_courses():
     print(df.head(10))  # Check output before saving
     df.to_csv('prof_teaches.csv', index=False)
 
+
 def course_cross_check(): 
     '''
     Confirm that every course that appears in the DB of profs from Rate my Prof, also appears in our DB of courses from the Queen's Official Website. 
@@ -79,4 +81,46 @@ def course_cross_check():
     print(len(all_rmp))
     print(len(courses_wo_profs))
 
+def instructors_to_main_db():
+    main_df = pd.read_csv('near_final_db.csv')
+    prof_df = pd.read_csv('filtered_course_instructors.csv')
+
+    courses_taught_by = {}
+    count = 0 
+    for index, row in prof_df.iterrows():
+        name = row['name'] 
+        courses = row['courses_taught'][1:-1].replace("'","").upper().split(',')
+        courses = [course.lstrip() for course in courses]
+
+        chat_courses = [course.strip() for course in row['courses_taught'][1:-1].replace("'", "").upper().split(',')]
+
+        for course in courses: 
+            count += 1 
+
+        for course in courses: 
+            match = re.search(r"\d", course)
+            if match:
+                index = match.start()
+                course = course[:index] + ' ' + course[index:]  # Ensure space between letters and numbers
+                if course in courses_taught_by: 
+                    courses_taught_by[course].append(name)
+                else: 
+                    courses_taught_by[course] = [name]
+            else:
+                print(f"Skipping invalid course format: {course}")
+
+    main_df['instructor'] = None  # Create an empty instructor column if it doesn't exist
+
+    for index, row in main_df.iterrows():
+        course_code = row['course_code'].strip().upper()
+        if course_code in courses_taught_by:
+            main_df.at[index, 'instructor'] = ', '.join(courses_taught_by[course_code])
+    
+    # print(courses_taught_by)
+    print(f"Courses Processed: {count}")
+
+
+    main_df.to_csv('FINALDB.csv', index = False)
+
+instructors_to_main_db()
 
