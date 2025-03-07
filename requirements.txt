@@ -5,3 +5,6 @@ pandas
 ortools
 spacy
 torch 
+re
+pickle
+collections
