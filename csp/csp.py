@@ -92,8 +92,11 @@ class CourseScheduler:
     def __init__(self, courses: List[Course], rooms: List[Room]):
         self.courses = courses
         self.rooms = rooms
+        self.preference_penalties = []
+        self.preference_weights = {}
         self.model = cp_model.CpModel()
         self.solver = cp_model.CpSolver()
+
         
         # Generate all possible time slots
         self.all_time_slots = self._generate_time_slots()
@@ -125,16 +128,17 @@ class CourseScheduler:
                 time_slots.append(TimeSlot(day, hour, minute))
         return time_slots
     
-    def add_professor_time_exclusion(self, professor: str, excluded_time_days: List[Tuple[int, int, List[str]]]):
+    def add_professor_time_exclusion(self, professor: str, excluded_time_days: List[Tuple[int, int, List[str]]], weight: int = 10):
         """
-        Add times when a professor cannot teach
+        Add times when a professor would prefer not to teach (soft constraint)
         
         Args:
             professor (str): The professor's name
             excluded_time_days (List[Tuple[int, int, List[str]]]): List of (hour, minute, [days]) tuples
-                e.g., [(8, 30, ["Mon", "Wed"]), (12, 30, ["Fri"])]
+            weight (int): Penalty weight for violating this preference (higher = more important)
         """
         self.professor_time_exclusions[professor] = excluded_time_days
+        self.preference_weights[professor] = weight
     
     # def add_professor_day_preference(self, professor: str, preferred_days: List[str]):
     #     """Add day preferences for a professor (e.g., ['Mon', 'Tue', 'Wed'])"""
@@ -277,14 +281,16 @@ class CourseScheduler:
                                 self.model.AddBoolOr([slot1_var.Not(), slot2_var.Not()])
     
     def _add_professor_preference_constraints(self):
-        """Add constraints for professor preferences"""
-        # Changed: Add time exclusion constraints with day specificity
+        """Add soft constraints for professor preferences"""
+        # Changed: Add time exclusion as soft constraints with penalties
         for professor, excluded_time_days in self.professor_time_exclusions.items():
             # Find all courses taught by this professor
             prof_courses = [c for c in self.courses if c.professor == professor]
             
             if not prof_courses:
                 continue
+            
+            weight = self.preference_weights.get(professor, 10)  # Default weight is 10
             
             # For each excluded time-day combination
             for hour, minute, excluded_days in excluded_time_days:
@@ -298,22 +304,34 @@ class CourseScheduler:
                 if time_block_idx is None:
                     continue  # Skip if time not found
                 
-                # Add constraints for each course on excluded days
+                # Add penalty variables for each course on excluded days
                 for course in prof_courses:
                     for day in excluded_days:
                         if day not in DAYS:
                             continue  # Skip invalid days
                         
-                        # If this day is assigned to the course, the time cannot be the excluded time
+                        # Create a penalty variable that will be 1 if preference is violated
+                        penalty_var = self.model.NewBoolVar(f'penalty_{course.code}_{day}_{time_block_idx}')
+                        
+                        # If day is assigned AND time block equals excluded time, then penalty applies
                         day_var = self.day_assignments[course.code][day]
                         time_block_var = self.time_block_assignments[course.code][day]
                         
-                        # NOT(day_var) OR (time_block_var != time_block_idx)
-                        not_excluded_time = self.model.NewBoolVar(f'not_excluded_time_{course.code}_{day}_{time_block_idx}')
-                        self.model.Add(time_block_var != time_block_idx).OnlyEnforceIf(not_excluded_time)
-                        self.model.Add(time_block_var == time_block_idx).OnlyEnforceIf(not_excluded_time.Not())
+                        # Create helper variable for time block match
+                        time_matches = self.model.NewBoolVar(f'time_matches_{course.code}_{day}_{time_block_idx}')
+                        self.model.Add(time_block_var == time_block_idx).OnlyEnforceIf(time_matches)
+                        self.model.Add(time_block_var != time_block_idx).OnlyEnforceIf(time_matches.Not())
                         
-                        self.model.AddBoolOr([day_var.Not(), not_excluded_time])
+                        # If day is assigned AND time matches excluded time, then penalty is 1
+                        # day_var AND time_matches => penalty_var
+                        self.model.AddBoolAnd([day_var, time_matches]).OnlyEnforceIf(penalty_var)
+                        
+                        # If NOT(day_var AND time_matches), then penalty is 0
+                        # NOT(day_var) OR NOT(time_matches) => NOT(penalty_var)
+                        self.model.AddBoolOr([day_var.Not(), time_matches.Not()]).OnlyEnforceIf(penalty_var.Not())
+                        
+                        # Add to list of penalties with weight
+                        self.preference_penalties.append((penalty_var, weight))
     
     # def add_professor_room_preference(self, course_code: str, preferred_rooms: List[str]):
     #     """Add constraint for professor's room preference"""
@@ -333,8 +351,16 @@ class CourseScheduler:
     #     )
     
     def solve(self, time_limit_seconds: int = 60) -> Optional[Dict[str, ScheduleAssignment]]:
-        """Solve the course scheduling problem"""
+        """Solve the course scheduling problem with soft constraints"""
         start_time = time.time()
+        
+        # Create objective function from penalties
+        if self.preference_penalties:
+            objective_terms = []
+            for penalty_var, weight in self.preference_penalties:
+                objective_terms.append(penalty_var * weight)
+            
+            self.model.Minimize(sum(objective_terms))
         
         # Set time limit
         self.solver.parameters.max_time_in_seconds = time_limit_seconds
@@ -348,6 +374,19 @@ class CourseScheduler:
         # Check status
         if status == cp_model.OPTIMAL or status == cp_model.FEASIBLE:
             print(f"Solution found in {solve_time:.2f} seconds")
+            
+            # Calculate and display penalties
+            if self.preference_penalties:
+                total_penalty = 0
+                violated_prefs = 0
+                for penalty_var, weight in self.preference_penalties:
+                    if self.solver.Value(penalty_var) == 1:
+                        total_penalty += weight
+                        violated_prefs += 1
+                
+                print(f"Total preference penalty: {total_penalty}")
+                print(f"Preferences violated: {violated_prefs} out of {len(self.preference_penalties)}")
+            
             return self._extract_solution()
         elif status == cp_model.INFEASIBLE:
             print("The problem is infeasible - no solution exists that satisfies all constraints")
@@ -521,32 +560,32 @@ def run_example():
     # Define courses with their properties (but no fixed days or times)
     courses = [
         # PHYS courses
-        Course("PHYS101", "Intro to Physics", 45, "Dr. Smith", ROOM_TYPE_TIERED, 3),
-        Course("PHYS102", "Mechanics", 30, "Dr. Johnson", ROOM_TYPE_AL, 2),
-        Course("PHYS110", "Physics Lab", 20, "Dr. Brown", ROOM_TYPE_AL, 1),
+        Course("PHYS101", "Intro to Physics", 45, "Dr. Smith", ROOM_TYPE_TIERED),
+        Course("PHYS102", "Mechanics", 30, "Dr. Johnson", ROOM_TYPE_AL),
+        Course("PHYS110", "Physics Lab", 20, "Dr. Brown", ROOM_TYPE_AL),
         
         # MATH courses
-        Course("MATH101", "Calculus I", 50, "Dr. Davis", ROOM_TYPE_TIERED, 3),
-        Course("MATH102", "Linear Algebra", 40, "Dr. Taylor", ROOM_TYPE_TIERED, 2),
+        Course("MATH101", "Calculus I", 50, "Dr. Davis", ROOM_TYPE_TIERED),
+        Course("MATH102", "Linear Algebra", 40, "Dr. Taylor", ROOM_TYPE_TIERED),
         
         # COMP courses
-        Course("COMP101", "Intro to Programming", 60, "Dr. Anderson", ROOM_TYPE_FLAT, 3),
-        Course("COMP110", "Programming Lab", 25, "Dr. Thomas", ROOM_TYPE_AL, 3),
+        Course("COMP101", "Intro to Programming", 60, "Dr. Anderson", ROOM_TYPE_FLAT),
+        Course("COMP110", "Programming Lab", 25, "Dr. Thomas", ROOM_TYPE_AL),
     ]
     
     # Create and solve the scheduling problem
     scheduler = CourseScheduler(courses, rooms)
     
-    # Add professor time exclusions with day specificity
+   # Add professor time exclusions with day specificity and weights
     scheduler.add_professor_time_exclusion("Dr. Smith", [
         (8, 30, ["Mon", "Tue", "Wed", "Thu", "Fri"]),  # No 8:30 AM classes any day
         (16, 30, ["Mon", "Wed"])  # No 4:30 PM classes on Monday and Wednesday
-    ])
+    ], weight=20)  # Higher weight = more important preferenc, senior prof for example
 
     scheduler.add_professor_time_exclusion("Dr. Brown", [
         (8, 30, ["Mon", "Tue", "Wed", "Thu", "Fri"]),  # No 8:30 AM classes any day
-        (12, 30, ["Mon", "Wed"])  # No 12:30 PM classes on Monday and Wednesday
-    ])
+        (2, 30, ["Mon", "Wed"])  # No 12:30 PM classes on Monday and Wednesday
+    ], weight=10)  # Regular weight preference
     
     # # Add professor day preferences
     # scheduler.add_professor_day_preference("Dr. Smith", ["Mon", "Tue", "Wed"])
