@@ -1,643 +1,643 @@
 course_code,name,num_students,prof
-ANAT100,Anatomy of the Human Body,93,Leslie W MacKenzie
-ANAT215,Principles of Human Morphology I,24,Leslie W MacKenzie
-ANAT315,The Human Musculoskeletal System,34,Ronald Easteal
-ANAT316,The Human Visceral Systems,43,Diane Tomalty
-ANSH101,Beginning Anishinaabe Language and Culture I,32,Kimberley Debassige
-ARAB200,Intermediate Modern Standard Arabic,96,Amal Eldiaby
-ARTH116,Art and Architecture in Britain from the Classical Period to c.1700,75,Ruth Cereceda
-ARTH120,Art in the West from Antiquity to Modernity,96,Gauvin Bailey
-ARTH121,Introduction to Global Art Histories,32,Gauvin Bailey
-ARTH210,An Introduction to Technical Art History,94,Ron Spronk
-ARTH214,"Antiquity and Nature in Renaissance Art, 1300-1500",28,Cathleen Hoeniger
-ARTH220,Socially Engaged Art,68,Jennifer Kennedy
-ARTH248,Introduction to Indigenous Arts of North America,49,Norman Vorano
-ARTH253,Baroque Art,75,Gauvin Bailey
-ARTH260,Culture and Conflict,21,Cathleen Hoeniger
-ARTH272,Latin American Art,82,Gauvin Bailey
-ARTH292,"Modern Architecture: Aesthetics, Capitalism, Industry",84,Katherine Romba
-ARTH306,Modern Architecture in Germany: A Social History,45,Katherine Romba
-ARTH308,Gothic Art in Europe c.1150-1400,21,Matthew Reeve
-ARTH352,Printmaking in Early Modern Europe,74,Stephanie Dickey
-ARTH374,16th-Century Netherlandish Painting,70,Ron Spronk
-ARTH383,The City,59,Katherine Romba
-ARTH391,Art Forgeries,41,Dawn Cunningham
-ARTH434,Non-Western Art in Western Collections,82,Lynda L Jessup
-ARTH451,Caravaggio and Artemisia,25,Gauvin Bailey
-ASCX150,Learning and Working in a Digital World,36,Kerim Kartal
-ASTR101,Astronomy I: Solar System,95,David Alan Hanes
-ASTR102,"Astronomy II: Stars, Galaxies, and the Universe",80,Aaron Vincent
-BCHM102,Introduction to Biochemistry,93,Laura van Staalduinen
-BCHM218,Molecular Biology,50,Mark Ormiston
-BCHM270,Biochemical Basis of Health and Disease,90,Cynthia Pruss
-BCHM310,General Biochemistry,80,Glenville Jones
-BCHM315,Proteins and Enzymes,92,Robert Campbell
-BCHM316,Metabolism,27,Glenville Jones
-BCHM370,Genetics and Genomics,98,Laura van Staalduinen
-BIOL102,Fundamentals of Biology: Molecular and Cell Biology,55,George diCenzo
-BIOL103,Fundamentals of Biology: Organisms to Ecosystems,31,Christopher G Eckert
-BIOL200,Diversity of Life,25,Paul Grogan
-BIOL205,Mendelian and Molecular Genetics,29,Ian D Chin-Sang
-BIOL206,Evolutionary Genetics,84,Jannice Friedman
-BIOL243,Introduction to Statistics,71,Sarah Yakimowski
-BIOL300,Ecology,93,Paul Martin
-BIOL315,Plants and Human Culture,40,Sarah Yakimowski
-BIOL321,Animal Behaviour,98,Laura Nagel
-BIOL330,Cell Biology,23,Sharon Regan
-BIOL334,Comparative Biochemistry,31,Susan Yates
-BIOL339,Animal Physiology,85,Yuxiang S Wang
-BIOL343,Data Analysis for Biologists,30,Christopher G Eckert
-BIOL350,Evolution and Human Affairs,62,Lonnie Aarsen
-BIOL360,Biotechnology and Society,43,Daniel Lefebvre
-BIOL369,Sex and Evolution,93,Adam K Chippindale
-BIOL403,Experimental Techniques in Biology,68,Laurent Seroude
-BIOL430,Molecular Genetics of Development,70,Ian D Chin-Sang
-BIOL432,Computation and Big Data in Biology,83,Robert Colautti
-BIOL439,Natural Selection and Microevolution,66,Jannice Friedman
-BIOL440,Speciation and Macroevolution,40,S Lougheed
-BIOL441,Molecular Genetics,90,Laurent Seroude
-BIOL535,Selected Topics in Biology,97,George diCenzo
-CANC380,Evolutionary Biology of Cancer,55,Tiziana Cotechini
-CRSS454,Cardiovascular Sciences,69,Michael A Adams
-CRSS456,Molecular and Cellular Basis of Cardiovascular Disease,20,Donald Maurice
-CHIN100,Introductory Mandarin Chinese I,38,Xuelin Bai
-CHEM112,General Chemistry,31,Stephen Brown
-CHEM211,Main Group Chemistry,67,Peng Wang
-CHEM212,Principles of Chemical Reactivity,53,Jason Vlahakis
+ANAT100,Anatomy of the Human Body,148,Leslie W MacKenzie
+ANAT215,Principles of Human Morphology I,141,Leslie W MacKenzie
+ANAT315,The Human Musculoskeletal System,82,Ronald Easteal
+ANAT316,The Human Visceral Systems,141,Diane Tomalty
+ANSH101,Beginning Anishinaabe Language and Culture I,101,Kimberley Debassige
+ARAB200,Intermediate Modern Standard Arabic,69,Amal Eldiaby
+ARTH116,Art and Architecture in Britain from the Classical Period to c.1700,122,Ruth Cereceda
+ARTH120,Art in the West from Antiquity to Modernity,89,Gauvin Bailey
+ARTH121,Introduction to Global Art Histories,89,Gauvin Bailey
+ARTH210,An Introduction to Technical Art History,119,Ron Spronk
+ARTH214,"Antiquity and Nature in Renaissance Art, 1300-1500",146,Cathleen Hoeniger
+ARTH220,Socially Engaged Art,31,Jennifer Kennedy
+ARTH248,Introduction to Indigenous Arts of North America,98,Norman Vorano
+ARTH253,Baroque Art,143,Gauvin Bailey
+ARTH260,Culture and Conflict,44,Cathleen Hoeniger
+ARTH272,Latin American Art,142,Gauvin Bailey
+ARTH292,"Modern Architecture: Aesthetics, Capitalism, Industry",91,Katherine Romba
+ARTH306,Modern Architecture in Germany: A Social History,63,Katherine Romba
+ARTH308,Gothic Art in Europe c.1150-1400,106,Matthew Reeve
+ARTH352,Printmaking in Early Modern Europe,72,Stephanie Dickey
+ARTH374,16th-Century Netherlandish Painting,118,Ron Spronk
+ARTH383,The City,125,Katherine Romba
+ARTH391,Art Forgeries,32,Dawn Cunningham
+ARTH434,Non-Western Art in Western Collections,136,Lynda L Jessup
+ARTH451,Caravaggio and Artemisia,109,Gauvin Bailey
+ASCX150,Learning and Working in a Digital World,105,Kerim Kartal
+ASTR101,Astronomy I: Solar System,62,David Alan Hanes
+ASTR102,"Astronomy II: Stars, Galaxies, and the Universe",60,Aaron Vincent
+BCHM102,Introduction to Biochemistry,31,Laura van Staalduinen
+BCHM218,Molecular Biology,114,Mark Ormiston
+BCHM270,Biochemical Basis of Health and Disease,108,Cynthia Pruss
+BCHM310,General Biochemistry,138,Glenville Jones
+BCHM315,Proteins and Enzymes,123,Robert Campbell
+BCHM316,Metabolism,67,Glenville Jones
+BCHM370,Genetics and Genomics,96,Laura van Staalduinen
+BIOL102,Fundamentals of Biology: Molecular and Cell Biology,104,George diCenzo
+BIOL103,Fundamentals of Biology: Organisms to Ecosystems,101,Christopher G Eckert
+BIOL200,Diversity of Life,132,Paul Grogan
+BIOL205,Mendelian and Molecular Genetics,104,Ian D Chin-Sang
+BIOL206,Evolutionary Genetics,41,Jannice Friedman
+BIOL243,Introduction to Statistics,26,Sarah Yakimowski
+BIOL300,Ecology,20,Paul Martin
+BIOL315,Plants and Human Culture,101,Sarah Yakimowski
+BIOL321,Animal Behaviour,115,Laura Nagel
+BIOL330,Cell Biology,39,Sharon Regan
+BIOL334,Comparative Biochemistry,53,Susan Yates
+BIOL339,Animal Physiology,71,Yuxiang S Wang
+BIOL343,Data Analysis for Biologists,118,Christopher G Eckert
+BIOL350,Evolution and Human Affairs,77,Lonnie Aarsen
+BIOL360,Biotechnology and Society,72,Daniel Lefebvre
+BIOL369,Sex and Evolution,133,Adam K Chippindale
+BIOL403,Experimental Techniques in Biology,90,Laurent Seroude
+BIOL430,Molecular Genetics of Development,126,Ian D Chin-Sang
+BIOL432,Computation and Big Data in Biology,102,Robert Colautti
+BIOL439,Natural Selection and Microevolution,85,Jannice Friedman
+BIOL440,Speciation and Macroevolution,111,S Lougheed
+BIOL441,Molecular Genetics,64,Laurent Seroude
+BIOL535,Selected Topics in Biology,45,George diCenzo
+CANC380,Evolutionary Biology of Cancer,72,Tiziana Cotechini
+CRSS454,Cardiovascular Sciences,112,Michael A Adams
+CRSS456,Molecular and Cellular Basis of Cardiovascular Disease,75,Donald Maurice
+CHIN100,Introductory Mandarin Chinese I,58,Xuelin Bai
+CHEM112,General Chemistry,143,Stephen Brown
+CHEM211,Main Group Chemistry,48,Peng Wang
+CHEM212,Principles of Chemical Reactivity,23,Jason Vlahakis
 CHEM213,Introduction to Chemical Analysis,48,Zhe She
-CHEM222,Methods of Structure Determination,43,Lucia Lee
-CHEM223,Organic Reactions,48,Anne Petitjean
-CHEM281,General Organic Chemistry I (with Virtual Laboratory),70,John Carran
-CHEM282,General Organic Chemistry II,49,David Zechel
-CHEM311,Mechanistic Organic Chemistry,38,Graeme Howe
-CHEM312,Transition Metal Chemistry,47,Peng Wang
-CHEM313,Quantum Mechanics,45,Tucker Carrington
-CHEM322,The Chemical Bond: Computation and Spectroscopy,100,Gang Wu
-CLST102,Introduction to Greek Civilization,89,Jan-Mathieu Carbon
-CLST103,Introduction to Roman Civilization,36,Bernard Kavanagh
-CLST130,Introduction to Archaeology l: Great Discoveries in Archaeology,57,Cristiana Zaccagnino
-CLST131,Introduction to Archaeology ll: Methods and Analysis,57,M Barbara Reeves
-CLST150,Warfare in the Ancient World,59,Fabio Colivicchi
-CLST201,Roman History,30,Bernard Kavanagh
-CLST203,Myth and Religion,42,R Drew Griffith
-CLST205,Ancient Humour,75,Callie Callon
-CLST208,The Levant from the Late Bronze Age to the Coming of Rome,53,Jan-Mathieu Carbon
-CLST214,Ancient Science,41,Alicia Finan
-CLST304,Archaeology of the Classical World and Hellenistic Period,92,Cristiana Zaccagnino
-CLST340,The Roman Republic,20,Beatrice Poletti
-COGS100,Introduction to Cognitive Science,31,Farhana Zulkernine
-COGS201,Cognition and Computation,34,Carolyn Lamb
-CISC101,Introduction to Computer Programming,62,Samir Mohammad
-CISC102,Discrete Structures I,76,Selim G Akl
-CISC121,Introduction to Computing Science I,53,Richard Linley
-CISC124,Introduction to Computing Science II,91,Paul Allison
-CISC151,Elements of Computing with Data Analytics,57,Maram Assi
-CISC181,Digital Societies,22,Carolyn Lamb
-CISC203,Discrete Structures II,27,Christian Muise
-CISC204,Logic for Computing Science,25,Victoria  Armstrong
-CISC220,System-Level Programming,31,Samir Mohammad
-CISC221,Computer Architecture,71,Sidney Givigi
-CISC223,Software Specifications,42,Benjamin Cecchetto
-CISC226,Game Design,70,Carolyn Lamb
-CISC235,Data Structures,30,Yuan Tian
-CISC251,Data Analytics,61,David Skillicorn
-CISC271,Linear Data Analysis,79,Rachel Theriault 
-CISC322,Software Architecture,26,Bram Adams
-CISC324,Operating Systems,39,Anwar Hossain
-CISC325,Human-Computer Interaction,23,Sara Nabil
-CISC327,Software Quality Assurance,91,Steven Ding
-CISC330,Computer-Integrated Surgery,45,Gabor Fichtinger
-CISC332,Database Management Systems,26,Wendy L Powley
-CISC335,Computer Networks,31,Yuanzhu Chen
-CISC351,Advanced Data Analytics,41,Yuan Tian
-CISC352,Artificial Intelligence,53,Christian Muise
-CISC360,Programming Paradigms,98,Jana Dunfield
-CISC365,Algorithms I,96,Ting Hu
-CISC371,Nonlinear Data Analysis,37,Randall Ellis
-CISC372,Advanced Data Analytics,66,Yuan Tian
-CISC423,Software Requirements,45,Reza Ahmadi
-CISC451,Topics in Data Analytics,100,Yuan Tian
-CISC452,Neural and Genetic Computing,98,Hazem Abbas
-CISC454,Computer Graphics,62,James A Stewart
-CISC457,Image Processing and Computer Vision,94,James A Stewart
-CISC497,"Social, Ethical and Legal Issues in Computing",48,Catherine Stinson
-CISC498,Information Technology Project,75,Anwar Hossain
-CISC499,Advanced Undergraduate Project,60,Christian Muise
-CWRI281,Literary Genres,83,Juliane Okot Bitek
-DRAM100,"Introduction to Drama, Theatre, and Performance Studies",27,Grahame Renyk
-DRAM200,Theatre History and Literature I,87,Kelsey Jacobson
-DRAM220,Play Reading and Analysis,21,Gregory Wanless
-DRAM240,Introduction to Theatre Production I,41,Joe Pagnan
-DRAM242,Introduction to Theatre Production II,28,Joe Pagnan
-ECON110,Principles of Economics,24,Ian James Cromb
-ECON112,Introductory Macroeconomics,90,Rajni Dogra
-ECON212,Microeconomic Theory I,84,Rajni Dogra
-ECON222,Macroeconomic Theory I,80,Yiran Gong
-ECON231,Emergence of the Modern Industrial Economy,85,Ian Keay
-ECON232,The Diffusion of Modern Economic Growth,85,Ian Keay
-ECON239,Economic Development,48,Huw Lloyd-Ellis
-ECON243,The Economics of Health Care,74,Ugurhan Gazi Berkok
-ECON250,Introduction to Statistics,53,Marcos Lee
-ECON255,Introduction to Mathematical Economics,78,Jan Zabojnik
-ECON280,Population and Economic Change,30,Anya P Hageman
-ECON310,Microeconomic Theory II,59,Karen Ye
-ECON320,Macroeconomic Theory II,68,Beverly Lapham
-ECON322,Financial Markets and Risk Management,29,Thorsten Koepll
-ECON332,Economic History of North America since 1865,74,Ian Keay
-ECON351,Introductory Econometrics,86,Michael Barber
-ECON360,Labour Economics,29,Michael Barber
-ECON423,Topics in Financial Economics,85,Frank Milne
-ECON425,International Trade Theory and Policy,26,Beverly Lapham
-ECON426,International Macroeconomics,95,Gregor Smith
-ECON430,Issues in Economic History,87,Ian Keay
-ECON437,Cost-Benefit Analysis,92,Bahman Kashi
-ECON440,Public Economics,88,Allen C Head
-ECON450,Topics in Advanced Econometrics,63,Steve Lehrer
-ECON452,Applied Econometrics,55,Christopher Ferrall
-ECON491,Seminar in Macroeconomics II,82,Mike Kennedy
-EMPR200,Unions and Labour Relations,51,Robert Hickey
-EMPR210,Employment Law,91,Shannon Webb
-EMPR220,Conflict Management,46,Jacoba Lilius
-EMPR270,Introduction to Organizational Behaviour,55,Jacoba Lilius
-ENGL100,Introduction to Literary Study,56,Christopher J Fanning
-ENGL101,What Is Literature?,85,Scott-Morgan Straker
-ENGL104,"Horror, Sci Fi, Fantasy",35,Dr. Brooke  Cameron
-ENGL118,Literature and Mental Health,51,Angela Facundo
-ENGL160,Modern Prose Fiction,51,Adam Cotton
-ENGL161,Modern Prose Fiction l: The Elements of Fiction,43,Adam Cotton
-ENGL162,Modern Prose Fiction ll: Pathways Through Fiction,88,Adam Cotton
-ENGL200,History of Literature in English,90,Allen MacDuffie
-ENGL215,Canadian Literature,39,Robert May
-ENGL223,Selected Women Writers Post-1900,88,Heather A Evans
-ENGL234,The Short Story in English,32,Veronika Kratz
-ENGL235,Life Writing,99,Jesyka Taylor
-ENGL237,Children's Literature,70,Heather A Evans
-ENGL273,Literature and the Fantastic,65,Ruth Wehlau
-ENGL290,Seminar in Literary Interpretation,45,Christopher J Fanning
-ENGL296,Introduction to Literary Criticism and Theory l,52,Angela Facundo
-ENGL310,Medieval Literature of the British Isles,86,Ruth Wehlau
-ENGL330,Restoration and 18th Century Literature,44,Christopher J Fanning
-ENGL351,Victorian Literature,72,Steven Asselin
-ENGL356,British Fiction of the 19th Century,65,Heather A Evans
-ENGL357,19th-Century British Literature and Visual Culture,88,Heather A Evans
-ENGL360,Modern Literature,46,Adam Cotton
-ENGL375,American Literature,80,Kristin Moriah
-ENGL389,Context North America,28,Petra Fachinger
-ENGL431,Topics in Restoration and 18th-Century Literature I,35,Leslie Ritchie
-ENGL436,Group I: Special Topics I,98,Leslie Ritchie
-ENGL451,Topics in Victorian Literature I,32,Heather A Evans
-ENGL476,Topics in Postcolonial Literature I,75,Christopher Laurence Bongie
-ENGL482,Topics in Indigenous Literature II,27,Petra Fachinger
-ENGL486,Group III: Special Topics I,97,Veronika Kratz
-ENGL487,Group III: Special Topics II,36,Gabrielle S McIntire
-ENGL491,Topics in Literary Interpretation I,34,Glenn Wilmott
-ENGL496,Topics in Literary Criticism and Theory I,65,Angela Facundo
-ENGL497,Topics in Literary Criticism and Theory II,42,Angela Facundo
-ENIN200,Foundations of Entrepreneurship,77,Greg Bavington
-ENIN340,Topics in Innovation and Entrepreneurship,90,Sidney Eve Matrix
-ENSC103,Environment and Sustainability,29,Kristen Lowitt
-ENSC230,Principles of Sustainability,55,Geoffrey Hall
-ENSC290,Introduction to Ecological Economics,37,Steven Moore
-ENSC301,Environmental Assessment,99,Graham Whitelaw
-ENSC390,Sustainability,92,Diane Orihel
-FILM104,Film Form and Modern Culture to 1970,90,Robert Hyland
-FILM110,"Film, Media and Screen Cultures",86,Scott MacKenzie
-FILM111,"Film, Media, and Screen Cultures: History and Aesthetics",28,Gary Kibbins
-FILM210,The Horror Film,94,Dan Vena
-FILM217,Film Theory and History,46,Adam Cook
-FILM218,Media Theory and History,54,Jonas Jacobson
-FILM236,Media and Cultural Studies,39,Ian Robinson
-FILM240,Media and Popular Culture,99,Philippe Gauthier
-FILM250,Fundamentals of Media Production,90,Danae Elon
-FILM260,Digital Media Theory,29,Philippe Gauthier
-FILM335,Culture and Technology,53,Philippe Gauthier
-FILM336,Film and Politics,61,Eric Chalfant
-FILM340,Advertising and Consumer Culture,20,Ian Robinson
-FILM342,Studies in Alternative Media,32,Tamara de Szegheo Lang
-FILM390,Open Media Production,28,Gabriel Menotti
-FREN106,Communication et culture I,48,Francesca Fiore
-FREN107,Communication et culture II,70,Frederique Offredi
-FREN150,Français intermédiaire,58,Michael Reyes
-FREN230,Analyse textuelle et étude de la langue,29,Julien Lefort-Favreau
-FREN231,Rédaction et style,79,Francesca Fiore
-FREN320,Communication et culture V,92,François Rouget
-FREN324,Le roman français du 20e siècle,82,Johanne Benard
-FREN343,Histoire culturelle et littéraire de la francophonie et du Québec,82,Michael Reyes
-FREN360,Grammaire avancée,45,Johanne Benard
-FREN387,Littérature du 17e siècle,32,Francesca Fiore
-FREN390,Genre et littérature,61,Francesca Fiore
-FREN498,Séminaire de lecture,41,François Rouget
-GNDS120,"Women, Gender, Difference",48,Habibe Baba
-GNDS125,"Gender, Race, and Popular Culture",64,Habibe Baba
-GNDS211,Feminist Histories,96,Nancy Butler
-GNDS212,"Racism, Colonialism, and Resistance",28,Trish Salah
-GNDS215,Introduction to Sexual and Gender Diversity,93,Elizabeth Brule
-GNDS285,Transgender Politics and Representation,48,Trish Salah
-GNDS295,Comics and Politics,87,Christopher Bennett
-GNDS315,Feminist Pedagogies,29,Melissa Houghtaling
-GNDS335,Science Fiction and Fantasy,56,Jane Tolmie
-GPHY101,Human Geography,66,Anne M C Godlewska
-GPHY207,Principles of Biogeography,22,Rachel Kuzmich
-GPHY209,Weather and Climate,64,Ian Strachan
-GPHY228,Geographies of the Global Political Economy,80,Kesha  Fevrier
-GPHY242,Remote Sensing I: Remote Sensing of the Environment,98,Laura Thomson
-GPHY304,Northern and Arctic Environments,52,Robert Way
-GPHY336,"Geography, the Environment and Human Health",87,Patricia Collins
-GPHY352,Gender and the City,79,Hilal Kara
-GPHY367,People and Place in the Changing Arctic,79,Mark Stoller
-GPHY368,Environments and Society,57,Laura Cameron
-GEOL104,The Dynamic Earth,87,Christopher Omelon
-GEOL106,Environmental Geology and Natural Hazards,35,Christa Pufahl
-GEOL107,History of Life,89,Guy M Narbonne
-GEOL221,Geological Field Methods,63,Robin Harrap
-GEOL362,Petrology Applied to Ore Deposit,88,Gema Olivo
-GRMN101,Beginner's German I,72,Christiane Arndt
-GRMN102,Beginner's German II,81,Monika Holzschuh Sator
-DEVS100,"Canada and the ""Third World""",43,Guy Crawford
-DEVS101,Development Studies in Global Perspective,30,Marcus Taylor
-DEVS102,Canada in the World,80,Rebecca Hall
-DEVS220,Introduction to Indigenous Studies,43,Ian Fanning
-DEVS221,Indigenous Studies II - Resistance and Resurgence,63,Ian Fanning
-DEVS230,The Global Political Economy of Development,97,Susanne Soederberg
-DEVS240,Decolonizing Development,88,Ayca Tomac
-DEVS250,Environmental Transformations,65,Marcus Taylor
-DEVS260,"Globalization, Gender, and Development",55,Reena Kukreja
-DEVS353,Business and Global Development,77,Susanne M Soederberg
-DEVS354,Cities and Urbanization in the South,25,David A McDonald
-DEVS361,Policy Advocacy in Global Development,80,Scott Rutherford
-DEVS363,Contemporary Southern Africa: Development Trends and Challenges,41,Marc Epprecht
-DEVS365,Trade and Investment in the Global South,38,Kyla Tienhaara
-DEVS393,Topics in Development Studies II,44,David A McDonald
-DEVS492,Topics in Development Studies I,85,Bernadette Resurreccion
-HLTH101,Social Determinants of Health,27,Stevenson Fergus
-HLTH200,Physical Fitness and Exercise Programming,56,Jenson Price
-HLTH205,Introduction to Health Promotion,27,Joseph Kangmennaang
-HLTH230,Basic Human Nutrition,35,Jeffery Lalonde
-HLTH235,Food Systems,29,Elaine Power
-HLTH252,Introduction to Research Methods,83,Eun-Young Lee
-HLTH270,Movement Behaviours and Health,47,Ian Janssen
-HLTH315,Theory and Practice of Health Behaviour Change,54,Amy Latimer-Cheung
-HLTH323,Epidemiology,53,Ian Janssen
-HLTH350,Topics in Global Health,79,Elijah Bisung
-HLTH416,Program Planning and Evaluation,65,Lucie Levesque
-HIST104,Pre-Confederation Canada: A History of the Present,32,Steven J Maynard
-HIST105,Post-Confederation Canada: A History of the Present,31,Steven J Maynard
-HIST106,The Making of Modern Europe,55,Andrew Jainchill
-HIST108,"Early Globalization: Contact, Conflict, and Pandemics",63,Aditi Sen-Chowdhury
-HIST109,War and Revolution in the Modern World,76,Awet Weldemichael
-HIST110,Europe from Antiquity to the Scientific Revolution,25,Jeffery Collins
-HIST124,Canada: A History of the Present,24,Steven J Maynard
-HIST206,"The United States in the Gilded Age and Progressive Era, 1868-1920",96,Roseanne Currarino
-HIST210,The History of Sexuality in Canada,34,Steven J Maynard
-HIST211,The Cold War,55,Leonid Trofimov
+CHEM222,Methods of Structure Determination,130,Lucia Lee
+CHEM223,Organic Reactions,24,Anne Petitjean
+CHEM281,General Organic Chemistry I (with Virtual Laboratory),22,John Carran
+CHEM282,General Organic Chemistry II,140,David Zechel
+CHEM311,Mechanistic Organic Chemistry,70,Graeme Howe
+CHEM312,Transition Metal Chemistry,73,Peng Wang
+CHEM313,Quantum Mechanics,111,Tucker Carrington
+CHEM322,The Chemical Bond: Computation and Spectroscopy,131,Gang Wu
+CLST102,Introduction to Greek Civilization,101,Jan-Mathieu Carbon
+CLST103,Introduction to Roman Civilization,88,Bernard Kavanagh
+CLST130,Introduction to Archaeology l: Great Discoveries in Archaeology,98,Cristiana Zaccagnino
+CLST131,Introduction to Archaeology ll: Methods and Analysis,109,M Barbara Reeves
+CLST150,Warfare in the Ancient World,68,Fabio Colivicchi
+CLST201,Roman History,117,Bernard Kavanagh
+CLST203,Myth and Religion,120,R Drew Griffith
+CLST205,Ancient Humour,138,Callie Callon
+CLST208,The Levant from the Late Bronze Age to the Coming of Rome,138,Jan-Mathieu Carbon
+CLST214,Ancient Science,39,Alicia Finan
+CLST304,Archaeology of the Classical World and Hellenistic Period,84,Cristiana Zaccagnino
+CLST340,The Roman Republic,80,Beatrice Poletti
+COGS100,Introduction to Cognitive Science,130,Farhana Zulkernine
+COGS201,Cognition and Computation,94,Carolyn Lamb
+CISC101,Introduction to Computer Programming,111,Samir Mohammad
+CISC102,Discrete Structures I,45,Selim G Akl
+CISC121,Introduction to Computing Science I,69,Richard Linley
+CISC124,Introduction to Computing Science II,40,Paul Allison
+CISC151,Elements of Computing with Data Analytics,119,Maram Assi
+CISC181,Digital Societies,120,Carolyn Lamb
+CISC203,Discrete Structures II,108,Christian Muise
+CISC204,Logic for Computing Science,65,Victoria  Armstrong
+CISC220,System-Level Programming,67,Samir Mohammad
+CISC221,Computer Architecture,134,Sidney Givigi
+CISC223,Software Specifications,121,Benjamin Cecchetto
+CISC226,Game Design,28,Carolyn Lamb
+CISC235,Data Structures,132,Yuan Tian
+CISC251,Data Analytics,108,David Skillicorn
+CISC271,Linear Data Analysis,105,Rachel Theriault 
+CISC322,Software Architecture,36,Bram Adams
+CISC324,Operating Systems,110,Anwar Hossain
+CISC325,Human-Computer Interaction,123,Sara Nabil
+CISC327,Software Quality Assurance,133,Steven Ding
+CISC330,Computer-Integrated Surgery,23,Gabor Fichtinger
+CISC332,Database Management Systems,51,Wendy L Powley
+CISC335,Computer Networks,102,Yuanzhu Chen
+CISC351,Advanced Data Analytics,94,Yuan Tian
+CISC352,Artificial Intelligence,42,Christian Muise
+CISC360,Programming Paradigms,24,Jana Dunfield
+CISC365,Algorithms I,91,Ting Hu
+CISC371,Nonlinear Data Analysis,51,Randall Ellis
+CISC372,Advanced Data Analytics,101,Yuan Tian
+CISC423,Software Requirements,94,Reza Ahmadi
+CISC451,Topics in Data Analytics,31,Yuan Tian
+CISC452,Neural and Genetic Computing,146,Hazem Abbas
+CISC454,Computer Graphics,131,James A Stewart
+CISC457,Image Processing and Computer Vision,125,James A Stewart
+CISC497,"Social, Ethical and Legal Issues in Computing",66,Catherine Stinson
+CISC498,Information Technology Project,27,Anwar Hossain
+CISC499,Advanced Undergraduate Project,116,Christian Muise
+CWRI281,Literary Genres,75,Juliane Okot Bitek
+DRAM100,"Introduction to Drama, Theatre, and Performance Studies",29,Grahame Renyk
+DRAM200,Theatre History and Literature I,107,Kelsey Jacobson
+DRAM220,Play Reading and Analysis,82,Gregory Wanless
+DRAM240,Introduction to Theatre Production I,125,Joe Pagnan
+DRAM242,Introduction to Theatre Production II,136,Joe Pagnan
+ECON110,Principles of Economics,104,Ian James Cromb
+ECON112,Introductory Macroeconomics,138,Rajni Dogra
+ECON212,Microeconomic Theory I,67,Rajni Dogra
+ECON222,Macroeconomic Theory I,30,Yiran Gong
+ECON231,Emergence of the Modern Industrial Economy,103,Ian Keay
+ECON232,The Diffusion of Modern Economic Growth,52,Ian Keay
+ECON239,Economic Development,85,Huw Lloyd-Ellis
+ECON243,The Economics of Health Care,34,Ugurhan Gazi Berkok
+ECON250,Introduction to Statistics,57,Marcos Lee
+ECON255,Introduction to Mathematical Economics,118,Jan Zabojnik
+ECON280,Population and Economic Change,139,Anya P Hageman
+ECON310,Microeconomic Theory II,67,Karen Ye
+ECON320,Macroeconomic Theory II,31,Beverly Lapham
+ECON322,Financial Markets and Risk Management,149,Thorsten Koepll
+ECON332,Economic History of North America since 1865,51,Ian Keay
+ECON351,Introductory Econometrics,68,Michael Barber
+ECON360,Labour Economics,39,Michael Barber
+ECON423,Topics in Financial Economics,141,Frank Milne
+ECON425,International Trade Theory and Policy,141,Beverly Lapham
+ECON426,International Macroeconomics,130,Gregor Smith
+ECON430,Issues in Economic History,80,Ian Keay
+ECON437,Cost-Benefit Analysis,142,Bahman Kashi
+ECON440,Public Economics,32,Allen C Head
+ECON450,Topics in Advanced Econometrics,49,Steve Lehrer
+ECON452,Applied Econometrics,37,Christopher Ferrall
+ECON491,Seminar in Macroeconomics II,39,Mike Kennedy
+EMPR200,Unions and Labour Relations,147,Robert Hickey
+EMPR210,Employment Law,148,Shannon Webb
+EMPR220,Conflict Management,65,Jacoba Lilius
+EMPR270,Introduction to Organizational Behaviour,59,Jacoba Lilius
+ENGL100,Introduction to Literary Study,23,Christopher J Fanning
+ENGL101,What Is Literature?,46,Scott-Morgan Straker
+ENGL104,"Horror, Sci Fi, Fantasy",36,Dr. Brooke  Cameron
+ENGL118,Literature and Mental Health,142,Angela Facundo
+ENGL160,Modern Prose Fiction,63,Adam Cotton
+ENGL161,Modern Prose Fiction l: The Elements of Fiction,61,Adam Cotton
+ENGL162,Modern Prose Fiction ll: Pathways Through Fiction,55,Adam Cotton
+ENGL200,History of Literature in English,72,Allen MacDuffie
+ENGL215,Canadian Literature,118,Robert May
+ENGL223,Selected Women Writers Post-1900,21,Heather A Evans
+ENGL234,The Short Story in English,20,Veronika Kratz
+ENGL235,Life Writing,46,Jesyka Taylor
+ENGL237,Children's Literature,55,Heather A Evans
+ENGL273,Literature and the Fantastic,47,Ruth Wehlau
+ENGL290,Seminar in Literary Interpretation,56,Christopher J Fanning
+ENGL296,Introduction to Literary Criticism and Theory l,66,Angela Facundo
+ENGL310,Medieval Literature of the British Isles,105,Ruth Wehlau
+ENGL330,Restoration and 18th Century Literature,139,Christopher J Fanning
+ENGL351,Victorian Literature,99,Steven Asselin
+ENGL356,British Fiction of the 19th Century,131,Heather A Evans
+ENGL357,19th-Century British Literature and Visual Culture,56,Heather A Evans
+ENGL360,Modern Literature,81,Adam Cotton
+ENGL375,American Literature,72,Kristin Moriah
+ENGL389,Context North America,143,Petra Fachinger
+ENGL431,Topics in Restoration and 18th-Century Literature I,119,Leslie Ritchie
+ENGL436,Group I: Special Topics I,90,Leslie Ritchie
+ENGL451,Topics in Victorian Literature I,115,Heather A Evans
+ENGL476,Topics in Postcolonial Literature I,67,Christopher Laurence Bongie
+ENGL482,Topics in Indigenous Literature II,25,Petra Fachinger
+ENGL486,Group III: Special Topics I,123,Veronika Kratz
+ENGL487,Group III: Special Topics II,58,Gabrielle S McIntire
+ENGL491,Topics in Literary Interpretation I,118,Glenn Wilmott
+ENGL496,Topics in Literary Criticism and Theory I,139,Angela Facundo
+ENGL497,Topics in Literary Criticism and Theory II,148,Angela Facundo
+ENIN200,Foundations of Entrepreneurship,55,Greg Bavington
+ENIN340,Topics in Innovation and Entrepreneurship,30,Sidney Eve Matrix
+ENSC103,Environment and Sustainability,60,Kristen Lowitt
+ENSC230,Principles of Sustainability,104,Geoffrey Hall
+ENSC290,Introduction to Ecological Economics,63,Steven Moore
+ENSC301,Environmental Assessment,71,Graham Whitelaw
+ENSC390,Sustainability,34,Diane Orihel
+FILM104,Film Form and Modern Culture to 1970,36,Robert Hyland
+FILM110,"Film, Media and Screen Cultures",125,Scott MacKenzie
+FILM111,"Film, Media, and Screen Cultures: History and Aesthetics",52,Gary Kibbins
+FILM210,The Horror Film,29,Dan Vena
+FILM217,Film Theory and History,80,Adam Cook
+FILM218,Media Theory and History,33,Jonas Jacobson
+FILM236,Media and Cultural Studies,83,Ian Robinson
+FILM240,Media and Popular Culture,59,Philippe Gauthier
+FILM250,Fundamentals of Media Production,127,Danae Elon
+FILM260,Digital Media Theory,38,Philippe Gauthier
+FILM335,Culture and Technology,146,Philippe Gauthier
+FILM336,Film and Politics,65,Eric Chalfant
+FILM340,Advertising and Consumer Culture,27,Ian Robinson
+FILM342,Studies in Alternative Media,80,Tamara de Szegheo Lang
+FILM390,Open Media Production,34,Gabriel Menotti
+FREN106,Communication et culture I,43,Francesca Fiore
+FREN107,Communication et culture II,135,Frederique Offredi
+FREN150,Français intermédiaire,60,Michael Reyes
+FREN230,Analyse textuelle et étude de la langue,35,Julien Lefort-Favreau
+FREN231,Rédaction et style,32,Francesca Fiore
+FREN320,Communication et culture V,59,François Rouget
+FREN324,Le roman français du 20e siècle,94,Johanne Benard
+FREN343,Histoire culturelle et littéraire de la francophonie et du Québec,88,Michael Reyes
+FREN360,Grammaire avancée,71,Johanne Benard
+FREN387,Littérature du 17e siècle,149,Francesca Fiore
+FREN390,Genre et littérature,41,Francesca Fiore
+FREN498,Séminaire de lecture,102,François Rouget
+GNDS120,"Women, Gender, Difference",135,Habibe Baba
+GNDS125,"Gender, Race, and Popular Culture",113,Habibe Baba
+GNDS211,Feminist Histories,49,Nancy Butler
+GNDS212,"Racism, Colonialism, and Resistance",84,Trish Salah
+GNDS215,Introduction to Sexual and Gender Diversity,107,Elizabeth Brule
+GNDS285,Transgender Politics and Representation,89,Trish Salah
+GNDS295,Comics and Politics,88,Christopher Bennett
+GNDS315,Feminist Pedagogies,99,Melissa Houghtaling
+GNDS335,Science Fiction and Fantasy,22,Jane Tolmie
+GPHY101,Human Geography,103,Anne M C Godlewska
+GPHY207,Principles of Biogeography,85,Rachel Kuzmich
+GPHY209,Weather and Climate,35,Ian Strachan
+GPHY228,Geographies of the Global Political Economy,74,Kesha  Fevrier
+GPHY242,Remote Sensing I: Remote Sensing of the Environment,58,Laura Thomson
+GPHY304,Northern and Arctic Environments,120,Robert Way
+GPHY336,"Geography, the Environment and Human Health",46,Patricia Collins
+GPHY352,Gender and the City,114,Hilal Kara
+GPHY367,People and Place in the Changing Arctic,21,Mark Stoller
+GPHY368,Environments and Society,121,Laura Cameron
+GEOL104,The Dynamic Earth,120,Christopher Omelon
+GEOL106,Environmental Geology and Natural Hazards,87,Christa Pufahl
+GEOL107,History of Life,79,Guy M Narbonne
+GEOL221,Geological Field Methods,45,Robin Harrap
+GEOL362,Petrology Applied to Ore Deposit,70,Gema Olivo
+GRMN101,Beginner's German I,143,Christiane Arndt
+GRMN102,Beginner's German II,123,Monika Holzschuh Sator
+DEVS100,"Canada and the ""Third World""",22,Guy Crawford
+DEVS101,Development Studies in Global Perspective,22,Marcus Taylor
+DEVS102,Canada in the World,130,Rebecca Hall
+DEVS220,Introduction to Indigenous Studies,99,Ian Fanning
+DEVS221,Indigenous Studies II - Resistance and Resurgence,119,Ian Fanning
+DEVS230,The Global Political Economy of Development,54,Susanne Soederberg
+DEVS240,Decolonizing Development,28,Ayca Tomac
+DEVS250,Environmental Transformations,123,Marcus Taylor
+DEVS260,"Globalization, Gender, and Development",35,Reena Kukreja
+DEVS353,Business and Global Development,33,Susanne M Soederberg
+DEVS354,Cities and Urbanization in the South,60,David A McDonald
+DEVS361,Policy Advocacy in Global Development,100,Scott Rutherford
+DEVS363,Contemporary Southern Africa: Development Trends and Challenges,129,Marc Epprecht
+DEVS365,Trade and Investment in the Global South,57,Kyla Tienhaara
+DEVS393,Topics in Development Studies II,70,David A McDonald
+DEVS492,Topics in Development Studies I,62,Bernadette Resurreccion
+HLTH101,Social Determinants of Health,101,Stevenson Fergus
+HLTH200,Physical Fitness and Exercise Programming,54,Jenson Price
+HLTH205,Introduction to Health Promotion,44,Joseph Kangmennaang
+HLTH230,Basic Human Nutrition,139,Jeffery Lalonde
+HLTH235,Food Systems,91,Elaine Power
+HLTH252,Introduction to Research Methods,139,Eun-Young Lee
+HLTH270,Movement Behaviours and Health,115,Ian Janssen
+HLTH315,Theory and Practice of Health Behaviour Change,85,Amy Latimer-Cheung
+HLTH323,Epidemiology,75,Ian Janssen
+HLTH350,Topics in Global Health,121,Elijah Bisung
+HLTH416,Program Planning and Evaluation,121,Lucie Levesque
+HIST104,Pre-Confederation Canada: A History of the Present,134,Steven J Maynard
+HIST105,Post-Confederation Canada: A History of the Present,90,Steven J Maynard
+HIST106,The Making of Modern Europe,91,Andrew Jainchill
+HIST108,"Early Globalization: Contact, Conflict, and Pandemics",116,Aditi Sen-Chowdhury
+HIST109,War and Revolution in the Modern World,94,Awet Weldemichael
+HIST110,Europe from Antiquity to the Scientific Revolution,90,Jeffery Collins
+HIST124,Canada: A History of the Present,131,Steven J Maynard
+HIST206,"The United States in the Gilded Age and Progressive Era, 1868-1920",27,Roseanne Currarino
+HIST210,The History of Sexuality in Canada,115,Steven J Maynard
+HIST211,The Cold War,72,Leonid Trofimov
 HIST214,Food in Global History,39,Aditi Sen-Chowdhury
-HIST215,"Sport, Virtue, and Violent Spectacle from Antiquity to the Renaissance",35,Anthony Francis D'Elia
-HIST216,U.S. Civil War and Reconstruction,70,Rosanne Currarino
-HIST218,Byzantium,37,Richard Greenfield
-HIST219,"""Canada"": The History of an Idea",31,Caroline-Isabelle Caron
-HIST220,Jews on Film,24,Gordon Dueck
-HIST223,Poison and Prejudice: Toxins in Global History,82,Aditi Sen-Chowdhury
-HIST225,The Early Middle Ages,54,Megan Welton
-HIST228,Global History of Pandemics,40,Aditi Sen-Chowdhury
-HIST241,Issues in History,93,Gordon Dueck
-HIST242,Issues in Canadian History,79,Scott Berthelette
-HIST243,The Crusades,52,Richard Greenfield
-HIST245,Imperial Russia,59,Ana Siljak
-HIST246,The Soviet Experiment,33,Rebecca Manley
-HIST251,Medieval England,80,Daniel Woolf
-HIST252,Africa in the Modern World,22,Samuel Tsegai
-HIST253,History of Public Policy,41,Tim Smith
-HIST255,Renaissance and Reformation Europe,66,Anthony Francis D'Elia
-HIST267,The (Un) Making of the Modern Middle East,42,Ariel Salzmann
-HIST286,Latin America from 1850 to Today: The Modern Era,20,David Parker
-HIST294,Arab-Israeli Conflict and Regional Security,89,Ariel Salzmann
-HIST295,The Holocaust,51,Gordon Dueck
-HIST304,The Civil War and the Making of America,72,Roseanne Currarino
-HIST307,Introduction to Historiography,36,Daniel Woolf
-HIST313,"British North America, 1759-1867",54,Jeff McNairn
-HIST315,Modern Latin American History: Sources and Debates,75,David Parker
-HIST316,European Politics and Society Since 1789,92,Rebecca Manley
-HIST318,Modern East Asia,69,Emily Hill
-HIST320,Indigenous History of North America,90,Scott Berthelette
-HIST353,Revolutions and Civil Wars in Twentieth-Century Latin America,49,David Parker
-HIST401,Topics in Canadian History,80,Jeff McNairn
-HIST438,The Historical Imagination,100,Nancy Van Deusen
-HIST461,Race and Ethnicity in Latin America,88,David Parker
-INDG301,Indigenous Ways of Knowing,71,Carleigh Milburn
-IDIS173,The History and Philosophy of Health and Healthcare,32,Cheryl Cline
-IDIS280,Interprofessional Approaches in Healthcare,57,Rosemary Brander
-IDIS373,"Health Ethics, Law, and Policy",61,Jeremy Butler
-ITLN111,Beginning Italian I,61,Elena Cecchetto
-JAPN100,Introductory Japanese I,27,Keiko Aoki
-JAPN200,Introductory Japanese II,50,Keiko Aoki
-KNPE125,Introduction to Human Physiology,76,Brendon Gurd
-KNPE153,Introductory Biomechanics,40,Megan McAllister
-KNPE167,Socio-Cultural Dimensions of Sport and Physical Activity,27,Courtney Szto
-KNPE225,Advanced Human Physiology,92,Michael Tschakovsky
-KNPE227,Exercise Physiology,33,Brendon Gurd
-KNPE254,Biomechanical Analysis of Human Movement,49,Jessica Selinger
-KNPE255,"Physical Activity, Fitness, and Health",84,Robert Ross
-KNPE335,Healthy Aging,77,Madison Robertson
-KNPE339,Advanced Exercise Metabolism,82,Brendon Gurd
-LLCU111,Introduction to Culture,80,Antonio Macedo
-LLCU200,Semiotics: Interpreting the World,61,Donato Santeramo
-LLCU201,Introduction to Romance Philology,39,Cristiana Zaccagnino
-LLCU213,The Social History of Organized Crime in Canada,97,Antonio Nicaso
-LLCU214,"Mafia Culture and the Power of Symbols, Rituals, and Myth",60,Antonio Nicaso
-LLCU248,Introduction to Latin American Cultures,48,Claudio Palomares-Salas
-LLCU249,"Latin Lovers: Love, Sex, and Popular Culture",34,Claudio Palomares-Salas
-LLCU295,Special Topics,38,Hannah McElgunn
-LLCU303,Applied Intercultural Communication,97,Margaret Maliszewska
-LATN110,Introductory Latin,26,Beatrice Poletti
-LATN209,Intermediate Latin,23,Bernard Kavanagh
-LATN421,Advanced Latin Prose,24,Anthony Francis D'Elia
-LIBS100,Origins and Practices of Liberal Arts,22,Rebecca Smith
-LING100,Introduction to Linguistics,94,Charlotte Reinholtz
-LING310,Phonetics,77,Lorena Jessop
-LING330,Morphology,35,Bronwyn Bjorkman
-LING350,Introduction to Historical Linguistics,96,Bronwyn Bjorkman
-MATH110,Linear Algebra,57,Gregory G Smith
-MATH112,Introduction to Linear Algebra,80,Kaveh Mousavand
-MATH120,Differential and Integral Calculus,32,Michael A Roth
-MATH121,Differential and Integral Calculus,67,Nageena Frost
-MATH126,Differential and Integral Calculus,37,Abhishek Bharadwaj
-MATH130,Mathematics for Biochemistry and Life Sciences,51,Troy Day
-MATH210,Rings and Fields,58,Gregory G Smith
-MATH212,Linear Algebra ll,80,Zachary Selk
-MATH221,Vector Calculus,63,Boris Levit
-MATH225,Ordinary Differential Equations,71,Abhishek Bharadwaj
-MATH228,Complex Analysis,92,Oleg I Bogoyavlenskij
-MATH231,Differential Equations,93,Andrew Lewis
-MATH280,Advanced Calculus,51,Thomas Barthelme
-MATH281,Introduction to Real Analysis,71,Troy Day
-MATH310,Group Theory,26,Michael A Roth
-MATH314,Representations of the Symmetric Group,98,Brad Rodgers
-MATH326,Functions of a Complex Variable,57,Ivan Dimitrov
-MATH331,Advanced Differential Equations,31,Felicia  Magpantay
-MATH384,Mathematical Theory of Interest,49,Ping Li
-MATH401,Graph Theory,32,Brad Rodgers
-MATH402,Enumerative Combinatorics,86,Catherine Pfaff
-MATH413,Introduction to Algebraic Geometry,22,Gregory G Smith
-MATH429,Functional Analysis and Quantum Mechanics,66,Francesco Cellarosi
-MATH472,Optimization and Control of Stochastic Systems,96,Serdar Yuksel
-MATH474,Information Theory,28,Fady Alajaji
-MICR121,Microbiology for Nursing Students,75,Prameet Sheth
-MICR221,Fundamental Microbiology,83,Bruce Banfield
-MICR271,Introduction to Microbiology,26,Christopher Lohans
-MICR360,Immunology,96,Sameh Basta
-MUSC104,Music Fundamentals,34,Cynthia Tormann
-MUSC112,Medium Ensemble,28,Sarah Moon
-MUSC121,Applied Study I,94,Sarah Moon
-MUSC127,Ear Training and Sight Singing I,69,Cynthia Tormann
-MUSC129,Keyboard Skills,31,Younggun Kim
-MUSC156,"Introduction to Digital Audio Recording, Editing, and Mixing",45,Michael Lukaszuk
-MUSC171,Social History of Popular Music,72,Robbie MacKay
-MUSC191,Theory and Analysis I,87,Cecilia Livingston
-MUSC200,Small Ensemble,98,Sarah Moon
-MUSC221,Applied Study II,71,Sarah Moon
-MUSC300,Small Ensemble,88,Kornel  Wolak
-MUSC303,Critical Issues in Music,35,Colleen Renihan
-MUSC318,Applied Music 3A,47,Ms. Dianne Baird
-MUSC321,Applied Study III,55,Jeffrey Leung
-MUSC370,Topics in Advanced Conducting,21,Dan Tremblay
-MUSC392,Theory and Analysis III,33,Stephanie Lind
-MUTH111,"Listening to Revolutions: History, Arts, and Performance ll",68,John Burge
-NSCI323,Foundational Neuroscience,73,Eric Dumont
-PATH120,Understanding Human Disease in the 21st Century,72,Cynthia Pruss
-PHAR100,Introductory Pharmacology,63,Jeanne Mulder
-PHAR480,Drug Discovery and Development,61,Terence Ozolins
-PHIL111,What is Philosophy?,98,Jon Miller
-PHIL115,Fundamental Questions,87,Omar Bachour
-PHIL151,Great Works of Philosophy,70,Mark Smith
-PHIL153,The State and the Citizen,77,Owen Clifton
-PHIL157,Moral Issues,41,Rahul Kumar
-PHIL203,Science and Society,42,Sergio Sismondo
-PHIL247,Practical Ethics,50,Meena Krishnamurthy
-PHIL250,Epistemology and Metaphysics,26,David Bakhurst
-PHIL257,Ethics,74,Jon Miller
-PHIL259,Critical Thinking,69,Nancy Salay
-PHIL261,Philosophy of Mathematics,49,Joshua Mozersky
-PHIL266,Introduction to Probability and Inductive Logic,21,Joshua Mozersky
-PHIL270,Minds and Machines,84,Nancy Salay
-PHIL273,"Continental Philosophy, 1800-1900",26,Paul Fairfield
+HIST215,"Sport, Virtue, and Violent Spectacle from Antiquity to the Renaissance",101,Anthony Francis D'Elia
+HIST216,U.S. Civil War and Reconstruction,140,Rosanne Currarino
+HIST218,Byzantium,84,Richard Greenfield
+HIST219,"""Canada"": The History of an Idea",65,Caroline-Isabelle Caron
+HIST220,Jews on Film,127,Gordon Dueck
+HIST223,Poison and Prejudice: Toxins in Global History,57,Aditi Sen-Chowdhury
+HIST225,The Early Middle Ages,109,Megan Welton
+HIST228,Global History of Pandemics,37,Aditi Sen-Chowdhury
+HIST241,Issues in History,103,Gordon Dueck
+HIST242,Issues in Canadian History,48,Scott Berthelette
+HIST243,The Crusades,21,Richard Greenfield
+HIST245,Imperial Russia,98,Ana Siljak
+HIST246,The Soviet Experiment,130,Rebecca Manley
+HIST251,Medieval England,40,Daniel Woolf
+HIST252,Africa in the Modern World,103,Samuel Tsegai
+HIST253,History of Public Policy,57,Tim Smith
+HIST255,Renaissance and Reformation Europe,27,Anthony Francis D'Elia
+HIST267,The (Un) Making of the Modern Middle East,103,Ariel Salzmann
+HIST286,Latin America from 1850 to Today: The Modern Era,75,David Parker
+HIST294,Arab-Israeli Conflict and Regional Security,129,Ariel Salzmann
+HIST295,The Holocaust,102,Gordon Dueck
+HIST304,The Civil War and the Making of America,104,Roseanne Currarino
+HIST307,Introduction to Historiography,31,Daniel Woolf
+HIST313,"British North America, 1759-1867",83,Jeff McNairn
+HIST315,Modern Latin American History: Sources and Debates,66,David Parker
+HIST316,European Politics and Society Since 1789,135,Rebecca Manley
+HIST318,Modern East Asia,29,Emily Hill
+HIST320,Indigenous History of North America,53,Scott Berthelette
+HIST353,Revolutions and Civil Wars in Twentieth-Century Latin America,137,David Parker
+HIST401,Topics in Canadian History,137,Jeff McNairn
+HIST438,The Historical Imagination,125,Nancy Van Deusen
+HIST461,Race and Ethnicity in Latin America,122,David Parker
+INDG301,Indigenous Ways of Knowing,24,Carleigh Milburn
+IDIS173,The History and Philosophy of Health and Healthcare,24,Cheryl Cline
+IDIS280,Interprofessional Approaches in Healthcare,81,Rosemary Brander
+IDIS373,"Health Ethics, Law, and Policy",148,Jeremy Butler
+ITLN111,Beginning Italian I,150,Elena Cecchetto
+JAPN100,Introductory Japanese I,127,Keiko Aoki
+JAPN200,Introductory Japanese II,51,Keiko Aoki
+KNPE125,Introduction to Human Physiology,123,Brendon Gurd
+KNPE153,Introductory Biomechanics,98,Megan McAllister
+KNPE167,Socio-Cultural Dimensions of Sport and Physical Activity,98,Courtney Szto
+KNPE225,Advanced Human Physiology,50,Michael Tschakovsky
+KNPE227,Exercise Physiology,75,Brendon Gurd
+KNPE254,Biomechanical Analysis of Human Movement,150,Jessica Selinger
+KNPE255,"Physical Activity, Fitness, and Health",117,Robert Ross
+KNPE335,Healthy Aging,124,Madison Robertson
+KNPE339,Advanced Exercise Metabolism,108,Brendon Gurd
+LLCU111,Introduction to Culture,101,Antonio Macedo
+LLCU200,Semiotics: Interpreting the World,120,Donato Santeramo
+LLCU201,Introduction to Romance Philology,110,Cristiana Zaccagnino
+LLCU213,The Social History of Organized Crime in Canada,102,Antonio Nicaso
+LLCU214,"Mafia Culture and the Power of Symbols, Rituals, and Myth",35,Antonio Nicaso
+LLCU248,Introduction to Latin American Cultures,122,Claudio Palomares-Salas
+LLCU249,"Latin Lovers: Love, Sex, and Popular Culture",115,Claudio Palomares-Salas
+LLCU295,Special Topics,128,Hannah McElgunn
+LLCU303,Applied Intercultural Communication,131,Margaret Maliszewska
+LATN110,Introductory Latin,74,Beatrice Poletti
+LATN209,Intermediate Latin,80,Bernard Kavanagh
+LATN421,Advanced Latin Prose,146,Anthony Francis D'Elia
+LIBS100,Origins and Practices of Liberal Arts,44,Rebecca Smith
+LING100,Introduction to Linguistics,78,Charlotte Reinholtz
+LING310,Phonetics,26,Lorena Jessop
+LING330,Morphology,91,Bronwyn Bjorkman
+LING350,Introduction to Historical Linguistics,100,Bronwyn Bjorkman
+MATH110,Linear Algebra,44,Gregory G Smith
+MATH112,Introduction to Linear Algebra,126,Kaveh Mousavand
+MATH120,Differential and Integral Calculus,136,Michael A Roth
+MATH121,Differential and Integral Calculus,91,Nageena Frost
+MATH126,Differential and Integral Calculus,99,Abhishek Bharadwaj
+MATH130,Mathematics for Biochemistry and Life Sciences,70,Troy Day
+MATH210,Rings and Fields,65,Gregory G Smith
+MATH212,Linear Algebra ll,121,Zachary Selk
+MATH221,Vector Calculus,115,Boris Levit
+MATH225,Ordinary Differential Equations,140,Abhishek Bharadwaj
+MATH228,Complex Analysis,85,Oleg I Bogoyavlenskij
+MATH231,Differential Equations,39,Andrew Lewis
+MATH280,Advanced Calculus,36,Thomas Barthelme
+MATH281,Introduction to Real Analysis,93,Troy Day
+MATH310,Group Theory,121,Michael A Roth
+MATH314,Representations of the Symmetric Group,50,Brad Rodgers
+MATH326,Functions of a Complex Variable,51,Ivan Dimitrov
+MATH331,Advanced Differential Equations,93,Felicia  Magpantay
+MATH384,Mathematical Theory of Interest,46,Ping Li
+MATH401,Graph Theory,146,Brad Rodgers
+MATH402,Enumerative Combinatorics,49,Catherine Pfaff
+MATH413,Introduction to Algebraic Geometry,105,Gregory G Smith
+MATH429,Functional Analysis and Quantum Mechanics,144,Francesco Cellarosi
+MATH472,Optimization and Control of Stochastic Systems,53,Serdar Yuksel
+MATH474,Information Theory,55,Fady Alajaji
+MICR121,Microbiology for Nursing Students,25,Prameet Sheth
+MICR221,Fundamental Microbiology,87,Bruce Banfield
+MICR271,Introduction to Microbiology,98,Christopher Lohans
+MICR360,Immunology,62,Sameh Basta
+MUSC104,Music Fundamentals,131,Cynthia Tormann
+MUSC112,Medium Ensemble,147,Sarah Moon
+MUSC121,Applied Study I,32,Sarah Moon
+MUSC127,Ear Training and Sight Singing I,75,Cynthia Tormann
+MUSC129,Keyboard Skills,79,Younggun Kim
+MUSC156,"Introduction to Digital Audio Recording, Editing, and Mixing",147,Michael Lukaszuk
+MUSC171,Social History of Popular Music,34,Robbie MacKay
+MUSC191,Theory and Analysis I,49,Cecilia Livingston
+MUSC200,Small Ensemble,86,Sarah Moon
+MUSC221,Applied Study II,64,Sarah Moon
+MUSC300,Small Ensemble,100,Kornel  Wolak
+MUSC303,Critical Issues in Music,87,Colleen Renihan
+MUSC318,Applied Music 3A,25,Ms. Dianne Baird
+MUSC321,Applied Study III,148,Jeffrey Leung
+MUSC370,Topics in Advanced Conducting,33,Dan Tremblay
+MUSC392,Theory and Analysis III,29,Stephanie Lind
+MUTH111,"Listening to Revolutions: History, Arts, and Performance ll",123,John Burge
+NSCI323,Foundational Neuroscience,46,Eric Dumont
+PATH120,Understanding Human Disease in the 21st Century,92,Cynthia Pruss
+PHAR100,Introductory Pharmacology,61,Jeanne Mulder
+PHAR480,Drug Discovery and Development,147,Terence Ozolins
+PHIL111,What is Philosophy?,32,Jon Miller
+PHIL115,Fundamental Questions,138,Omar Bachour
+PHIL151,Great Works of Philosophy,51,Mark Smith
+PHIL153,The State and the Citizen,138,Owen Clifton
+PHIL157,Moral Issues,127,Rahul Kumar
+PHIL203,Science and Society,32,Sergio Sismondo
+PHIL247,Practical Ethics,66,Meena Krishnamurthy
+PHIL250,Epistemology and Metaphysics,95,David Bakhurst
+PHIL257,Ethics,119,Jon Miller
+PHIL259,Critical Thinking,48,Nancy Salay
+PHIL261,Philosophy of Mathematics,34,Joshua Mozersky
+PHIL266,Introduction to Probability and Inductive Logic,41,Joshua Mozersky
+PHIL270,Minds and Machines,43,Nancy Salay
+PHIL273,"Continental Philosophy, 1800-1900",90,Paul Fairfield
 PHIL275,"Thinking Gender, Sex, and Love",100,Jacqueline M Davies
-PHIL276,Critical Perspective on Social Diversity,43,Lisa Guenther
-PHIL301,Bioethics,70,Kerah Gordon-Solmon
-PHIL316,Philosophy of Art,96,Deborah Knight
-PHIL324,Africana Philosophy II,60,Jon Miller
-PHIL343,Social and Political Philosophy,22,Kerah Gordon-Solmon
-PHIL352,Metaphysics,64,Mark Smith
-PHIL362,Further Studies in Logic,28,Adele Mercier
-PHIL382,"Space-Time, Matter, and Reality",37,Joshua Mozersky
-PHIL390,Philosophical Practice,44,Kerah Gordon-Solmon
-PHIL405,Social and Political Philosophy II,26,Meena Krishnamurthy
-PHYS104,Fundamental Physics,87,Ryan Martin
-PHYS106,General Physics,66,Ryan Martin
-PHYS115,Introduction to Physics I,60,Anne Topper
+PHIL276,Critical Perspective on Social Diversity,76,Lisa Guenther
+PHIL301,Bioethics,38,Kerah Gordon-Solmon
+PHIL316,Philosophy of Art,135,Deborah Knight
+PHIL324,Africana Philosophy II,132,Jon Miller
+PHIL343,Social and Political Philosophy,34,Kerah Gordon-Solmon
+PHIL352,Metaphysics,23,Mark Smith
+PHIL362,Further Studies in Logic,109,Adele Mercier
+PHIL382,"Space-Time, Matter, and Reality",136,Joshua Mozersky
+PHIL390,Philosophical Practice,20,Kerah Gordon-Solmon
+PHIL405,Social and Political Philosophy II,104,Meena Krishnamurthy
+PHYS104,Fundamental Physics,116,Ryan Martin
+PHYS106,General Physics,146,Ryan Martin
+PHYS115,Introduction to Physics I,82,Anne Topper
 PHYS118,Basic Physics,32,Anne Topper
-PHYS206,Dynamics,65,Sarah Sadavoy
-PHYS212,Vibrations and Waves,100,Philippe Stefano
-PHYS242,Relativity and Quanta,99,Marc Dignam
-PHYS315,Physical Processes in Astrophysics,79,Judith A Irwin
-PHYS316,Methods in Mathematical Physics I,22,Lawrence M Widrow
-PHYS344,Introduction to Quantum Mechanics,69,Joseph Bramante
-PHYS345,"Quantum Physics of Atoms, Nuclei, and Particles",39,Aaron Vincent
-PHYS350,General Laboratory,51,Robert G Knobel
-PHYS480,Solid State Physics,46,Nir Rotenberg
-PHGY170,Human Cell Physiology,54,Cynthia Pruss
-PHGY215,Principles of Mammalian Physiology l,34,Nicolle Domnik
-PHGY216,Principles of Mammalian Physiology ll,67,Christopher Andrew Ward
-PHGY290,Investigation of Human Physiological Responses,47,Michael A Adams
-POLS112,Enduring Political Debates,76,Andrew Grant
-POLS211,Canadian Government,38,Elizabeth Baisley
-POLS212,Canadian Politics,81,Rachel Laforest
-POLS230,American Elections,29,Emmanuel Ampomah
-POLS241,Comparative Politics: Transformations,71,Dalal Daoud
-POLS242,Comparative Politics: Contemporary Regimes,53,Oded Haklai
-POLS243,"States, Ethnic Diversity, and Conflict",90,Stephen Larin
-POLS250,Political Theory: Foundations,60,Colin Farrelly
-POLS261,International Politics,36,Wayne S Cox
-POLS262,International Political Economy,54,Wayne S Cox
-POLS280,"Introduction to Women, Gender, and Politics",65,Yolande Book
-POLS284,Introduction to Political Research,56,Quinn Albaugh
-POLS285,Introduction to Statistics,60,Kyle Hanniman
-POLS312,Political Behaviour,90,Fan Lu
-POLS318,The Canadian Welfare State,24,Rachel Laforest
-POLS348,Middle East Politics,86,Rida Abu Rass
-POLS350,Political Theory: History,25,Åsbjørn Melkevik
-POLS358,Critical Perspectives on Contemporary Capitalism,61,Eleanor MacDonald
-POLS360,International Relations Theory,46,Stephanie Martel
-POLS366,The United Nations,80,Samantha Twietmeyer
-POLS367,American Foreign Policy,40,David Haglund
-POLS384,Strategies of Political Research,36,Quinn Albaugh
-POLS387,Politics and Culture,53,Eleanor MacDonald
-POLS388,Politics of Migration,27,Stephen Larin
-POLS392,Topics in Canadian Politics,61,Dax D'Orazio
-POLS397,Topics in Gender and Politics,53,Mary-Rita Holland
-POLS458,Ethics of War and Intervention,37,Stephen Larin
-POLS459,"Anarchist Politics, or the Art of Not Being Governed",95,Danielle Delaney
-POLS466,Politics of War in Africa,77,Andrew Grant
-POLS470,Seminar in International Politics,61,David Haglund
-POLS471,Politics and Science in Technological Societies,58,Stephen Larin
-POLS478,Politics of Artificial Intelligence,97,Stephen Larin
-POLS484,The Politics of Globalization,84,Andrew Grant
-POLS494,Topics in Political Studies,58,Surulola Eke
-PSYC100,Principles of Psychology,77,Anna Taylor
-PSYC202,Statistics in Psychology,82,Sarah Yakimowski
-PSYC203,Research Methods in Psychology,37,Daryl Wilson
-PSYC221,Cognitive Psychology,53,Daryl Wilson
-PSYC236,Introduction to Clinical Psychology,47,Meredith Chivers
-PSYC241,Social Psychology,83,Jillian O'Connor
-PSYC251,Developmental Psychology,26,Laura Lambe
+PHYS206,Dynamics,60,Sarah Sadavoy
+PHYS212,Vibrations and Waves,73,Philippe Stefano
+PHYS242,Relativity and Quanta,77,Marc Dignam
+PHYS315,Physical Processes in Astrophysics,68,Judith A Irwin
+PHYS316,Methods in Mathematical Physics I,64,Lawrence M Widrow
+PHYS344,Introduction to Quantum Mechanics,128,Joseph Bramante
+PHYS345,"Quantum Physics of Atoms, Nuclei, and Particles",45,Aaron Vincent
+PHYS350,General Laboratory,56,Robert G Knobel
+PHYS480,Solid State Physics,79,Nir Rotenberg
+PHGY170,Human Cell Physiology,122,Cynthia Pruss
+PHGY215,Principles of Mammalian Physiology l,140,Nicolle Domnik
+PHGY216,Principles of Mammalian Physiology ll,110,Christopher Andrew Ward
+PHGY290,Investigation of Human Physiological Responses,112,Michael A Adams
+POLS112,Enduring Political Debates,41,Andrew Grant
+POLS211,Canadian Government,79,Elizabeth Baisley
+POLS212,Canadian Politics,135,Rachel Laforest
+POLS230,American Elections,129,Emmanuel Ampomah
+POLS241,Comparative Politics: Transformations,83,Dalal Daoud
+POLS242,Comparative Politics: Contemporary Regimes,31,Oded Haklai
+POLS243,"States, Ethnic Diversity, and Conflict",69,Stephen Larin
+POLS250,Political Theory: Foundations,66,Colin Farrelly
+POLS261,International Politics,46,Wayne S Cox
+POLS262,International Political Economy,85,Wayne S Cox
+POLS280,"Introduction to Women, Gender, and Politics",106,Yolande Book
+POLS284,Introduction to Political Research,100,Quinn Albaugh
+POLS285,Introduction to Statistics,26,Kyle Hanniman
+POLS312,Political Behaviour,147,Fan Lu
+POLS318,The Canadian Welfare State,80,Rachel Laforest
+POLS348,Middle East Politics,72,Rida Abu Rass
+POLS350,Political Theory: History,28,Åsbjørn Melkevik
+POLS358,Critical Perspectives on Contemporary Capitalism,68,Eleanor MacDonald
+POLS360,International Relations Theory,69,Stephanie Martel
+POLS366,The United Nations,147,Samantha Twietmeyer
+POLS367,American Foreign Policy,81,David Haglund
+POLS384,Strategies of Political Research,23,Quinn Albaugh
+POLS387,Politics and Culture,75,Eleanor MacDonald
+POLS388,Politics of Migration,59,Stephen Larin
+POLS392,Topics in Canadian Politics,145,Dax D'Orazio
+POLS397,Topics in Gender and Politics,93,Mary-Rita Holland
+POLS458,Ethics of War and Intervention,126,Stephen Larin
+POLS459,"Anarchist Politics, or the Art of Not Being Governed",72,Danielle Delaney
+POLS466,Politics of War in Africa,22,Andrew Grant
+POLS470,Seminar in International Politics,92,David Haglund
+POLS471,Politics and Science in Technological Societies,145,Stephen Larin
+POLS478,Politics of Artificial Intelligence,68,Stephen Larin
+POLS484,The Politics of Globalization,46,Andrew Grant
+POLS494,Topics in Political Studies,21,Surulola Eke
+PSYC100,Principles of Psychology,144,Anna Taylor
+PSYC202,Statistics in Psychology,148,Sarah Yakimowski
+PSYC203,Research Methods in Psychology,146,Daryl Wilson
+PSYC221,Cognitive Psychology,30,Daryl Wilson
+PSYC236,Introduction to Clinical Psychology,69,Meredith Chivers
+PSYC241,Social Psychology,24,Jillian O'Connor
+PSYC251,Developmental Psychology,24,Laura Lambe
 PSYC271,Brain and Behaviour I,43,Scott Squires
-PSYC301,Advanced Statistical Inference,38,Leandre R Fabrigar
-PSYC305,Introduction to Comparative Cognition,51,Valerie Ann Kuhlmeier
-PSYC320,Selected Topics in Cognitive Neuroscience,25,Jeffrey Wammes
-PSYC323,Laboratory in Attention,74,Monica Castelhano
-PSYC333,Human Sexuality,51,Caroline F Pukall
-PSYC334,Laboratory in Psychological Testing,47,Jillian O'Connor
-PSYC336,Advanced Adult Clinical Psychology,35,Kathryn Leslie Harkness
-PSYC337,Advanced Child Clinical Psychology,24,Luis Flores
-PSYC340,Selected Topics in Social Psychology,33,Jillian O'Connor
-PSYC341,Laboratory in Social Psychology,26,Li-Jun Ji
-PSYC342,The Psychology of Social Influence,26,Leandre R Fabrigar
-PSYC343,Judgement and Decision Making,59,DAvid Hauser
-PSYC351,Social and Emotional Development,73,Tom Hollenstein
-PSYC353,Atypical Development,88,Elizabeth Kelley
-PSYC354,Language,27,Stanka A Fitneva
-PSYC358,Developmental Social Neuroscience,97,Michele Morningstar
-PSYC370,Brain and Behaviour II,77,Janet L Menard
-PSYC376,Functional Neuroimaging the Human Brain and Mind,38,Jason Gallivan
-PSYC397,History of Modern Psychology,80,Mary C Olmstead
-PSYC423,"Driving, Deepfakes, and Disinformation: Applications of Visual Cognition",67,Monica Castelhano
-PSYC429,Pain: Body and Mind,50,Timothy Salomons
-PSYC436,Sexuality and Gender,76,Meredith Chivers
-PSYC442,Culture and Cognition,63,Li-Jun Ji
-PSYC450,Advanced Topics in Developmental Psychology,51,Elizabeth Kelley
-RELS131,World Religions/Religious Worlds,67,Colin Simonds
-RELS132,Western Religions,43,Amarnath Amarasingam
-RELS140,Religion and Science,31,Sharday Mosurinjohn
-RELS162,"Religion, News, and Media",73,Amarnath Amarasingam
-RELS163,Popular Culture and Religion,47,Shobhana Xavier
-RELS207,"Religion, Hate, and Xenophobia",69,Amarnath Amarasingam
-RELS223,Buddhism,39,Colin Simonds
-RELS227,Indigenous Religious Traditions,43,Jorge Legoas
-RELS232,Religion and Social Movements,62,Amarnath Amarasingam
-RELS331,Religion and Violence,26,Amarnath Amarasingam
-RELS332,"Race, Ethnicity, and Religion",81,Shobhana Xavier
-RELS341,"Spirituality, Secularity, and Nonreligion",61,Sharday Mosurinjohn
-SOCY122,Introduction to Sociology,45,Rob Beamish
-SOCY201,Selected Topics in Sociology,85,Pinar  Tuzcu
-SOCY211,Introduction to Statistics,76,Victoria Sytsma
-SOCY225,Sociology of Globalization,71,Fauzia Husain
-SOCY226,Central Concepts in Sociological Theory,27,Thomas Abrams
-SOCY275,Theories of Deviance and Social Control,84,Stephen Baron
-SOCY276,Substantive Issues in Social Deviance,31,Nicole Myers
-SOCY301,Selected Topics in Sociology,78,Fauzia Husain
-SOCY304,Selected Topics in Communications and Information Technology,58,Pinar  Tuzcu
-SOCY306,Consumer Culture,99,Martin Hand
-SOCY388,Sociology of Criminal Justice,63,Nicole Myers
-SOCY457,Law and Social Structure,68,Fiona Kay
-SPAN111,Beginning Spanish I,30,Consuelo Kani
-SPAN112,Beginning Spanish II,51,Consuelo Kani
-SPAN204,Español intermedio,45,Max Antonio Lizano
-SPAN206,Spanish Conversation and Culture,36,Max Antonio Lizano
-STAT252,Introductory Applied Probability,47,Glen Takahara
-STAT263,Introduction to Statistics,22,Charles Arthur Molson
-STAT268,Statistics and Probability I,26,Yanglei Song
-STAT269,Statistics and Probability II,32,Devon Lin
-STAT362,R for Data Science,35,Brian Ling
-STAT462,Statistical Learning I,80,Devon Lin
-STAT473,Generalized Linear Models,48,Wenyu Jiang
-STAM200,Introduction to Statistics,61,Mike Lavender
-WRIT120,Fundamentals of Effective Writing,51,Laura Kinderman
-WRIT125,Fundamentals of Academic Essay Writing,63,Lori Vos
-WRIT225,"Writing for Research, Analysis, and Reflection",65,Martina Hardwick
+PSYC301,Advanced Statistical Inference,70,Leandre R Fabrigar
+PSYC305,Introduction to Comparative Cognition,125,Valerie Ann Kuhlmeier
+PSYC320,Selected Topics in Cognitive Neuroscience,81,Jeffrey Wammes
+PSYC323,Laboratory in Attention,129,Monica Castelhano
+PSYC333,Human Sexuality,114,Caroline F Pukall
+PSYC334,Laboratory in Psychological Testing,116,Jillian O'Connor
+PSYC336,Advanced Adult Clinical Psychology,92,Kathryn Leslie Harkness
+PSYC337,Advanced Child Clinical Psychology,78,Luis Flores
+PSYC340,Selected Topics in Social Psychology,23,Jillian O'Connor
+PSYC341,Laboratory in Social Psychology,141,Li-Jun Ji
+PSYC342,The Psychology of Social Influence,68,Leandre R Fabrigar
+PSYC343,Judgement and Decision Making,55,DAvid Hauser
+PSYC351,Social and Emotional Development,120,Tom Hollenstein
+PSYC353,Atypical Development,119,Elizabeth Kelley
+PSYC354,Language,120,Stanka A Fitneva
+PSYC358,Developmental Social Neuroscience,41,Michele Morningstar
+PSYC370,Brain and Behaviour II,141,Janet L Menard
+PSYC376,Functional Neuroimaging the Human Brain and Mind,94,Jason Gallivan
+PSYC397,History of Modern Psychology,83,Mary C Olmstead
+PSYC423,"Driving, Deepfakes, and Disinformation: Applications of Visual Cognition",113,Monica Castelhano
+PSYC429,Pain: Body and Mind,55,Timothy Salomons
+PSYC436,Sexuality and Gender,66,Meredith Chivers
+PSYC442,Culture and Cognition,62,Li-Jun Ji
+PSYC450,Advanced Topics in Developmental Psychology,131,Elizabeth Kelley
+RELS131,World Religions/Religious Worlds,35,Colin Simonds
+RELS132,Western Religions,141,Amarnath Amarasingam
+RELS140,Religion and Science,52,Sharday Mosurinjohn
+RELS162,"Religion, News, and Media",124,Amarnath Amarasingam
+RELS163,Popular Culture and Religion,48,Shobhana Xavier
+RELS207,"Religion, Hate, and Xenophobia",68,Amarnath Amarasingam
+RELS223,Buddhism,126,Colin Simonds
+RELS227,Indigenous Religious Traditions,94,Jorge Legoas
+RELS232,Religion and Social Movements,77,Amarnath Amarasingam
+RELS331,Religion and Violence,82,Amarnath Amarasingam
+RELS332,"Race, Ethnicity, and Religion",59,Shobhana Xavier
+RELS341,"Spirituality, Secularity, and Nonreligion",144,Sharday Mosurinjohn
+SOCY122,Introduction to Sociology,126,Rob Beamish
+SOCY201,Selected Topics in Sociology,146,Pinar  Tuzcu
+SOCY211,Introduction to Statistics,137,Victoria Sytsma
+SOCY225,Sociology of Globalization,57,Fauzia Husain
+SOCY226,Central Concepts in Sociological Theory,100,Thomas Abrams
+SOCY275,Theories of Deviance and Social Control,39,Stephen Baron
+SOCY276,Substantive Issues in Social Deviance,52,Nicole Myers
+SOCY301,Selected Topics in Sociology,89,Fauzia Husain
+SOCY304,Selected Topics in Communications and Information Technology,55,Pinar  Tuzcu
+SOCY306,Consumer Culture,28,Martin Hand
+SOCY388,Sociology of Criminal Justice,56,Nicole Myers
+SOCY457,Law and Social Structure,73,Fiona Kay
+SPAN111,Beginning Spanish I,65,Consuelo Kani
+SPAN112,Beginning Spanish II,92,Consuelo Kani
+SPAN204,Español intermedio,143,Max Antonio Lizano
+SPAN206,Spanish Conversation and Culture,66,Max Antonio Lizano
+STAT252,Introductory Applied Probability,112,Glen Takahara
+STAT263,Introduction to Statistics,137,Charles Arthur Molson
+STAT268,Statistics and Probability I,31,Yanglei Song
+STAT269,Statistics and Probability II,114,Devon Lin
+STAT362,R for Data Science,109,Brian Ling
+STAT462,Statistical Learning I,131,Devon Lin
+STAT473,Generalized Linear Models,42,Wenyu Jiang
+STAM200,Introduction to Statistics,66,Mike Lavender
+WRIT120,Fundamentals of Effective Writing,137,Laura Kinderman
+WRIT125,Fundamentals of Academic Essay Writing,148,Lori Vos
+WRIT225,"Writing for Research, Analysis, and Reflection",95,Martina Hardwick
 APSC100,Engineering Practice 1,86,Brian Matthew Frank
-APSC101,Engineering Design & Practice,73,Aphra Rogers
-APSC111,Physics I,52,Anthony J Noble
-APSC112,Physics II,89,Sarah Sadavoy
-APSC131,Chemistry of Engineering Materials and Processes,86,Mark Daymond
-APSC143,Introduction to Computer Programming for Engineers,49,Samir Mohammad
-APSC151,Earth Systems Engineering,91,Mark S Diederichs
-APSC161,Engineering Graphics,21,Gene Zak
-APSC171,Calculus I,74,Kexue Zhang
-APSC172,Calculus II,84,Nic Fellini
-APSC174,Introduction To Linear Algebra,66,Abdol-Reza Mansouri
+APSC101,Engineering Design & Practice,116,Aphra Rogers
+APSC111,Physics I,138,Anthony J Noble
+APSC112,Physics II,30,Sarah Sadavoy
+APSC131,Chemistry of Engineering Materials and Processes,139,Mark Daymond
+APSC143,Introduction to Computer Programming for Engineers,48,Samir Mohammad
+APSC151,Earth Systems Engineering,22,Mark S Diederichs
+APSC161,Engineering Graphics,107,Gene Zak
+APSC171,Calculus I,142,Kexue Zhang
+APSC172,Calculus II,134,Nic Fellini
+APSC174,Introduction To Linear Algebra,148,Abdol-Reza Mansouri
 APSC182,Applied Engineering Mechanics,63,Colin MacDougall
-APSC200,Engineering Design & Practice II,93,Jan Sneep
-APSC221,Economic and Business Practice,74,Jan Sneep
-APSC381,Advanced Design and Skills for Innovation,90,David S Strong
-CHEE209,Analysis of Process Data,83,Jakob Straznicky
-CHEE210,Thermodynamics of Energy Conversion Systems,50,Nick Hudon
-CHEE221,Chemical Processes and Systems,87,Louise Meunier
-CHEE222,Process Dynamics and Numerical Methods,25,Kimberly B McAuley
-CHEE229,Cell Based Engineering Principles,75,Kevin De France
-CHEE321,Chemical Reaction Engineering,25,Michael F Cunningham
-CHEE363,Electrochemical Engineering,95,Mahmoud Khademi
-CHEE380,Biochemical Engineering,37,Louise Meunier
-CIVL210,Chemistry For Civil Engineers,47,Xiaying Xin
-CIVL340,Geotechnical Engineering 1,90,Fady Abdelaal
-CIVL442,Geotechnical Design,92,Richard W I Brachman
-CMPE212,Introduction to Computing Science II,64,Burton Ma
-CMPE325,Human-Computer Interaction,63,Sara Nabil
-CMPE332,Database Management Systems,75,Wendy L Powley
-CMPE365,Algorithms I,29,James A Stewart
-CMPE457,Image Processing & Computer,85,James A Stewart
-ELEC221,Electric Circuits,72,Suzan Eren
-ELEC224,Continuous-Time Signals and Systems,76,Ilmin Kim
-ELEC252,Electronics I,76,Brian Matthew Frank
-ELEC270,Discrete Mathematics with Computer Engineering App,35,Karen Rudie
-ELEC271,Digital Systems,25,Ryan Grant
-ELEC274,Computer Architecture,80,Naraig Manjikian
-ELEC278,Fundamentals Of Information Structures,45,Jianbing Ni
-ELEC279,Introduction to Object Oriented Programming,21,Xiaodan Zhu
-ELEC324,Discrete-Time Signals and Systems,51,Wai-Yip Geoffrey Chan
-ELEC326,Probability & Random Processes,22,Saeed Gazor
-ELEC353,Electronics II,44,Alois Peter Freundorfer
-ELEC371,Microprocessor Interfacing and Embedded Systems,52,Naraig Manjikian
-ELEC373,Computer Networks,60,Ning Lu
-ELEC377,Operating Systems,68,Thomas R Dean
-ELEC421,Digital Signal Processing,94,Wai-Yip Geoffrey Chan
-ELEC451,Digital Integrated Circuit Engineering,97,Sean Whitehall
-ELEC461,Digital Communications,36,Scott S H Yam
-ELEC472,Artificial Intelligence,94,Ali Etemad
-ENCH212,Principles of Chemical Reactivity,45,Jason Vlahakis
-ENCH245,Applied Organic Chemistry I,62,Jason Vlahakis
-ENPH211,Applied Physics,96,Philippe Stefano
-ENPH225,Mechanics,49,Mark Chen
-ENPH242,Relativity And Quanta,29,Marc Dignam
-ENPH316,Mathematical Methods in Physics I,31,Lawrence M Widrow
-ENPH321,Advanced Mechanics,37,Aaron Vincent
-ENPH334,Electronics For Applied Scientists,62,Bhavin Shastri
-ENPH336,Solid State Devices,60,Nir Rotenberg
-ENPH344,Intro. To Quantum Mechanics,48,Greg van Anders
-ENPH345,Quantum Physics Of Atoms,51,Aaron Vincent
-ENPH431,Electromagnetic Theory,51,Robert J Gooding
-ENPH480,Solid State Physics,54,Nir Rotenberg
-GEOE333,Terrain Evaluation,91,Rob Haarp
-MECH202,Mathematical and Computational Tools for Mechanical Engineers I,63,Laurent Beland
-MECH203,Mathematical and Computational Tools for Mechanical Engineers II,85,Laurent Beland
-MECH210,Electronic Circuits and Motors for Mechatronics,20,Amy Wu
-MECH211,Manufacturing Methods,45,Vahid Fallah
-MECH217,Measurement in Mechatronics,47,Richard Sellens
-MECH221,Solid Mechanics I,47,Hao Sun
-MECH228,Kinematics And Dynamics,74,Roshni Rainbow
-MECH229,Kinematics and Dynamics,92,Pushparaj Pathak
-MECH230,Applied Thermodynamics I,88,Gabriel Ciccarelli
-MECH241,Fluid Mechanics I,54,Ugo Piomelli
-MECH270,Materials Science and Engineering,21,Mark Daymond
-MECH302,Mathematical and Computational Tools for Mechanical Engineers III,23,Alan Ableson
-MECH310,Digital Systems for Mechatronics,92,Matthew Robertson
-MECH321,Solid Mechanics II,83,Yongjun Lai
-MECH330,Applied Thermo II,46,Francesco Ambrogi
-MECH341,Fluid Mechanics II,57,Ugo Piomelli
-MECH346,Heat Transfer,74,Baixuan Yang
-MECH370,Prin Of Materials Processing,61,Bradley J Diak
-MECH448,Compressible Fluid Flow,32,Patrick H Oosthuizen
-MECH455,Computer Integrated Manufacturing,61,Gene Zak
-MECH480,Airplane Aerodynamics and Performance,71,Ugo Piomelli
-MECH495,Ergonomics And Design,83,Stephan Dobri
-MREN223,Signals and Systems,49,Melissa  Greeff 
-MINE201,Introduction to Mining and Mineral Processing,74,Charlotte Gibson
-SOFT437,Performance Analysis,96,Samir Mohammad
+APSC200,Engineering Design & Practice II,87,Jan Sneep
+APSC221,Economic and Business Practice,99,Jan Sneep
+APSC381,Advanced Design and Skills for Innovation,75,David S Strong
+CHEE209,Analysis of Process Data,47,Jakob Straznicky
+CHEE210,Thermodynamics of Energy Conversion Systems,44,Nick Hudon
+CHEE221,Chemical Processes and Systems,68,Louise Meunier
+CHEE222,Process Dynamics and Numerical Methods,78,Kimberly B McAuley
+CHEE229,Cell Based Engineering Principles,25,Kevin De France
+CHEE321,Chemical Reaction Engineering,96,Michael F Cunningham
+CHEE363,Electrochemical Engineering,134,Mahmoud Khademi
+CHEE380,Biochemical Engineering,66,Louise Meunier
+CIVL210,Chemistry For Civil Engineers,99,Xiaying Xin
+CIVL340,Geotechnical Engineering 1,146,Fady Abdelaal
+CIVL442,Geotechnical Design,83,Richard W I Brachman
+CMPE212,Introduction to Computing Science II,59,Burton Ma
+CMPE325,Human-Computer Interaction,35,Sara Nabil
+CMPE332,Database Management Systems,26,Wendy L Powley
+CMPE365,Algorithms I,43,James A Stewart
+CMPE457,Image Processing & Computer,75,James A Stewart
+ELEC221,Electric Circuits,103,Suzan Eren
+ELEC224,Continuous-Time Signals and Systems,137,Ilmin Kim
+ELEC252,Electronics I,87,Brian Matthew Frank
+ELEC270,Discrete Mathematics with Computer Engineering App,84,Karen Rudie
+ELEC271,Digital Systems,30,Ryan Grant
+ELEC274,Computer Architecture,84,Naraig Manjikian
+ELEC278,Fundamentals Of Information Structures,85,Jianbing Ni
+ELEC279,Introduction to Object Oriented Programming,29,Xiaodan Zhu
+ELEC324,Discrete-Time Signals and Systems,108,Wai-Yip Geoffrey Chan
+ELEC326,Probability & Random Processes,77,Saeed Gazor
+ELEC353,Electronics II,146,Alois Peter Freundorfer
+ELEC371,Microprocessor Interfacing and Embedded Systems,47,Naraig Manjikian
+ELEC373,Computer Networks,149,Ning Lu
+ELEC377,Operating Systems,86,Thomas R Dean
+ELEC421,Digital Signal Processing,105,Wai-Yip Geoffrey Chan
+ELEC451,Digital Integrated Circuit Engineering,35,Sean Whitehall
+ELEC461,Digital Communications,78,Scott S H Yam
+ELEC472,Artificial Intelligence,129,Ali Etemad
+ENCH212,Principles of Chemical Reactivity,104,Jason Vlahakis
+ENCH245,Applied Organic Chemistry I,138,Jason Vlahakis
+ENPH211,Applied Physics,23,Philippe Stefano
+ENPH225,Mechanics,52,Mark Chen
+ENPH242,Relativity And Quanta,101,Marc Dignam
+ENPH316,Mathematical Methods in Physics I,104,Lawrence M Widrow
+ENPH321,Advanced Mechanics,137,Aaron Vincent
+ENPH334,Electronics For Applied Scientists,132,Bhavin Shastri
+ENPH336,Solid State Devices,81,Nir Rotenberg
+ENPH344,Intro. To Quantum Mechanics,130,Greg van Anders
+ENPH345,Quantum Physics Of Atoms,106,Aaron Vincent
+ENPH431,Electromagnetic Theory,47,Robert J Gooding
+ENPH480,Solid State Physics,125,Nir Rotenberg
+GEOE333,Terrain Evaluation,92,Rob Haarp
+MECH202,Mathematical and Computational Tools for Mechanical Engineers I,42,Laurent Beland
+MECH203,Mathematical and Computational Tools for Mechanical Engineers II,54,Laurent Beland
+MECH210,Electronic Circuits and Motors for Mechatronics,78,Amy Wu
+MECH211,Manufacturing Methods,99,Vahid Fallah
+MECH217,Measurement in Mechatronics,86,Richard Sellens
+MECH221,Solid Mechanics I,62,Hao Sun
+MECH228,Kinematics And Dynamics,52,Roshni Rainbow
+MECH229,Kinematics and Dynamics,54,Pushparaj Pathak
+MECH230,Applied Thermodynamics I,60,Gabriel Ciccarelli
+MECH241,Fluid Mechanics I,42,Ugo Piomelli
+MECH270,Materials Science and Engineering,66,Mark Daymond
+MECH302,Mathematical and Computational Tools for Mechanical Engineers III,73,Alan Ableson
+MECH310,Digital Systems for Mechatronics,116,Matthew Robertson
+MECH321,Solid Mechanics II,100,Yongjun Lai
+MECH330,Applied Thermo II,33,Francesco Ambrogi
+MECH341,Fluid Mechanics II,114,Ugo Piomelli
+MECH346,Heat Transfer,92,Baixuan Yang
+MECH370,Prin Of Materials Processing,103,Bradley J Diak
+MECH448,Compressible Fluid Flow,39,Patrick H Oosthuizen
+MECH455,Computer Integrated Manufacturing,147,Gene Zak
+MECH480,Airplane Aerodynamics and Performance,96,Ugo Piomelli
+MECH495,Ergonomics And Design,103,Stephan Dobri
+MREN223,Signals and Systems,26,Melissa  Greeff 
+MINE201,Introduction to Mining and Mineral Processing,39,Charlotte Gibson
+SOFT437,Performance Analysis,137,Samir Mohammad

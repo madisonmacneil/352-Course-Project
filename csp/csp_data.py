@@ -33,7 +33,7 @@ for _, row in courses_df.iterrows():
         course_csp_data.append({
             'course_code': course_code,
             'name': row['course_name'],
-            'num_students': random.randint(20, 100),  # Random number between 20 and 100
+            'num_students': random.randint(20, 150),  # Need a better way to get this. 
             'prof': course_to_instructor[course_code]
         })
 
