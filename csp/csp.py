@@ -125,13 +125,20 @@ class CourseScheduler:
                 time_slots.append(TimeSlot(day, hour, minute))
         return time_slots
     
-    def add_professor_time_exclusion(self, professor: str, excluded_times: List[Tuple[int, int]]):
-        """Add times when a professor cannot teach (hour, minute)"""
-        self.professor_time_exclusions[professor] = excluded_times
+    def add_professor_time_exclusion(self, professor: str, excluded_time_days: List[Tuple[int, int, List[str]]]):
+        """
+        Add times when a professor cannot teach
+        
+        Args:
+            professor (str): The professor's name
+            excluded_time_days (List[Tuple[int, int, List[str]]]): List of (hour, minute, [days]) tuples
+                e.g., [(8, 30, ["Mon", "Wed"]), (12, 30, ["Fri"])]
+        """
+        self.professor_time_exclusions[professor] = excluded_time_days
     
-    def add_professor_day_preference(self, professor: str, preferred_days: List[str]):
-        """Add day preferences for a professor (e.g., ['Mon', 'Tue', 'Wed'])"""
-        self.professor_day_preferences[professor] = preferred_days
+    # def add_professor_day_preference(self, professor: str, preferred_days: List[str]):
+    #     """Add day preferences for a professor (e.g., ['Mon', 'Tue', 'Wed'])"""
+    #     self.professor_day_preferences[professor] = preferred_days
     
     def build_model(self):
         # Create variables for room and time slot assignments
@@ -271,72 +278,59 @@ class CourseScheduler:
     
     def _add_professor_preference_constraints(self):
         """Add constraints for professor preferences"""
-        # Changed: Add time exclusion constraints
-        for professor, excluded_times in self.professor_time_exclusions.items():
+        # Changed: Add time exclusion constraints with day specificity
+        for professor, excluded_time_days in self.professor_time_exclusions.items():
             # Find all courses taught by this professor
             prof_courses = [c for c in self.courses if c.professor == professor]
             
             if not prof_courses:
                 continue
             
-            # Convert excluded times to time block indices
-            excluded_blocks = []
-            for hour, minute in excluded_times:
-                for block_idx, (block_hour, block_minute) in enumerate(TIME_BLOCKS):
+            # For each excluded time-day combination
+            for hour, minute, excluded_days in excluded_time_days:
+                # Find the time block index
+                time_block_idx = None
+                for idx, (block_hour, block_minute) in enumerate(TIME_BLOCKS):
                     if block_hour == hour and block_minute == minute:
-                        excluded_blocks.append(block_idx)
-            
-            if not excluded_blocks:
-                continue
-            
-            # Add constraints for each course and each day
-            for course in prof_courses:
-                for day in DAYS:
-                    # If this day is assigned to the course
-                    day_var = self.day_assignments[course.code][day]
-                    time_block_var = self.time_block_assignments[course.code][day]
-                    
-                    # For each excluded time block
-                    for block_idx in excluded_blocks:
-                        # NOT(day_var) OR (time_block_var != block_idx)
-                        # In other words, if the day is used, the time block cannot be in excluded_blocks
-                        not_excluded_time = self.model.NewBoolVar(f'not_excluded_time_{course.code}_{day}_{block_idx}')
-                        self.model.Add(time_block_var != block_idx).OnlyEnforceIf(not_excluded_time)
-                        self.model.Add(time_block_var == block_idx).OnlyEnforceIf(not_excluded_time.Not())
+                        time_block_idx = idx
+                        break
+                
+                if time_block_idx is None:
+                    continue  # Skip if time not found
+                
+                # Add constraints for each course on excluded days
+                for course in prof_courses:
+                    for day in excluded_days:
+                        if day not in DAYS:
+                            continue  # Skip invalid days
+                        
+                        # If this day is assigned to the course, the time cannot be the excluded time
+                        day_var = self.day_assignments[course.code][day]
+                        time_block_var = self.time_block_assignments[course.code][day]
+                        
+                        # NOT(day_var) OR (time_block_var != time_block_idx)
+                        not_excluded_time = self.model.NewBoolVar(f'not_excluded_time_{course.code}_{day}_{time_block_idx}')
+                        self.model.Add(time_block_var != time_block_idx).OnlyEnforceIf(not_excluded_time)
+                        self.model.Add(time_block_var == time_block_idx).OnlyEnforceIf(not_excluded_time.Not())
                         
                         self.model.AddBoolOr([day_var.Not(), not_excluded_time])
-        
-        # Add day-of-week preferences
-        for professor, preferred_days in self.professor_day_preferences.items():
-            # Find all courses taught by this professor
-            prof_courses = [c for c in self.courses if c.professor == professor]
-            
-            if not prof_courses:
-                continue
-            
-            # Add constraints for each course
-            for course in prof_courses:
-                # For each day, if it's not in preferred days, forbid it
-                for day in DAYS:
-                    if day not in preferred_days:
-                        self.model.Add(self.day_assignments[course.code][day] == 0)
     
-    def add_professor_room_preference(self, course_code: str, preferred_rooms: List[str]):
-        """Add constraint for professor's room preference"""
-        if course_code not in [c.code for c in self.courses]:
-            raise ValueError(f"Course {course_code} not found")
+    # def add_professor_room_preference(self, course_code: str, preferred_rooms: List[str]):
+    #     """Add constraint for professor's room preference"""
+    #     if course_code not in [c.code for c in self.courses]:
+    #         raise ValueError(f"Course {course_code} not found")
         
-        # Convert room names to indices
-        preferred_indices = [i for i, room in enumerate(self.rooms) if room.name in preferred_rooms]
+    #     # Convert room names to indices
+    #     preferred_indices = [i for i, room in enumerate(self.rooms) if room.name in preferred_rooms]
         
-        if not preferred_indices:
-            raise ValueError(f"None of the preferred rooms are valid for {course_code}")
+    #     if not preferred_indices:
+    #         raise ValueError(f"None of the preferred rooms are valid for {course_code}")
         
-        # Create a constraint that the room assignment must be one of the preferred rooms
-        self.model.AddAllowedAssignments(
-            [self.room_assignments[course_code]], 
-            [(i,) for i in preferred_indices]
-        )
+    #     # Create a constraint that the room assignment must be one of the preferred rooms
+    #     self.model.AddAllowedAssignments(
+    #         [self.room_assignments[course_code]], 
+    #         [(i,) for i in preferred_indices]
+    #     )
     
     def solve(self, time_limit_seconds: int = 60) -> Optional[Dict[str, ScheduleAssignment]]:
         """Solve the course scheduling problem"""
@@ -543,28 +537,27 @@ def run_example():
     # Create and solve the scheduling problem
     scheduler = CourseScheduler(courses, rooms)
     
-    # Add professor time exclusions (times they cannot teach)
+    # Add professor time exclusions with day specificity
     scheduler.add_professor_time_exclusion("Dr. Smith", [
-        (8, 30),  # 8:30 AM
-        (16, 30),  # 4:30 PM
+        (8, 30, ["Mon", "Tue", "Wed", "Thu", "Fri"]),  # No 8:30 AM classes any day
+        (16, 30, ["Mon", "Wed"])  # No 4:30 PM classes on Monday and Wednesday
     ])
 
     scheduler.add_professor_time_exclusion("Dr. Brown", [
-        (8, 30),  # 8:30 AM
-        (9, 30),  # 9:30 AM
-        (10, 30),  # 10:30 AM
+        (8, 30, ["Mon", "Tue", "Wed", "Thu", "Fri"]),  # No 8:30 AM classes any day
+        (12, 30, ["Mon", "Wed"])  # No 12:30 PM classes on Monday and Wednesday
     ])
     
-    # Add professor day preferences
-    scheduler.add_professor_day_preference("Dr. Smith", ["Mon", "Tue", "Wed"])
-    scheduler.add_professor_day_preference("Dr. Johnson", ["Mon", "Wed", "Thu"])
-    scheduler.add_professor_day_preference("Dr. Brown", ["Tue", "Thu"])
+    # # Add professor day preferences
+    # scheduler.add_professor_day_preference("Dr. Smith", ["Mon", "Tue", "Wed"])
+    # scheduler.add_professor_day_preference("Dr. Johnson", ["Mon", "Wed", "Thu"])
+    # scheduler.add_professor_day_preference("Dr. Brown", ["Tue", "Thu"])
     
     # Build the model
     scheduler.build_model()
     
-    # Add room preferences
-    scheduler.add_professor_room_preference("PHYS101", ["B201", "B202"])
+    # # Add room preferences
+    # scheduler.add_professor_room_preference("PHYS101", ["B201", "B202"])
     
     # Solve
     solution = scheduler.solve(time_limit_seconds=60)
