@@ -16,17 +16,17 @@ ROOM_TYPE_FLAT = "Flat"        # Flat classroom
 # DAYS OF THE WEEK
 DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri"]
 
-# TIME SLOTS - 1 hour blocks from 8:00 to 17:00
+# TIME SLOTS - 1 hour blocks from 8:30am to 4:30pm
 TIME_BLOCKS = [
-    (8, 0),   # 8:00 AM
-    (9, 0),   # 9:00 AM
-    (10, 0),  # 10:00 AM
-    (11, 0),  # 11:00 AM
-    (12, 0),  # 12:00 PM
-    (13, 0),  # 1:00 PM
-    (14, 0),  # 2:00 PM
-    (15, 0),  # 3:00 PM
-    (16, 0),  # 4:00 PM
+    (8, 30),   # 8:30 AM
+    (9, 30),   # 9:30 AM
+    (10, 30),  # 10:30 AM
+    (11, 30),  # 11:30 AM
+    (12, 30),  # 12:30 PM
+    (13, 30),  # 1:30 PM
+    (14, 30),  # 2:30 PM
+    (15, 30),  # 3:30 PM
+    (16, 30),  # 4:30 PM
 ]
 
 # Course class to represent a course with its properties
@@ -34,9 +34,9 @@ TIME_BLOCKS = [
 class Course:
     code: str
     name: str
-    enrollment: int
+    num_students: int
     professor: str
-    course_type: str = "Tiered"  # Default room type needed
+    room_type: str = "Tiered"  # Default room type needed
     num_sessions: int = 3        # Number of class sessions per week (default: 3)
     
     @property
@@ -88,6 +88,7 @@ class ScheduleAssignment:
         return f"Room: {room_str}, Times: {times_str}"
 
 class CourseScheduler:
+    # Modify the CourseScheduler class initialization
     def __init__(self, courses: List[Course], rooms: List[Room]):
         self.courses = courses
         self.rooms = rooms
@@ -101,14 +102,16 @@ class CourseScheduler:
         
         # Create decision variables
         self.room_assignments = {}  # {course_code: room_var}
-        self.time_block_assignments = {}  # {course_code: time_block_var}
+        
+        # Changed: Time block assignments are now per day, not per course
+        self.time_block_assignments = {}  # {course_code: {day: time_block_var}}
         self.day_assignments = {}  # {course_code: {day: binary_var}}
         
         # Track slot assignments for debugging
         self.slot_assignments = {}  # {course_code: {slot_idx: binary_var}}
         
-        # Time preferences
-        self.professor_time_preferences = {}  # {professor: preferred_time_blocks}
+        # Changed: Time preferences are now exclusions
+        self.professor_time_exclusions = {}  # {professor: excluded_time_blocks}
         self.professor_day_preferences = {}  # {professor: preferred_days}
         
         # Solution callback will be set in build_model
@@ -122,9 +125,9 @@ class CourseScheduler:
                 time_slots.append(TimeSlot(day, hour, minute))
         return time_slots
     
-    def add_professor_time_preference(self, professor: str, preferred_times: List[Tuple[int, int]]):
-        """Add time-of-day preferences for a professor (hour, minute)"""
-        self.professor_time_preferences[professor] = preferred_times
+    def add_professor_time_exclusion(self, professor: str, excluded_times: List[Tuple[int, int]]):
+        """Add times when a professor cannot teach (hour, minute)"""
+        self.professor_time_exclusions[professor] = excluded_times
     
     def add_professor_day_preference(self, professor: str, preferred_days: List[str]):
         """Add day preferences for a professor (e.g., ['Mon', 'Tue', 'Wed'])"""
@@ -135,11 +138,11 @@ class CourseScheduler:
         for course in self.courses:
             # Get valid rooms for this course
             valid_rooms = [i for i, room in enumerate(self.rooms) 
-                          if room.capacity >= course.enrollment and room.room_type == course.course_type]
+                        if room.capacity >= course.num_students and room.room_type == course.room_type]
             
             if not valid_rooms:
                 raise ValueError(f"No suitable room found for {course.code}: {course.name} "
-                               f"(needs {course.course_type} room with capacity >= {course.enrollment})")
+                            f"(needs {course.room_type} room with capacity >= {course.num_students})")
             
             # Create room assignment variable
             self.room_assignments[course.code] = self.model.NewIntVarFromDomain(
@@ -147,11 +150,13 @@ class CourseScheduler:
                 f'room_for_{course.code}'
             )
             
-            # Create time block assignment variable (which hour of the day)
-            self.time_block_assignments[course.code] = self.model.NewIntVar(
-                0, len(TIME_BLOCKS) - 1,
-                f'time_block_for_{course.code}'
-            )
+            # Changed: Create time block assignment variables for each day
+            self.time_block_assignments[course.code] = {}
+            for day in DAYS:
+                self.time_block_assignments[course.code][day] = self.model.NewIntVar(
+                    0, len(TIME_BLOCKS) - 1,
+                    f'time_block_for_{course.code}_{day}'
+                )
             
             # Create day assignment variables (which days of the week)
             self.day_assignments[course.code] = {}
@@ -178,8 +183,8 @@ class CourseScheduler:
                 # Find the time block index for this slot
                 for block_idx, (hour, minute) in enumerate(TIME_BLOCKS):
                     if slot.start_hour == hour and slot.start_minute == minute:
-                        # If slot is assigned, then time block must match
-                        time_block_var = self.time_block_assignments[course.code]
+                        # Changed: Use day-specific time block variable
+                        time_block_var = self.time_block_assignments[course.code][slot.day]
                         
                         # Create helper variable for the equality
                         time_block_matches = self.model.NewBoolVar(f'time_block_matches_{course.code}_{i}')
@@ -195,8 +200,7 @@ class CourseScheduler:
             # Constraint: Each course must use exactly num_sessions different days
             self.model.Add(sum(self.day_assignments[course.code].values()) == course.num_sessions)
             
-            # Constraint: All sessions must be at the same time of day (but on different days)
-            # This is enforced by the implications above
+            # Removed: The constraint that all sessions must be at the same time of day
         
         # Add constraints
         self._add_room_time_overlap_constraints()
@@ -267,31 +271,40 @@ class CourseScheduler:
     
     def _add_professor_preference_constraints(self):
         """Add constraints for professor preferences"""
-        # Add time-of-day preferences
-        for professor, preferred_times in self.professor_time_preferences.items():
+        # Changed: Add time exclusion constraints
+        for professor, excluded_times in self.professor_time_exclusions.items():
             # Find all courses taught by this professor
             prof_courses = [c for c in self.courses if c.professor == professor]
             
             if not prof_courses:
                 continue
             
-            # Convert preferred times to time block indices
-            preferred_blocks = []
-            for hour, minute in preferred_times:
+            # Convert excluded times to time block indices
+            excluded_blocks = []
+            for hour, minute in excluded_times:
                 for block_idx, (block_hour, block_minute) in enumerate(TIME_BLOCKS):
                     if block_hour == hour and block_minute == minute:
-                        preferred_blocks.append(block_idx)
+                        excluded_blocks.append(block_idx)
             
-            if not preferred_blocks:
+            if not excluded_blocks:
                 continue
             
-            # Add constraints for each course
+            # Add constraints for each course and each day
             for course in prof_courses:
-                # Create a constraint that the time block must be one of the preferred ones
-                self.model.AddAllowedAssignments(
-                    [self.time_block_assignments[course.code]], 
-                    [(block_idx,) for block_idx in preferred_blocks]
-                )
+                for day in DAYS:
+                    # If this day is assigned to the course
+                    day_var = self.day_assignments[course.code][day]
+                    time_block_var = self.time_block_assignments[course.code][day]
+                    
+                    # For each excluded time block
+                    for block_idx in excluded_blocks:
+                        # NOT(day_var) OR (time_block_var != block_idx)
+                        # In other words, if the day is used, the time block cannot be in excluded_blocks
+                        not_excluded_time = self.model.NewBoolVar(f'not_excluded_time_{course.code}_{day}_{block_idx}')
+                        self.model.Add(time_block_var != block_idx).OnlyEnforceIf(not_excluded_time)
+                        self.model.Add(time_block_var == block_idx).OnlyEnforceIf(not_excluded_time.Not())
+                        
+                        self.model.AddBoolOr([day_var.Not(), not_excluded_time])
         
         # Add day-of-week preferences
         for professor, preferred_days in self.professor_day_preferences.items():
@@ -400,10 +413,6 @@ class SolutionPrinter(cp_model.CpSolverSolutionCallback):
                 room_index = self.Value(self.room_assignments[course.code])
                 room = self.rooms[room_index]
                 
-                # Get assigned time block
-                time_block_index = self.Value(self.time_block_assignments[course.code])
-                time_block = TIME_BLOCKS[time_block_index]
-                
                 # Get assigned days
                 assigned_days = []
                 for day, day_var in self.day_assignments[course.code].items():
@@ -422,16 +431,20 @@ class SolutionPrinter(cp_model.CpSolverSolutionCallback):
                 
                 print(f"{course.code}: {course.name}")
                 print(f"  Professor: {course.professor}")
-                print(f"  Enrollment: {course.enrollment}")
+                print(f"  num_students: {course.num_students}")
                 print(f"  Days: {', '.join(assigned_days)}")
-                print(f"  Time: {time_block[0]:02d}:{time_block[1]:02d}")
+                
+                # Changed: Display time for each day separately
+                print(f"  Times: ", end="")
+                for day in assigned_days:
+                    block_idx = self.Value(self.time_block_assignments[course.code][day])
+                    time_block = TIME_BLOCKS[block_idx]
+                    print(f"{day} {time_block[0]:02d}:{time_block[1]:02d}", end=", " if day != assigned_days[-1] else "")
+                print()
+                
                 print(f"  Schedule: {', '.join(str(ts) for ts in time_slots)}")
                 print(f"  Room: {room.name} (Capacity: {room.capacity}, Type: {room.room_type})")
                 print()
-        
-        if self.solution_count >= self.solution_limit:
-            print(f"Solution limit ({self.solution_limit}) reached. Stopping search...")
-            self.StopSearch()
 
 
 def print_final_solution(courses: List[Course], solution: Dict[str, ScheduleAssignment]):
@@ -458,7 +471,7 @@ def print_final_solution(courses: List[Course], solution: Dict[str, ScheduleAssi
         for course, assignment in sorted(assignments, key=lambda x: x[0].code):
             print(f"{course.code}: {course.name}")
             print(f"  Professor: {course.professor}")
-            print(f"  Enrollment: {course.enrollment}")
+            print(f"  num_students: {course.num_students}")
             print(f"  Schedule: {', '.join(str(ts) for ts in assignment.time_slots)}")
             print(f"  Room: {assignment.room.name} (Capacity: {assignment.room.capacity}, Type: {assignment.room.room_type})")
             print()
@@ -524,21 +537,22 @@ def run_example():
         
         # COMP courses
         Course("COMP101", "Intro to Programming", 60, "Dr. Anderson", ROOM_TYPE_FLAT, 3),
-        Course("COMP110", "Programming Lab", 25, "Dr. Thomas", ROOM_TYPE_AL, 2),
+        Course("COMP110", "Programming Lab", 25, "Dr. Thomas", ROOM_TYPE_AL, 3),
     ]
     
     # Create and solve the scheduling problem
     scheduler = CourseScheduler(courses, rooms)
     
-    # Add professor time preferences (morning hours only)
-    scheduler.add_professor_time_preference("Dr. Smith", [
-        (9, 0),  # 9:00 AM
+    # Add professor time exclusions (times they cannot teach)
+    scheduler.add_professor_time_exclusion("Dr. Smith", [
+        (8, 30),  # 8:30 AM
+        (16, 30),  # 4:30 PM
     ])
-    
-    # Add professor time preferences (afternoon hours only)
-    scheduler.add_professor_time_preference("Dr. Brown", [
-        (13, 0),  # 1:00 PM
-        (14, 0),  # 2:00 PM
+
+    scheduler.add_professor_time_exclusion("Dr. Brown", [
+        (8, 30),  # 8:30 AM
+        (9, 30),  # 9:30 AM
+        (10, 30),  # 10:30 AM
     ])
     
     # Add professor day preferences
