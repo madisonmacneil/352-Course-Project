@@ -7,11 +7,11 @@ from dataclasses import dataclass, field
 import time
 import itertools
 
-# ROOM TYPES
-ROOM_TYPE_AUD = "Aud"          # Auditorium
-ROOM_TYPE_AL = "AL"            # Active Learning
-ROOM_TYPE_TIERED = "Tiered"    # Tiered classroom
-ROOM_TYPE_FLAT = "Flat"        # Flat classroom
+# # ROOM TYPES
+# ROOM_TYPE_AUD = "Aud"          # Auditorium
+# ROOM_TYPE_AL = "AL"            # Active Learning
+# ROOM_TYPE_TIERED = "Tiered"    # Tiered classroom
+# ROOM_TYPE_FLAT = "Flat"        # Flat classroom
 
 # DAYS OF THE WEEK
 DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri"]
@@ -36,7 +36,7 @@ class Course:
     name: str
     num_students: int
     professor: str
-    room_type: str = "Tiered"  # Default room type needed
+    # room_type: str = "Tiered"  # Default room type needed
     num_sessions: int = 3        # Number of class sessions per week (default: 3)
     
     @property
@@ -60,7 +60,7 @@ class Course:
 class Room:
     name: str
     capacity: int
-    room_type: str  # "Aud", "AL", "Tiered", or "Flat"
+    # room_type: str = "" # "Aud", "AL", "Tiered", or "Flat"
 
 # Time slot representation
 class TimeSlot(NamedTuple):
@@ -147,13 +147,13 @@ class CourseScheduler:
     def build_model(self):
         # Create variables for room and time slot assignments
         for course in self.courses:
-            # Get valid rooms for this course
+            # Get valid rooms for this course - only check capacity now, not room type
             valid_rooms = [i for i, room in enumerate(self.rooms) 
-                        if room.capacity >= course.num_students and room.room_type == course.room_type]
+                        if room.capacity >= course.num_students]
             
             if not valid_rooms:
                 raise ValueError(f"No suitable room found for {course.code}: {course.name} "
-                            f"(needs {course.room_type} room with capacity >= {course.num_students})")
+                            f"(needs room with capacity >= {course.num_students})")
             
             # Create room assignment variable
             self.room_assignments[course.code] = self.model.NewIntVarFromDomain(
@@ -476,7 +476,7 @@ class SolutionPrinter(cp_model.CpSolverSolutionCallback):
                 print()
                 
                 print(f"  Schedule: {', '.join(str(ts) for ts in time_slots)}")
-                print(f"  Room: {room.name} (Capacity: {room.capacity}, Type: {room.room_type})")
+                print(f"  Room: {room.name} (Capacity: {room.capacity})")
                 print()
 
 
@@ -506,7 +506,7 @@ def print_final_solution(courses: List[Course], solution: Dict[str, ScheduleAssi
             print(f"  Professor: {course.professor}")
             print(f"  num_students: {course.num_students}")
             print(f"  Schedule: {', '.join(str(ts) for ts in assignment.time_slots)}")
-            print(f"  Room: {assignment.room.name} (Capacity: {assignment.room.capacity}, Type: {assignment.room.room_type})")
+            print(f"  Room: {assignment.room.name} (Capacity: {assignment.room.capacity})")
             print()
 
 # Print a schedule for a specific day
@@ -542,35 +542,35 @@ def print_day_schedule(day: str, courses: List[Course], solution: Dict[str, Sche
 
 # Example usage
 def run_example():
-    # Define rooms with the new room types
+    # Define rooms without enforcing room types
     rooms = [
-        Room("A101", 30, ROOM_TYPE_TIERED),
-        Room("A102", 50, ROOM_TYPE_TIERED),
-        Room("B201", 100, ROOM_TYPE_TIERED),
-        Room("B202", 150, ROOM_TYPE_TIERED),
-        Room("C301", 200, ROOM_TYPE_AUD),
-        Room("C302", 180, ROOM_TYPE_AUD),
-        Room("D401", 35, ROOM_TYPE_AL),
-        Room("D402", 40, ROOM_TYPE_AL),
-        Room("D403", 30, ROOM_TYPE_AL),
-        Room("E501", 40, ROOM_TYPE_FLAT),
-        Room("E502", 60, ROOM_TYPE_FLAT),
+        Room("A101", 30),
+        Room("A102", 50),
+        Room("B201", 100),
+        Room("B202", 150),
+        Room("C301", 200),
+        Room("C302", 180),
+        Room("D401", 35),
+        Room("D402", 40),
+        Room("D403", 30),
+        Room("E501", 40),
+        Room("E502", 60),
     ]
     
-    # Define courses with their properties (but no fixed days or times)
+    # Define courses without room type requirements
     courses = [
         # PHYS courses
-        Course("PHYS101", "Intro to Physics", 45, "Dr. Smith", ROOM_TYPE_TIERED),
-        Course("PHYS102", "Mechanics", 30, "Dr. Johnson", ROOM_TYPE_AL),
-        Course("PHYS110", "Physics Lab", 20, "Dr. Brown", ROOM_TYPE_AL),
+        Course("PHYS101", "Intro to Physics", 45, "Dr. Smith"),
+        Course("PHYS102", "Mechanics", 30, "Dr. Johnson"),
+        Course("PHYS110", "Physics Lab", 20, "Dr. Brown"),
         
         # MATH courses
-        Course("MATH101", "Calculus I", 50, "Dr. Davis", ROOM_TYPE_TIERED),
-        Course("MATH102", "Linear Algebra", 40, "Dr. Taylor", ROOM_TYPE_TIERED),
+        Course("MATH101", "Calculus I", 50, "Dr. Davis"),
+        Course("MATH102", "Linear Algebra", 40, "Dr. Taylor"),
         
         # COMP courses
-        Course("COMP101", "Intro to Programming", 60, "Dr. Anderson", ROOM_TYPE_FLAT),
-        Course("COMP110", "Programming Lab", 25, "Dr. Thomas", ROOM_TYPE_AL),
+        Course("COMP101", "Intro to Programming", 60, "Dr. Anderson"),
+        Course("COMP110", "Programming Lab", 25, "Dr. Thomas"),
     ]
     
     # Create and solve the scheduling problem
