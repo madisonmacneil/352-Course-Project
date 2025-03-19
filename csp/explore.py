@@ -1,3 +1,12 @@
+"""
+Some faculties have more than 15 courses of of the same year. For example there are 25 HIST 200 courses.
+Given our constraint of no courses from the same faculty and same year running at the same time there is a max of 15 slots for courses of the same year and faculty. 
+To accomodate for this any courses that make this constraint impossible, We remove random courses so there is a max of 10 courses for each year and faculty. 
+Thus there will be 10 random HIST 200 classes in the dataset. I chose 10 instead of 15 to give some breathing room and to allow the CSP to run faster. 
+"""
+
+
+
 import pandas as pd
 import re
 import random
