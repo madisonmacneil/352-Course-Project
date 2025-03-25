@@ -9,6 +9,9 @@ import pandas as pd
 import time
 from typing import List, Dict
 import sys
+import random
+
+random.seed(2)
 
 # Import CSP classes
 from csp import (
@@ -98,7 +101,8 @@ def main():
     
     # For testing with a smaller dataset (comment this out for full dataset)
     # Uncomment this to use a smaller dataset for testing
-    courses = courses[:100]  # Just use the first 30 courses
+    courses = random.sample(courses, 300) 
+    # courses = courses[:300]
     
     # Create the scheduler
     print("Creating scheduler...")
@@ -122,7 +126,7 @@ def main():
     
     # You can adjust the time limit based on the size of your dataset
     # For large datasets, you may need a longer time limit
-    time_limit = 300  # 3 minutes
+    time_limit = 1000
     solution = scheduler.solve(time_limit_seconds=time_limit)
     
     end_time = time.time()
