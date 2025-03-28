@@ -1,7 +1,11 @@
-#Create CSVs specifically for the CSP 
+# Create CSVs specifically for the CSP 
+# Create course_csp.csv which has Course Code, name of course, num of students, prof
+# create rooms.csv which has room name, capacity 
 
 import pandas as pd
 import random
+
+random.seed(1)
 
 # Load the CSV files
 classrooms_df = pd.read_csv('352-Course-Project/data/classrooms.csv')
@@ -11,7 +15,6 @@ instructors_df = pd.read_csv('352-Course-Project/data/working_dbs/filtered_cours
 # Process instructors data
 # Convert the courses_taught column from string to list
 instructors_df['courses_taught'] = instructors_df['courses_taught'].apply(lambda x: x.strip('[]').replace("'", "").split(', ') if isinstance(x, str) else [])
-
 courses_df['course_code'] = courses_df['course_code'].str.replace(' ', '')
 
 # Create a dictionary mapping course codes to instructors
@@ -29,11 +32,10 @@ for _, row in courses_df.iterrows():
     course_code = row['course_code']
     # Only include courses that have instructors
     if course_code in course_to_instructor:
-        print("here")
         course_csp_data.append({
             'course_code': course_code,
             'name': row['course_name'],
-            'num_students': random.randint(20, 150),  # Need a better way to get this. 
+            'num_students': random.randint(20, 150),  # give course random number of students from 20 to 150 
             'prof': course_to_instructor[course_code]
         })
 

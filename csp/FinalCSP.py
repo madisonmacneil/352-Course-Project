@@ -67,7 +67,6 @@ def load_professor_preferences(scheduler, preferences_csv_path):
     return True
 
 def main():
-    # File paths - adjust these if needed
     courses_csv = '352-Course-Project/csp/course_csp_limited.csv'
     rooms_csv = '352-Course-Project/csp/rooms.csv'
     preferences_csv = '352-Course-Project/csp/prof_preferences.csv'
@@ -94,17 +93,14 @@ def main():
                 row['prof']
             ) for _, row in courses_df.iterrows()
         ]
-        print(f"Loaded {len(courses)} courses")
+        print(f"Loaded {len(courses) // 2} courses")
     except Exception as e:
         print(f"Error loading courses: {e}")
         sys.exit(1)
     
-    # For testing with a smaller dataset (comment this out for full dataset)
-    # Uncomment this to use a smaller dataset for testing
-    courses = random.sample(courses, 300) 
-    # courses = courses[:300]
+    # Only look at half the courses - assume half of them run per semester anyway - looking at all 642 took way too long 
+    courses = random.sample(courses, len(courses) // 2 ) 
     
-    # Create the scheduler
     print("Creating scheduler...")
     scheduler = CourseScheduler(courses, rooms)
     
@@ -120,27 +116,24 @@ def main():
         print(f"Error building model: {e}")
         sys.exit(1)
     
-    # Solve the model (with a time limit)
+    # Solve the model
     print("Solving scheduling problem...")
     start_time = time.time()
-    
-    # You can adjust the time limit based on the size of your dataset
-    # For large datasets, you may need a longer time limit
-    time_limit = 1000
+    time_limit = 1500 
     solution = scheduler.solve(time_limit_seconds=time_limit)
-    
     end_time = time.time()
     print(f"Solving took {end_time - start_time:.2f} seconds")
     
     if solution:
-        # Print the final solution
         print_final_solution(courses, solution)
-        
-        # Print schedule for each day
         for day in DAYS:
             print_day_schedule(day, courses, solution)
     else:
-        print("No solution found! Try adjusting constraints or increasing the time limit.")
+        if scheduler.timed_out:
+            print("No solution was found because the solver ran out of time.")
+        else:
+            print("No solution was found. The problem might be infeasible. Try adjusting constraints or increasing the time limit.")
+
 
 if __name__ == "__main__":
     main()

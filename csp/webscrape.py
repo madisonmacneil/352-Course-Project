@@ -64,8 +64,7 @@ with open(csv_filename, mode="w", newline="", encoding="utf-8") as file:
                 print(f"Skipping {classroom}: No rows found in table")
         else:
             print(f"Skipping {classroom}: No table found")
-
-# Close the browser
+            
 driver.quit()
 
 print(f"Data saved to {csv_filename}")

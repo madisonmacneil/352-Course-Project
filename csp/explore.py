@@ -2,15 +2,14 @@
 Some faculties have more than 15 courses of of the same year. For example there are 25 HIST 200 courses.
 Given our constraint of no courses from the same faculty and same year running at the same time there is a max of 15 slots for courses of the same year and faculty. 
 To accomodate for this any courses that make this constraint impossible, We remove random courses so there is a max of 10 courses for each year and faculty. 
-Thus there will be 10 random HIST 200 classes in the dataset. I chose 10 instead of 15 to give some breathing room and to allow the CSP to run faster. 
+Thus there will be 10 random HIST 200 classes in the dataset. I chose 10 instead of 15 to give some breathing room and to allow the CSP to have more solutions. 
 """
-
-
 
 import pandas as pd
 import re
 import random
-import os
+
+random.seed(1)
 
 # Function to extract department code
 def extract_department(course_code):
@@ -29,15 +28,11 @@ def extract_year(course_code):
 # Load the courses CSV
 courses_df = pd.read_csv('352-Course-Project/csp/course_csp.csv')
 
-# Create backup of original data
-# courses_df.to_csv('course_csp_original_backup.csv', index=False)
-# print(f"Created backup of original data: course_csp_original_backup.csv")
-
 # Add department and year columns for easier filtering
 courses_df['department'] = courses_df['course_code'].apply(extract_department)
 courses_df['year'] = courses_df['course_code'].apply(extract_year)
 
-# Group by department and year to identify those with more than 15 courses
+# Group by department and year to identify those with more than 10 courses
 dept_year_counts = courses_df.groupby(['department', 'year']).size()
 excess_groups = [(dept, year) for (dept, year), count in dept_year_counts.items() if count > 10]
 
@@ -73,24 +68,24 @@ for dept, year in excess_groups:
 courses_df.drop(['department', 'year'], axis=1, inplace=True)  # Remove helper columns
 courses_df.to_csv('352-Course-Project/csp/course_csp_limited.csv', index=False)
 
-# Print summary
-print(f"\nModified dataset saved to: course_csp_limited.csv")
-print(f"Total courses removed: {total_removed}")
-print(f"Affected department-year combinations: {len(affected_dept_years)}")
-for dept_year in affected_dept_years:
-    print(f"  - {dept_year}")
+# # Print summary
+# print(f"\nModified dataset saved to: course_csp_limited.csv")
+# print(f"Total courses removed: {total_removed}")
+# print(f"Affected department-year combinations: {len(affected_dept_years)}")
+# for dept_year in affected_dept_years:
+#     print(f"  - {dept_year}")
 
-# Optionally print details of removed courses
-print("\nRemoved courses (first 10 shown):")
-for i, (code, name, prof) in enumerate(removed_courses[:10]):
-    print(f"  {code}: {name} (Prof: {prof})")
-if len(removed_courses) > 10:
-    print(f"  ...and {len(removed_courses) - 10} more")
+# # print details of removed courses
+# print("\nRemoved courses (first 10 shown):")
+# for i, (code, name, prof) in enumerate(removed_courses[:10]):
+#     print(f"  {code}: {name} (Prof: {prof})")
+# if len(removed_courses) > 10:
+#     print(f"  ...and {len(removed_courses) - 10} more")
 
-# Verify the changes: no department-year should have more than 15 courses now
+# Verify the changes: no department-year should have more than 10 courses now
 courses_df['department'] = courses_df['course_code'].apply(extract_department)
 courses_df['year'] = courses_df['course_code'].apply(extract_year)
 new_counts = courses_df.groupby(['department', 'year']).size()
 max_count = new_counts.max()
 print(f"\nVerification: Maximum courses per department-year in new dataset: {max_count}")
-print("All department-year combinations now have 15 or fewer courses.")
+print("All department-year combinations now have 10 or fewer courses.")

@@ -103,15 +103,15 @@ CISC235,Data Structures,132,Yuan Tian
 CISC251,Data Analytics,108,David Skillicorn
 CISC271,Linear Data Analysis,105,Rachel Theriault 
 CISC322,Software Architecture,36,Bram Adams
-CISC324,Operating Systems,110,Anwar Hossain
 CISC325,Human-Computer Interaction,123,Sara Nabil
 CISC327,Software Quality Assurance,133,Steven Ding
-CISC330,Computer-Integrated Surgery,23,Gabor Fichtinger
 CISC332,Database Management Systems,51,Wendy L Powley
 CISC335,Computer Networks,102,Yuanzhu Chen
 CISC351,Advanced Data Analytics,94,Yuan Tian
+CISC352,Artificial Intelligence,42,Christian Muise
+CISC360,Programming Paradigms,24,Jana Dunfield
+CISC365,Algorithms I,91,Ting Hu
 CISC371,Nonlinear Data Analysis,51,Randall Ellis
-CISC372,Advanced Data Analytics,101,Yuan Tian
 CISC423,Software Requirements,94,Reza Ahmadi
 CISC451,Topics in Data Analytics,31,Yuan Tian
 CISC452,Neural and Genetic Computing,146,Hazem Abbas
@@ -284,16 +284,16 @@ HIST108,"Early Globalization: Contact, Conflict, and Pandemics",116,Aditi Sen-Ch
 HIST109,War and Revolution in the Modern World,94,Awet Weldemichael
 HIST110,Europe from Antiquity to the Scientific Revolution,90,Jeffery Collins
 HIST124,Canada: A History of the Present,131,Steven J Maynard
+HIST210,The History of Sexuality in Canada,115,Steven J Maynard
 HIST211,The Cold War,72,Leonid Trofimov
 HIST215,"Sport, Virtue, and Violent Spectacle from Antiquity to the Renaissance",101,Anthony Francis D'Elia
 HIST216,U.S. Civil War and Reconstruction,140,Rosanne Currarino
-HIST218,Byzantium,84,Richard Greenfield
+HIST219,"""Canada"": The History of an Idea",65,Caroline-Isabelle Caron
+HIST220,Jews on Film,127,Gordon Dueck
+HIST225,The Early Middle Ages,109,Megan Welton
 HIST228,Global History of Pandemics,37,Aditi Sen-Chowdhury
-HIST245,Imperial Russia,98,Ana Siljak
+HIST246,The Soviet Experiment,130,Rebecca Manley
 HIST251,Medieval England,40,Daniel Woolf
-HIST255,Renaissance and Reformation Europe,27,Anthony Francis D'Elia
-HIST267,The (Un) Making of the Modern Middle East,103,Ariel Salzmann
-HIST295,The Holocaust,102,Gordon Dueck
 HIST304,The Civil War and the Making of America,104,Roseanne Currarino
 HIST307,Introduction to Historiography,31,Daniel Woolf
 HIST313,"British North America, 1759-1867",83,Jeff McNairn
@@ -400,8 +400,8 @@ PHIL257,Ethics,119,Jon Miller
 PHIL259,Critical Thinking,48,Nancy Salay
 PHIL261,Philosophy of Mathematics,34,Joshua Mozersky
 PHIL266,Introduction to Probability and Inductive Logic,41,Joshua Mozersky
-PHIL270,Minds and Machines,43,Nancy Salay
 PHIL273,"Continental Philosophy, 1800-1900",90,Paul Fairfield
+PHIL275,"Thinking Gender, Sex, and Love",100,Jacqueline M Davies
 PHIL276,Critical Perspective on Social Diversity,76,Lisa Guenther
 PHIL301,Bioethics,38,Kerah Gordon-Solmon
 PHIL316,Philosophy of Art,135,Deborah Knight
@@ -433,18 +433,18 @@ POLS112,Enduring Political Debates,41,Andrew Grant
 POLS211,Canadian Government,79,Elizabeth Baisley
 POLS212,Canadian Politics,135,Rachel Laforest
 POLS230,American Elections,129,Emmanuel Ampomah
-POLS241,Comparative Politics: Transformations,83,Dalal Daoud
-POLS242,Comparative Politics: Contemporary Regimes,31,Oded Haklai
+POLS243,"States, Ethnic Diversity, and Conflict",69,Stephen Larin
 POLS250,Political Theory: Foundations,66,Colin Farrelly
 POLS261,International Politics,46,Wayne S Cox
 POLS262,International Political Economy,85,Wayne S Cox
 POLS280,"Introduction to Women, Gender, and Politics",106,Yolande Book
+POLS284,Introduction to Political Research,100,Quinn Albaugh
 POLS285,Introduction to Statistics,26,Kyle Hanniman
 POLS312,Political Behaviour,147,Fan Lu
-POLS318,The Canadian Welfare State,80,Rachel Laforest
 POLS348,Middle East Politics,72,Rida Abu Rass
 POLS350,Political Theory: History,28,Åsbjørn Melkevik
 POLS358,Critical Perspectives on Contemporary Capitalism,68,Eleanor MacDonald
+POLS366,The United Nations,147,Samantha Twietmeyer
 POLS367,American Foreign Policy,81,David Haglund
 POLS384,Strategies of Political Research,23,Quinn Albaugh
 POLS388,Politics of Migration,59,Stephen Larin
@@ -466,16 +466,16 @@ PSYC236,Introduction to Clinical Psychology,69,Meredith Chivers
 PSYC241,Social Psychology,24,Jillian O'Connor
 PSYC251,Developmental Psychology,24,Laura Lambe
 PSYC271,Brain and Behaviour I,43,Scott Squires
-PSYC301,Advanced Statistical Inference,70,Leandre R Fabrigar
 PSYC305,Introduction to Comparative Cognition,125,Valerie Ann Kuhlmeier
 PSYC320,Selected Topics in Cognitive Neuroscience,81,Jeffrey Wammes
-PSYC323,Laboratory in Attention,129,Monica Castelhano
+PSYC333,Human Sexuality,114,Caroline F Pukall
 PSYC334,Laboratory in Psychological Testing,116,Jillian O'Connor
+PSYC337,Advanced Child Clinical Psychology,78,Luis Flores
 PSYC340,Selected Topics in Social Psychology,23,Jillian O'Connor
 PSYC341,Laboratory in Social Psychology,141,Li-Jun Ji
 PSYC343,Judgement and Decision Making,55,DAvid Hauser
+PSYC351,Social and Emotional Development,120,Tom Hollenstein
 PSYC358,Developmental Social Neuroscience,41,Michele Morningstar
-PSYC376,Functional Neuroimaging the Human Brain and Mind,94,Jason Gallivan
 PSYC423,"Driving, Deepfakes, and Disinformation: Applications of Visual Cognition",113,Monica Castelhano
 PSYC429,Pain: Body and Mind,55,Timothy Salomons
 PSYC436,Sexuality and Gender,66,Meredith Chivers
@@ -527,7 +527,7 @@ APSC131,Chemistry of Engineering Materials and Processes,139,Mark Daymond
 APSC143,Introduction to Computer Programming for Engineers,48,Samir Mohammad
 APSC151,Earth Systems Engineering,22,Mark S Diederichs
 APSC161,Engineering Graphics,107,Gene Zak
-APSC172,Calculus II,134,Nic Fellini
+APSC171,Calculus I,142,Kexue Zhang
 APSC174,Introduction To Linear Algebra,148,Abdol-Reza Mansouri
 APSC182,Applied Engineering Mechanics,63,Colin MacDougall
 APSC200,Engineering Design & Practice II,87,Jan Sneep
@@ -581,7 +581,7 @@ ENPH345,Quantum Physics Of Atoms,106,Aaron Vincent
 ENPH431,Electromagnetic Theory,47,Robert J Gooding
 ENPH480,Solid State Physics,125,Nir Rotenberg
 GEOE333,Terrain Evaluation,92,Rob Haarp
-MECH202,Mathematical and Computational Tools for Mechanical Engineers I,42,Laurent Beland
+MECH203,Mathematical and Computational Tools for Mechanical Engineers II,54,Laurent Beland
 MECH210,Electronic Circuits and Motors for Mechatronics,78,Amy Wu
 MECH211,Manufacturing Methods,99,Vahid Fallah
 MECH217,Measurement in Mechatronics,86,Richard Sellens

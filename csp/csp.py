@@ -5,13 +5,6 @@ import re
 from typing import List, Dict, Tuple, Optional, Set, NamedTuple
 from dataclasses import dataclass, field
 import time
-import itertools
-
-# # ROOM TYPES
-# ROOM_TYPE_AUD = "Aud"          # Auditorium
-# ROOM_TYPE_AL = "AL"            # Active Learning
-# ROOM_TYPE_TIERED = "Tiered"    # Tiered classroom
-# ROOM_TYPE_FLAT = "Flat"        # Flat classroom
 
 # DAYS OF THE WEEK
 DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri"]
@@ -29,19 +22,17 @@ TIME_BLOCKS = [
     (16, 30),  # 4:30 PM
 ]
 
-# Course class to represent a course with its properties
 @dataclass
 class Course:
     code: str
     name: str
     num_students: int
     professor: str
-    # room_type: str = "Tiered"  # Default room type needed
-    num_sessions: int = 3        # Number of class sessions per week (default: 3)
+    num_sessions: int = 3        # Number of class sessions per week - assume each class runs 3 times a week 
     
     @property
     def year_level(self) -> int:
-        # Extract year level from course code (e.g., PHYS100 -> 1, PHYS200 -> 2)
+        # Extract year level from course code (ex., PHYS100 -> 1, PHYS200 -> 2)
         match = re.search(r'(\d{3})', self.code)
         if match:
             return int(match.group(1)[0])
@@ -49,18 +40,16 @@ class Course:
     
     @property
     def department(self) -> str:
-        # Extract department from course code (e.g., PHYS100 -> PHYS)
+        # Extract department from course code (ex., PHYS100 -> PHYS)
         match = re.search(r'([A-Z]+)', self.code)
         if match:
             return match.group(1)
         return ""
 
-# Room class to represent a room with its properties
 @dataclass
 class Room:
     name: str
     capacity: int
-    # room_type: str = "" # "Aud", "AL", "Tiered", or "Flat"
 
 # Time slot representation
 class TimeSlot(NamedTuple):
@@ -76,19 +65,17 @@ class TimeSlot(NamedTuple):
         """Convert to a float value for easier comparison"""
         return self.start_hour + (self.start_minute / 60)
 
-# Schedule Assignment class
 @dataclass
 class ScheduleAssignment:
     room: Room
     time_slots: List[TimeSlot]
     
     def __str__(self) -> str:
-        room_str = f"{self.room.name} (Capacity: {self.room.capacity}, Type: {self.room.room_type})"
+        room_str = f"{self.room.name} (Capacity: {self.room.capacity})"
         times_str = ", ".join(str(ts) for ts in self.time_slots)
         return f"Room: {room_str}, Times: {times_str}"
 
 class CourseScheduler:
-    # Modify the CourseScheduler class initialization
     def __init__(self, courses: List[Course], rooms: List[Room]):
         self.courses = courses
         self.rooms = rooms
@@ -97,27 +84,21 @@ class CourseScheduler:
         self.model = cp_model.CpModel()
         self.solver = cp_model.CpSolver()
 
-        
         # Generate all possible time slots
         self.all_time_slots = self._generate_time_slots()
         self.time_slot_lookup = {(ts.day, ts.start_hour, ts.start_minute): i 
                                 for i, ts in enumerate(self.all_time_slots)}
         
-        # Create decision variables
         self.room_assignments = {}  # {course_code: room_var}
-        
-        # Changed: Time block assignments are now per day, not per course
+
         self.time_block_assignments = {}  # {course_code: {day: time_block_var}}
         self.day_assignments = {}  # {course_code: {day: binary_var}}
         
-        # Track slot assignments for debugging
         self.slot_assignments = {}  # {course_code: {slot_idx: binary_var}}
         
-        # Changed: Time preferences are now exclusions
         self.professor_time_exclusions = {}  # {professor: excluded_time_blocks}
         self.professor_day_preferences = {}  # {professor: preferred_days}
         
-        # Solution callback will be set in build_model
         self.solution_printer = None
     
     def _generate_time_slots(self) -> List[TimeSlot]:
@@ -147,7 +128,7 @@ class CourseScheduler:
     def build_model(self):
         # Create variables for room and time slot assignments
         for course in self.courses:
-            # Get valid rooms for this course - only check capacity now, not room type
+            # Get valid rooms for this course - i.e. check valid capacity 
             valid_rooms = [i for i, room in enumerate(self.rooms) 
                         if room.capacity >= course.num_students]
             
@@ -161,7 +142,7 @@ class CourseScheduler:
                 f'room_for_{course.code}'
             )
             
-            # Changed: Create time block assignment variables for each day
+            # Create time block assignment variables for each day
             self.time_block_assignments[course.code] = {}
             for day in DAYS:
                 self.time_block_assignments[course.code][day] = self.model.NewIntVar(
@@ -194,7 +175,7 @@ class CourseScheduler:
                 # Find the time block index for this slot
                 for block_idx, (hour, minute) in enumerate(TIME_BLOCKS):
                     if slot.start_hour == hour and slot.start_minute == minute:
-                        # Changed: Use day-specific time block variable
+                        # Use day-specific time block variable
                         time_block_var = self.time_block_assignments[course.code][slot.day]
                         
                         # Create helper variable for the equality
@@ -205,13 +186,11 @@ class CourseScheduler:
                         # NOT(slot_var) OR time_block_matches
                         self.model.AddBoolOr([slot_var.Not(), time_block_matches])
             
-            # Constraint: Each course must have exactly num_sessions slots assigned
+            # Constraint: Each course must have exactly num_sessions slots assigned - 3 seessions a week 
             self.model.Add(sum(self.slot_assignments[course.code].values()) == course.num_sessions)
             
-            # Constraint: Each course must use exactly num_sessions different days
+            # Constraint: Each course must use exactly num_sessions different days - each class on a seperate day 
             self.model.Add(sum(self.day_assignments[course.code].values()) == course.num_sessions)
-            
-            # Removed: The constraint that all sessions must be at the same time of day
         
         # Add constraints
         self._add_room_time_overlap_constraints()
@@ -282,7 +261,7 @@ class CourseScheduler:
     
     def _add_professor_preference_constraints(self):
         """Add soft constraints for professor preferences"""
-        # Changed: Add time exclusion as soft constraints with penalties
+        # Add time exclusion as soft constraints with penalties
         for professor, excluded_time_days in self.professor_time_exclusions.items():
             # Find all courses taught by this professor
             prof_courses = [c for c in self.courses if c.professor == professor]
@@ -359,7 +338,6 @@ class CourseScheduler:
             objective_terms = []
             for penalty_var, weight in self.preference_penalties:
                 objective_terms.append(penalty_var * weight)
-            
             self.model.Minimize(sum(objective_terms))
         
         # Set time limit
@@ -367,15 +345,19 @@ class CourseScheduler:
         
         # Solve
         status = self.solver.Solve(self.model, self.solution_printer)
+        solve_time = time.time() - start_time
+
+        # Determine if the solver stopped due to time limit
+        # (The CP-SAT solver doesn't provide a direct flag, so we use the wall time.)
+        self.timed_out = (self.solver.WallTime() >= time_limit_seconds)
         
-        end_time = time.time()
-        solve_time = end_time - start_time
-        
-        # Check status
         if status == cp_model.OPTIMAL or status == cp_model.FEASIBLE:
-            print(f"Solution found in {solve_time:.2f} seconds")
+            if self.timed_out:
+                print(f"Solution found in {solve_time:.2f} seconds, but the time limit was reached during search.")
+            else:
+                print(f"Solution found in {solve_time:.2f} seconds within the time limit.")
             
-            # Calculate and display penalties
+            # Calculate and display penalties if applicable
             if self.preference_penalties:
                 total_penalty = 0
                 violated_prefs = 0
@@ -383,16 +365,20 @@ class CourseScheduler:
                     if self.solver.Value(penalty_var) == 1:
                         total_penalty += weight
                         violated_prefs += 1
-                
                 print(f"Total preference penalty: {total_penalty}")
                 print(f"Preferences violated: {violated_prefs} out of {len(self.preference_penalties)}")
             
             return self._extract_solution()
+        
         elif status == cp_model.INFEASIBLE:
             print("The problem is infeasible - no solution exists that satisfies all constraints")
             return None
+        
         else:
-            print(f"Solver stopped with status: {status}")
+            if self.timed_out:
+                print("Solver stopped due to the time limit being reached, and no solution was found.")
+            else:
+                print(f"Solver stopped with status: {status}")
             return None
     
     def _extract_solution(self) -> Dict[str, ScheduleAssignment]:
@@ -467,7 +453,7 @@ class SolutionPrinter(cp_model.CpSolverSolutionCallback):
                 print(f"  num_students: {course.num_students}")
                 print(f"  Days: {', '.join(assigned_days)}")
                 
-                # Changed: Display time for each day separately
+                # Display time for each day separately
                 print(f"  Times: ", end="")
                 for day in assigned_days:
                     block_idx = self.Value(self.time_block_assignments[course.code][day])

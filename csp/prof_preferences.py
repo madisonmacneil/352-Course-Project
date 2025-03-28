@@ -3,7 +3,8 @@
 import pandas as pd
 import random
 
-# Constants
+random.seed(1)
+
 TIME_BLOCKS = [
     (8, 30),   # 8:30 AM
     (9, 30),   # 9:30 AM
@@ -18,9 +19,9 @@ TIME_BLOCKS = [
 
 DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri"]
 
-# Load the courses CSV to get professor names
+# Load the courses CSV to get professors
 courses_df = pd.read_csv('352-Course-Project/csp/course_csp.csv')
-# Get unique professor names
+# Get unique professor names - some profs teach more than one course
 professors = courses_df['prof'].unique()
 
 # Generate preferences data
@@ -29,20 +30,19 @@ preferences_data = []
 professor_weights = {prof: random.randint(30, 75) for prof in professors} # simulate age, older prof gets higher priority 
 
 for prof in professors:
-    # Each professor gets 0-3 time exclusions
-    if random.random() < 0.8:  # 70% chance of no exclusions - too many exclusions made it impossible 
+    # 80% chance of no exclusions - too many prof preferences kept giving no solutions so assume only 20% of profs would have preferences
+    # This number allowed for the csp to get feasable solutions more often
+    if random.random() < 0.8: 
         continue
-    
-    # Each professor gets 1-3 time exclusions (since we've already filtered out 0)
-    num_exclusions = random.randint(1, 3)
-    
-    weight = professor_weights[prof]
 
-    # Select random time blocks to exclude
+    weight = professor_weights[prof]
+    
+    # Profs whow have preferences can request 1 to 3 seperate times off. so 8:30, 10:30, 1:30 for example 
+    num_exclusions = random.randint(1, 3)
     excluded_times = random.sample(TIME_BLOCKS, num_exclusions)
     
     for hour, minute in excluded_times:
-        # For each exclusion, select 1-3 days to exclude
+        # For each exclusion, select 1-3 days to exclude, so MON TUES off for 8:30, WED, THURS, FRI off at 10:30, etc. 
         num_days = random.randint(1, 3)
         excluded_days = random.sample(DAYS, num_days)
         excluded_days.sort(key=lambda day: DAYS.index(day))
