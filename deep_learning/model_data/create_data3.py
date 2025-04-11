@@ -13,9 +13,9 @@ API_BASE = "https://api.deepseek.com"
 DB_PATH = 'db_courses.db'
 FAILED_LOG = 'failed_batches.log'
 CSV_PATH = 'data/FINAL_DB.csv'
-START_INDEX = 1560 #need 210-610 done 0-1560
+START_INDEX = 2760 #need 210-610 done 0-1560
 BATCH_SIZE = 10
-NUM_ROWS = 400
+NUM_ROWS = 150 
 MAX_THREADS = 5  # Number of threads to use for parallelism
 
 # --- Setup API Client ---
