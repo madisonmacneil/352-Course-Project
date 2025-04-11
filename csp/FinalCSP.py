@@ -10,6 +10,7 @@ import time
 from typing import List, Dict
 import sys
 import random
+from display import display_solution_gui
 
 random.seed(2)
 
@@ -99,7 +100,8 @@ def main():
         sys.exit(1)
     
     # Only look at half the courses - assume half of them run per semester anyway - looking at all 642 took way too long 
-    courses = random.sample(courses, len(courses) // 2 ) 
+    # courses = random.sample(courses, len(courses) // 2 ) 
+    courses = random.sample(courses, 200)
     
     print("Creating scheduler...")
     scheduler = CourseScheduler(courses, rooms)
@@ -133,6 +135,8 @@ def main():
             print("No solution was found because the solver ran out of time.")
         else:
             print("No solution was found. The problem might be infeasible. Try adjusting constraints or increasing the time limit.")
+
+    display_solution_gui(courses, solution)  # Call this after solving the CSP
 
 
 if __name__ == "__main__":
