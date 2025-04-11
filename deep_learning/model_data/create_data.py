@@ -1,59 +1,69 @@
-# import pandas as pd 
-# import openai 
-# from openai import OpenAI
-# import os 
-# '''
-# This file creates all the training/test data for the seq2seq model to train on by creating a series of potential nl queries that the model may 
-# receive as input and their sql equivalents 
-# ''' 
-
 import os
 import json
 import time
 import re
 import pandas as pd
 import openai
+from openai import OpenAI
 
-# Load OpenAI API key
-openai.api_key = os.getenv("OPENAI_API_KEY")
-if openai.api_key:
-    print("✅ OpenAI API key loaded successfully.")
-else:
-    print("❌ OpenAI API key not found. Make sure it's set correctly.")
+# OpenAI API client
+client = OpenAI(api_key="sk-77372cc3b1094a9ba27a8adb2faa1153", base_url="https://api.deepseek.com")
+
+# File paths
+output_file = 'ds_course_data.json'
+failed_batches_file = 'failed_batches.json'
 
 # Read dataset
-start_index = 400 # Modify this to start processing from a specific row (excluding headers)
+start_index = 120 # Adjust this for new runs
 df = pd.read_csv('data/FINAL_DB.csv')
-df = df.iloc[start_index:].reset_index(drop=True)  # Exclude rows before start_index
-df = df.head(600)
+df = df.iloc[start_index:start_index +300].reset_index(drop=True)
 
-# Define batching function
+# Load existing data if it exists
+if os.path.exists(output_file):
+    with open(output_file, 'r') as f:
+        try:
+            all_courses = json.load(f)
+        except json.JSONDecodeError:
+            print("⚠️ Couldn't load existing output file. Starting fresh.")
+            all_courses = {}
+else:
+    all_courses = {}
+
+failed_batches = []
+
+def extract_json_from_response(text):
+    """
+    Cleans model output to extract only JSON content.
+    Removes markdown formatting like triple backticks.
+    """
+    if "```json" in text:
+        text = text.split("```json", 1)[-1]
+    if "```" in text:
+        text = text.split("```", 1)[0]
+    return text.strip()
+
+
+# Batching
 def batch_data(data, batch_size=10):
     for i in range(0, len(data), batch_size):
         yield data[i:i + batch_size], i
 
-# Initialize result storage
-all_courses = {}
-failed_batches = []
-
-# Define API request function with retry mechanism
+# API call
 def call_openai_api(messages, retries=1):
     try:
-            response = openai.chat.completions.create(
-                model="gpt-4",
-                messages=messages,
-            )
-            return response  # Return response if successful
+        response = client.chat.completions.create(
+            model="deepseek-chat",
+            messages=messages,
+        )
+        return response
     except openai.BadRequestError as e:
-            print(f"🚨 OpenAI API error ")
+        print("🚨 OpenAI API error:", e)
+    return None
 
-    return None  # Return None if all attempts fail
-
-# Process dataset in batches
+# Processing
 for batch, batch_index in batch_data(list(zip(df['description'], df['requirements'], df['course_code']))):
     print(f"📌 Processing batch {batch_index}...")
 
-    # Construct request content
     content = "Extract structured course information from the following:\n\n"
     for desc, req, code in batch:
         content += f"**Course_Code**: {code}\n\n"
@@ -64,9 +74,8 @@ for batch, batch_index in batch_data(list(zip(df['description'], df['requirement
         "role": "user",
         "content": f"""
             {content}
-            Return **only valid JSON output** with these structures:
-
-            ```json
+            Return ONLY raw JSON. Do NOT wrap the JSON in backticks or markdown (like ```json).
+            With this structure:
             {{
                 "course code": {{
                     "exclusions": {{
@@ -88,53 +97,53 @@ for batch, batch_index in batch_data(list(zip(df['description'], df['requirement
                             "BIOL 205": "B",
                             "BIOL 200": null
                         }},
-                        "level": null
+                        "min_level": null
                     }},
                     "keywords": ["word1", "word2", "word3", "word4", "word5"]
                 }}
             }}
-            ```
             Return **ONLY** the JSON structure without additional text. NOT a list.
         """
     }]
 
-    # Call OpenAI API with retries
     response = call_openai_api(messages)
-    
     if response is None or not response.choices or not response.choices[0].message.content.strip():
-        print(f"⚠️ Failed batch {batch_index}, saving index for later processing.")
-        failed_batches.append(batch_index)
-        continue  # Skip to next batch
+        print(f"⚠️ Failed batch {batch_index}")
+        failed_batches.append(batch_index + start_index)
+        continue
 
-    # Parse response JSON
-    json_content = response.choices[0].message.content.strip()
+    raw_content = response.choices[0].message.content.strip()
+    json_content = extract_json_from_response(raw_content)
+    print("🔍 Raw response content:")
+
+
     try:
         parsed_data = json.loads(json_content)
-        for course_code, course_info in parsed_data.items():
-            if course_code not in all_courses:
-                all_courses[course_code] = {
-                    "exclusions": {},
-                    "permissions": {},
-                    "requirements": {},
-                    "keywords": []
-                }
-            for section, content in course_info.items():
-                all_courses[course_code][section] = content
 
-        print(f"✅ Batch {batch_index} processed successfully.")
+        new_courses = 0
+        for key, value in parsed_data.items():
+            all_courses[key] = value
+            new_courses += 1
+        print(f"✅ Batch {batch_index} processed successfully. ➕ Added {new_courses} new course(s).")
+        print(f"Data to write: {all_courses}")
 
-    except json.JSONDecodeError:
-        print(f"⚠️ JSON decoding error in batch {batch_index}.")
-        failed_batches.append(batch_index+start_index)
+        try:
+            with open(output_file, 'w') as f:
+                json.dump(all_courses, f, indent=4)
+                f.flush() 
 
-    # Save results after each batch
-    with open('course_data.json', 'a') as f:
-        json.dump(all_courses, f, indent=4)
+        except Exception as e:
+            print(f"Error writing data to file: {e}")
 
-# Save failed batch indices
+    except json.JSONDecodeError as e:
+        print(f"⚠️ JSON decoding error in batch {batch_index}: {e}")
+        print("🧾 Cleaned content:")
+        print(json_content)
+        failed_batches.append(batch_index + start_index)
+
 if failed_batches:
-    with open('failed_batches.json', 'w') as f:
+    with open(failed_batches_file, 'w') as f:
         json.dump(failed_batches, f, indent=4)
-    print(f"❌ Some batches failed. Saved failed batch indices to failed_batches.json.")
+    print(f"❌ Some batches failed. See {failed_batches_file}")
 
-print("✅ Processing complete.")
+print("✅ All done.")
