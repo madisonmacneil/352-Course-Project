@@ -5,6 +5,11 @@ import numpy as np
 import re
 import pickle
 import collections
+import sqlite3
+import pandas as pd 
+import os
+from tqdm import tqdm
+
 
 class EnhancedSQLTokenizer:
     def __init__(self):
@@ -15,7 +20,20 @@ class EnhancedSQLTokenizer:
             '<START>': 2,
             '<END>': 3
         }
+        conn = sqlite3.connect("complete_info.db")
+        cursor = conn.cursor()
+
+        # Get all table names from the database
+        cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
+        tables = [row[0] for row in cursor.fetchall()]
         
+        # Get column names for each table
+        all_columns = []
+        for table in tables:
+            cursor.execute(f"PRAGMA table_info({table});")
+            table_columns = [row[1] for row in cursor.fetchall()]
+            all_columns.extend(table_columns)
+
         # Expanded token categories with more SQL-specific tokens
         predefined_token_categories = {
             'sql_keywords': [
@@ -28,19 +46,18 @@ class EnhancedSQLTokenizer:
             'aggregations': [
                 'COUNT', 'SUM', 'AVG', 'MAX', 'MIN', 'DISTINCT'
             ],
-            'table_terms': [
-                'courses', 'students', 'enrollment', 'department'
-            ],
-            'column_terms': [
-                'course_name', 'credits', 'semester', 'year', 'term', 
-                'prerequisites', 'department'
-            ],
+            'table_terms': tables,
+            'column_terms': all_columns,
+            'instructors': [row[0] for row in cursor.execute("SELECT DISTINCT instructor FROM complete_courses WHERE instructor IS NOT NULL AND instructor != ''").fetchall()], 
+               
+            'dept_codes': [row[0] for row in cursor.execute("SELECT DISTINCT department_code FROM complete_courses WHERE department_code IS NOT NULL AND department_code != ''").fetchall()], 
+            'course_codes': [row[0] for row in cursor.execute("SELECT DISTINCT course_code FROM complete_courses WHERE course_code IS NOT NULL AND course_code != ''").fetchall()], 
+            'faculties': [row[0] for row in cursor.execute("SELECT DISTINCT faculty FROM complete_courses WHERE faculty IS NOT NULL AND faculty != ''").fetchall()], 
+    
             'subject_domains': [
-                "'physics'", "'psychology'", 'computer', 'science', "'ethics'",
-                'computer science'
-            ],
+                row[0] for row in cursor.execute("SELECT DISTINCT department_name FROM complete_courses WHERE department_name IS NOT NULL AND department_name != ''").fetchall()],
+            
             'numeric_qualifiers': [
-                'first', 'second', 'third', 'fourth',
                 '1', '2', '3', '4'
             ],
             'special_conditions': [
@@ -51,9 +68,10 @@ class EnhancedSQLTokenizer:
         # Populate vocabulary
         for category, tokens in predefined_token_categories.items():
             for token in tokens:
-                lower_token = token.lower()
-                if lower_token not in self.vocab:
-                    self.vocab[lower_token] = len(self.vocab)
+                if token is not None:  # Skip None values
+                    lower_token = str(token).lower()
+                    if lower_token not in self.vocab:
+                        self.vocab[lower_token] = len(self.vocab)
         
         # Create reverse vocabulary
         self.reverse_vocab = {v: k for k, v in self.vocab.items()}
@@ -257,6 +275,12 @@ class NLToSQLTrainer:
             self.sql_tokenizer.tokenize(query) 
             for query in sql_queries
         ])
+        
+        # Create checkpoint directory if it doesn't exist
+        self.checkpoint_dir = "checkpoints"
+        if not os.path.exists(self.checkpoint_dir):
+            os.makedirs(self.checkpoint_dir)
+            
     def analyze_input_data(self, nl_queries, sql_queries):
         """Comprehensive analysis of input data"""
         print("\n--- Input Data Analysis ---")
@@ -317,24 +341,53 @@ class NLToSQLTrainer:
         
         return augmented_nl, augmented_sql
     
+    def save_checkpoint(self, model, optimizer, epoch, loss, filename):
+        """Save model checkpoint"""
+        checkpoint = {
+            'epoch': epoch,
+            'model_state_dict': model.state_dict(),
+            'optimizer_state_dict': optimizer.state_dict(),
+            'loss': loss,
+        }
+        torch.save(checkpoint, filename)
+        print(f"Checkpoint saved: {filename}")
+    
+    def load_checkpoint(self, model, optimizer, filename):
+        """Load model checkpoint"""
+        if os.path.isfile(filename):
+            checkpoint = torch.load(filename)
+            model.load_state_dict(checkpoint['model_state_dict'])
+            optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+            epoch = checkpoint['epoch']
+            loss = checkpoint['loss']
+            print(f"Checkpoint loaded: {filename}")
+            return model, optimizer, epoch, loss
+        else:
+            print(f"No checkpoint found at {filename}")
+            return model, optimizer, 0, float('inf')
+    
     def train(self, 
-          embedding_dim=128, 
-          hidden_dim=256, 
-          epochs=500, 
-          learning_rate=0.005):
-    # Model parameters
+              embedding_dim=128, 
+              hidden_dim=256, 
+              epochs=500, 
+              learning_rate=0.005,
+              batch_size=32,
+              checkpoint_interval=50,  # Save checkpoint every n epochs
+              resume_training=False):  # Option to resume from checkpoint
+        
+        # Model parameters
         input_vocab_size = len(self.nl_tokenizer.vocab)
         output_vocab_size = len(self.sql_tokenizer.vocab)
-    
-    # Initialize model
+        
+        # Initialize model
         model = NLToSQLSeq2Seq(
             input_vocab_size, 
             output_vocab_size, 
             embedding_dim, 
             hidden_dim
         )
-    
-    # Loss and optimizer with learning rate scheduling
+        
+        # Loss and optimizer
         criterion = nn.CrossEntropyLoss(ignore_index=0)
         optimizer = optim.Adam(model.parameters(), lr=learning_rate)
         scheduler = optim.lr_scheduler.ReduceLROnPlateau(
@@ -343,55 +396,108 @@ class NLToSQLTrainer:
             factor=0.5, 
             patience=100
         )
-    
-    # Training loop with early stopping
+        
+        # Resume from checkpoint if requested
+        start_epoch = 0
         best_loss = float('inf')
+        if resume_training:
+            latest_checkpoint = self._get_latest_checkpoint()
+            if latest_checkpoint:
+                model, optimizer, start_epoch, best_loss = self.load_checkpoint(
+                    model, optimizer, latest_checkpoint
+                )
+        
+        # Training loop with progress bars
         patience = 500
         trigger_times = 0
-    
-        for epoch in range(epochs):
-        # Zero gradients
-            optimizer.zero_grad()
         
-        # Forward pass
-            outputs = model(self.nl_sequences, self.sql_sequences)
-
-        # Compute loss
-            loss = criterion(
-                outputs.reshape(-1, output_vocab_size), 
-                self.sql_sequences.reshape(-1)
-        )
+        try:
+            # Outer progress bar for epochs
+            epoch_bar = tqdm(range(start_epoch, epochs), desc="Training Progress", position=0)
+            
+            for epoch in epoch_bar:
+                # Zero gradients
+                optimizer.zero_grad()
+                
+                # Forward pass
+                outputs = model(self.nl_sequences, self.sql_sequences)
+                
+                # Compute loss
+                loss = criterion(
+                    outputs.reshape(-1, output_vocab_size), 
+                    self.sql_sequences.reshape(-1)
+                )
+                
+                # Backward pass
+                loss.backward()
+                
+                # Optimize
+                optimizer.step()
+                
+                # Learning rate scheduling
+                scheduler.step(loss)
+                
+                # Update progress bar description
+                epoch_bar.set_description(
+                    f"Epoch {epoch+1}/{epochs} | Loss: {loss.item():.4f} | LR: {optimizer.param_groups[0]['lr']:.6f}"
+                )
+                
+                # Save checkpoint at regular intervals
+                if (epoch + 1) % checkpoint_interval == 0:
+                    self.save_checkpoint(
+                        model, 
+                        optimizer, 
+                        epoch + 1, 
+                        loss.item(), 
+                        f"{self.checkpoint_dir}/checkpoint_epoch_{epoch+1}.pth"
+                    )
+                
+                # Save best model
+                if loss.item() < best_loss:
+                    best_loss = loss.item()
+                    trigger_times = 0
+                    self.save_checkpoint(
+                        model, 
+                        optimizer,
+                        epoch + 1,
+                        loss.item(),
+                        f"{self.checkpoint_dir}/best_model.pth"
+                    )
+                else:
+                    trigger_times += 1
+                
+                if trigger_times >= patience:
+                    print(f"Early stopping at epoch {epoch+1}")
+                    break
+                
+        except KeyboardInterrupt:
+            print("\nTraining interrupted by user!")
+            # Save checkpoint on interruption
+            self.save_checkpoint(
+                model,
+                optimizer,
+                epoch + 1,
+                loss.item(),
+                f"{self.checkpoint_dir}/interrupt_checkpoint.pth"
+            )
+            print("Checkpoint saved due to interruption.")
         
-        # Backward pass
-            loss.backward()
-        
-        # Optimize
-            optimizer.step()
-        
-        # Learning rate scheduling (remove epoch parameter)
-            scheduler.step(loss)
-        
-        # Early stopping
-            if loss.item() < best_loss:
-                best_loss = loss.item()
-                trigger_times = 0
-            # Optional: Save best model
-            # torch.save(model.state_dict(), 'best_model.pth')
-            else:
-                trigger_times += 1
-        
-        # Verbose logging
-            if epoch % 10 == 0:
-                print(f'Epoch [{epoch+1}/{epochs}], Loss: {loss.item():.4f}')
-        
-        # Early stopping condition
-            if trigger_times >= patience:
-                print(f"Early stopping at epoch {epoch}")
-                break
-
         self.analyze_token_generation(model, self.nl_sequences, self.sql_sequences)
         return model, self.nl_tokenizer, self.sql_tokenizer
-
+    
+    def _get_latest_checkpoint(self):
+        """Get the latest checkpoint file"""
+        checkpoints = [f for f in os.listdir(self.checkpoint_dir) 
+                      if f.startswith("checkpoint_epoch_") and f.endswith(".pth")]
+        if not checkpoints:
+            return None
+            
+        # Extract epoch numbers and find the latest
+        epochs = [int(re.search(r'checkpoint_epoch_(\d+)\.pth', ckpt).group(1)) 
+                 for ckpt in checkpoints]
+        latest_epoch = max(epochs)
+        return f"{self.checkpoint_dir}/checkpoint_epoch_{latest_epoch}.pth"
+    
     def analyze_token_generation(self, model, nl_sequences, sql_sequences):
         """Analyze how the model generates tokens"""
         model.eval()
@@ -428,8 +534,7 @@ class NLToSQLTrainer:
             print("Top Token Generations:")
             for token, percentage in sorted_tokens[:10]:
                 print(f"{token}: {percentage:.2f}%")
-# Rest of the code remains the same as in the previous implementation
-# (NLToSQLInference and main() functions)
+
 
 class NLToSQLInference:
     def __init__(self, model, nl_tokenizer, sql_tokenizer):
@@ -458,7 +563,7 @@ class NLToSQLInference:
                 # Decode
                 output, hidden, cell = self.model.decoder(decoder_input, hidden, cell)
                 
-                # Get most likely token (fix dimensional issue)
+                # Get most likely token
                 predicted_token = output.argmax(dim=-1).item()
                 
                 # Stop if end token or repeated token
@@ -479,33 +584,32 @@ class NLToSQLInference:
 
 def main():
     # Training data with more diverse examples
-    nl_queries = [
-        "show me all physics courses in first year",
-        "find courses in the winter term with no prerequisites",
-        "list all third year psychology courses",
-        "get third year courses with at least 6 credits",
-        "find ethics courses with no prerequisites",
-        "show me an elective without prerequisites",
-        "courses in computer science department",
-        "find fall semester courses",
-        "list courses with more than 3 credits"
-    ]
+    train_df = pd.read_csv('course_query_training_data.csv')
+    sql_df = train_df['sql_query'].tolist()
+    nl_df = train_df['natural_language_query'].tolist()
+    nl_queries = nl_df
+    sql_queries = sql_df
 
-    sql_queries = [
-        "SELECT * FROM courses WHERE department = 'Physics' AND year = 1",
-        "SELECT * FROM courses WHERE term = 'Winter' AND (prerequisites IS NULL OR prerequisites = '')",
-        "SELECT * FROM courses WHERE department = 'Psychology' AND year = 3",
-        "SELECT * FROM courses WHERE year = 3 AND credits >= 6",
-        "SELECT * FROM courses WHERE course_name LIKE '%ethics%' AND prerequisites IS NULL",
-        "SELECT * FROM courses WHERE prerequisites IS NULL",
-        "SELECT * FROM courses WHERE department = 'Computer Science'",
-        "SELECT * FROM courses WHERE term = 'Fall'",
-        "SELECT * FROM courses WHERE credits > 3"
-    ]
+    # Create checkpoint directory
+    checkpoint_dir = "checkpoints"
+    if not os.path.exists(checkpoint_dir):
+        os.makedirs(checkpoint_dir)
 
-    # Train the model
+    # Train the model with checkpoint saving
     trainer = NLToSQLTrainer(nl_queries, sql_queries)
-    model, nl_tokenizer, sql_tokenizer = trainer.train()
+    
+    # Check if we should resume training
+    resume_training = False
+    if os.path.exists(f"{checkpoint_dir}/interrupt_checkpoint.pth") or \
+       os.path.exists(f"{checkpoint_dir}/best_model.pth"):
+        resume = input("Found existing checkpoints. Resume training? (y/n): ")
+        resume_training = resume.lower() == 'y'
+    
+    model, nl_tokenizer, sql_tokenizer = trainer.train(
+        epochs=500,
+        checkpoint_interval=25,  # Save every 25 epochs
+        resume_training=resume_training
+    )
 
     # Create inference object
     inference = NLToSQLInference(model, nl_tokenizer, sql_tokenizer)
@@ -513,7 +617,6 @@ def main():
     # Test inference
     test_queries = [
         "show me all physics courses in first year",
-        "find courses in the winter term with no prerequisites",
         "list all third year psychology courses",
         "courses in computer science department"
     ]
@@ -523,12 +626,18 @@ def main():
         sql_query = inference.translate(query)
         print(f"Generated SQL Query: {sql_query}")
 
-    # Optional: Save model and tokenizers
+    # Save final model and tokenizers
     torch.save(model.state_dict(), 'nl_to_sql_model.pth')
     with open('nl_tokenizer.pkl', 'wb') as f:
         pickle.dump(nl_tokenizer, f)
     with open('sql_tokenizer.pkl', 'wb') as f:
         pickle.dump(sql_tokenizer, f)
+    
+    print("\nTraining complete! Model and tokenizers saved.")
+    print("You can load them with:")
+    print("  - Model: torch.load('nl_to_sql_model.pth')")
+    print("  - NL Tokenizer: pickle.load(open('nl_tokenizer.pkl', 'rb'))")
+    print("  - SQL Tokenizer: pickle.load(open('sql_tokenizer.pkl', 'rb'))")
 
 if __name__ == '__main__':
     main()
