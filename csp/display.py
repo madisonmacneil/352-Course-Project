@@ -1,18 +1,23 @@
-"""
-Display output for CSP in a simple GUI
-page for full schedule,
-pages for each day of week
-page for hypothetical schedule for a student
-
-"""
-
-
 import tkinter as tk
 from tkinter import ttk, scrolledtext
 from csp import Course, ScheduleAssignment, DAYS
 from typing import List, Dict
 import random
 
+# Function to save content to a text file with UTF-8 encoding
+def save_to_txt(filename, content):
+    """
+    Save the content to a text file with UTF-8 encoding.
+    Args:
+        filename: The name of the file.
+        content: The content to be written to the file.
+    """
+    try:
+        with open(filename, 'w', encoding='utf-8') as file:
+            file.write(content)
+        print(f"Saved output to {filename}")
+    except Exception as e:
+        print(f"Error saving output to {filename}: {e}")
 
 def display_solution_gui(courses: List[Course], solution: Dict[str, ScheduleAssignment]):
     # Display a simple popup if no solution was found
@@ -95,7 +100,6 @@ def display_solution_gui(courses: List[Course], solution: Dict[str, ScheduleAssi
         if not selected:
             return "Could not generate a valid hypothetical schedule after multiple attempts."
 
-
         # Organize selected course sessions into a weekly layout
         schedule = {day: [] for day in DAYS}
         for course in selected:
@@ -112,25 +116,30 @@ def display_solution_gui(courses: List[Course], solution: Dict[str, ScheduleAssi
                 lines.append(f"  Room: {room_name}")
         return "\n".join(lines)
 
-
     # Update displayed schedule based on dropdown selection
     def update_display(*_):
         selected = view_option.get()
         if selected == "Full Schedule":
+            content = format_full_schedule()
             text_area.config(state="normal")
             text_area.delete(1.0, tk.END)
-            text_area.insert(tk.END, format_full_schedule())
+            text_area.insert(tk.END, content)
             text_area.config(state="disabled")
+            save_to_txt("csp/full_schedule.txt", content)
         elif selected in DAYS:
+            content = format_day_schedule(selected)
             text_area.config(state="normal")
             text_area.delete(1.0, tk.END)
-            text_area.insert(tk.END, format_day_schedule(selected))
+            text_area.insert(tk.END, content)
             text_area.config(state="disabled")
+            save_to_txt(f"{selected}_schedule.txt", content)
         elif selected == "Hypothetical Schedule":
+            content = format_hypothetical_schedule()
             text_area.config(state="normal")
             text_area.delete(1.0, tk.END)
-            text_area.insert(tk.END, format_hypothetical_schedule())
+            text_area.insert(tk.END, content)
             text_area.config(state="disabled")
+            save_to_txt("csp/hypothetical_schedule.txt", content)
 
     # Create main GUI window
     root = tk.Tk()

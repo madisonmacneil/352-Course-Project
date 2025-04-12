@@ -1,0 +1,49 @@
+Hypothetical Weekly Schedule
+
+================================================================================
+
+
+Mon:
+----------------------------------------
+09:30 - APSC171: Calculus I (Kexue Zhang)
+  Room: McLaughlin Hall 315
+15:30 - APSC111: Physics I (Anthony J Noble)
+  Room: Jeffery Hall 155
+15:30 - CISC101: Introduction to Computer Programming (Samir Mohammad)
+  Room: Botterell Hall B143
+
+Tue:
+----------------------------------------
+08:30 - APSC182: Applied Engineering Mechanics (Colin MacDougall)
+  Room: Stirling Hall A
+14:30 - CISC101: Introduction to Computer Programming (Samir Mohammad)
+  Room: Botterell Hall B143
+15:30 - HIST105: Post-Confederation Canada: A History of the Present (Steven J Maynard)
+  Room: Stirling Hall B
+
+Wed:
+----------------------------------------
+13:30 - HIST105: Post-Confederation Canada: A History of the Present (Steven J Maynard)
+  Room: Stirling Hall B
+14:30 - APSC182: Applied Engineering Mechanics (Colin MacDougall)
+  Room: Stirling Hall A
+
+Thu:
+----------------------------------------
+10:30 - APSC111: Physics I (Anthony J Noble)
+  Room: Jeffery Hall 155
+13:30 - APSC171: Calculus I (Kexue Zhang)
+  Room: McLaughlin Hall 315
+16:30 - APSC182: Applied Engineering Mechanics (Colin MacDougall)
+  Room: Stirling Hall A
+
+Fri:
+----------------------------------------
+10:30 - APSC171: Calculus I (Kexue Zhang)
+  Room: McLaughlin Hall 315
+15:30 - APSC111: Physics I (Anthony J Noble)
+  Room: Jeffery Hall 155
+16:30 - CISC101: Introduction to Computer Programming (Samir Mohammad)
+  Room: Botterell Hall B143
+16:30 - HIST105: Post-Confederation Canada: A History of the Present (Steven J Maynard)
+  Room: Stirling Hall B

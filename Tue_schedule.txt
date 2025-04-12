@@ -1,0 +1,1204 @@
+Full Course Schedule
+
+================================================================================
+
+ANAT Year 1 Courses:
+--------------------------------------------------------------------------------
+ANAT100: Anatomy of the Human Body
+  Professor: Leslie W MacKenzie
+  Students: 54
+  Schedule: Tue 11:30, Thu 11:30, Fri 08:30
+  Room: Stirling Hall C (Capacity: 150)
+
+
+ANAT Year 3 Courses:
+--------------------------------------------------------------------------------
+ANAT315: The Human Musculoskeletal System
+  Professor: Ronald Easteal
+  Students: 85
+  Schedule: Mon 16:30, Thu 14:30, Fri 16:30
+  Room: Dupuis Hall 215 (Capacity: 104)
+
+
+APSC Year 1 Courses:
+--------------------------------------------------------------------------------
+APSC111: Physics I
+  Professor: Anthony J Noble
+  Students: 31
+  Schedule: Mon 15:30, Wed 16:30, Fri 12:30
+  Room: Stirling Hall 414 (Capacity: 60)
+
+APSC112: Physics II
+  Professor: Sarah Sadavoy
+  Students: 89
+  Schedule: Mon 12:30, Tue 11:30, Fri 09:30
+  Room: Ellis Hall AUD (Room 152) (Capacity: 247)
+
+APSC143: Introduction to Computer Programming for Engineers
+  Professor: Samir Mohammad
+  Students: 45
+  Schedule: Mon 11:30, Thu 12:30, Fri 10:30
+  Room: Convocation Hall (Capacity: 183)
+
+APSC161: Engineering Graphics
+  Professor: Gene Zak
+  Students: 37
+  Schedule: Tue 14:30, Thu 16:30, Fri 13:30
+  Room: Law Building 1 (Capacity: 152)
+
+APSC171: Calculus I
+  Professor: Kexue Zhang
+  Students: 110
+  Schedule: Tue 13:30, Thu 10:30, Fri 11:30
+  Room: Biosciences 1101 (Capacity: 450)
+
+APSC182: Applied Engineering Mechanics
+  Professor: Colin MacDougall
+  Students: 25
+  Schedule: Wed 12:30, Thu 08:30, Fri 14:30
+  Room: Ellis Hall AUD (Room 152) (Capacity: 247)
+
+
+APSC Year 2 Courses:
+--------------------------------------------------------------------------------
+APSC221: Economic and Business Practice
+  Professor: Jan Sneep
+  Students: 149
+  Schedule: Mon 10:30, Wed 14:30, Thu 16:30
+  Room: Biosciences 1101 (Capacity: 450)
+
+
+ARTH Year 1 Courses:
+--------------------------------------------------------------------------------
+ARTH121: Introduction to Global Art Histories
+  Professor: Gauvin Bailey
+  Students: 73
+  Schedule: Tue 12:30, Thu 12:30, Fri 11:30
+  Room: Chernoff Hall AUD (Room 250) (Capacity: 253)
+
+
+ARTH Year 2 Courses:
+--------------------------------------------------------------------------------
+ARTH214: Antiquity and Nature in Renaissance Art, 1300-1500
+  Professor: Cathleen Hoeniger
+  Students: 144
+  Schedule: Mon 16:30, Tue 13:30, Thu 14:30
+  Room: Jeffery Hall 156 (Capacity: 152)
+
+ARTH248: Introduction to Indigenous Arts of North America
+  Professor: Norman Vorano
+  Students: 119
+  Schedule: Mon 12:30, Wed 08:30, Fri 08:30
+  Room: Biosciences 1101 (Capacity: 450)
+
+ARTH272: Latin American Art
+  Professor: Gauvin Bailey
+  Students: 134
+  Schedule: Mon 09:30, Tue 12:30, Thu 08:30
+  Room: Biosciences 1102 (Capacity: 302)
+
+ARTH292: Modern Architecture: Aesthetics, Capitalism, Industry
+  Professor: Katherine Romba
+  Students: 88
+  Schedule: Mon 11:30, Wed 09:30, Fri 16:30
+  Room: Biosciences 1101 (Capacity: 450)
+
+
+ARTH Year 3 Courses:
+--------------------------------------------------------------------------------
+ARTH308: Gothic Art in Europe c.1150-1400
+  Professor: Matthew Reeve
+  Students: 46
+  Schedule: Tue 09:30, Thu 09:30, Fri 10:30
+  Room: Jeffery Hall 156 (Capacity: 152)
+
+ARTH374: 16th-Century Netherlandish Painting
+  Professor: Ron Spronk
+  Students: 27
+  Schedule: Mon 15:30, Wed 12:30, Thu 15:30
+  Room: Botterell Hall B143 (Capacity: 107)
+
+ARTH391: Art Forgeries
+  Professor: Dawn Cunningham
+  Students: 26
+  Schedule: Mon 13:30, Tue 11:30, Wed 13:30
+  Room: Dunning Hall 14 (Capacity: 152)
+
+
+ARTH Year 4 Courses:
+--------------------------------------------------------------------------------
+ARTH451: Caravaggio and Artemisia
+  Professor: Gauvin Bailey
+  Students: 117
+  Schedule: Mon 15:30, Tue 12:30, Fri 10:30
+  Room: Dunning Hall 14 (Capacity: 152)
+
+
+BCHM Year 1 Courses:
+--------------------------------------------------------------------------------
+BCHM102: Introduction to Biochemistry
+  Professor: Laura van Staalduinen
+  Students: 76
+  Schedule: Tue 08:30, Wed 10:30, Fri 13:30
+  Room: Stirling Hall AUD (Room 301D) (Capacity: 240)
+
+
+BCHM Year 2 Courses:
+--------------------------------------------------------------------------------
+BCHM218: Molecular Biology
+  Professor: Mark Ormiston
+  Students: 132
+  Schedule: Tue 10:30, Wed 15:30, Thu 13:30
+  Room: Chernoff Hall AUD (Room 250) (Capacity: 253)
+
+BCHM270: Biochemical Basis of Health and Disease
+  Professor: Cynthia Pruss
+  Students: 146
+  Schedule: Mon 12:30, Tue 14:30, Thu 12:30
+  Room: Humphrey Hall​ AUD (Room 102) (Capacity: 221)
+
+
+BCHM Year 3 Courses:
+--------------------------------------------------------------------------------
+BCHM370: Genetics and Genomics
+  Professor: Laura van Staalduinen
+  Students: 76
+  Schedule: Mon 16:30, Tue 13:30, Fri 16:30
+  Room: Dunning Hall 12 (Capacity: 85)
+
+
+BIOL Year 1 Courses:
+--------------------------------------------------------------------------------
+BIOL103: Fundamentals of Biology: Organisms to Ecosystems
+  Professor: Christopher G Eckert
+  Students: 94
+  Schedule: Tue 16:30, Thu 09:30, Fri 16:30
+  Room: Botterell Hall B143 (Capacity: 107)
+
+
+BIOL Year 3 Courses:
+--------------------------------------------------------------------------------
+BIOL315: Plants and Human Culture
+  Professor: Sarah Yakimowski
+  Students: 50
+  Schedule: Tue 14:30, Thu 15:30, Fri 14:30
+  Room: Jeffery Hall 234 (Capacity: 70)
+
+BIOL369: Sex and Evolution
+  Professor: Adam K Chippindale
+  Students: 147
+  Schedule: Mon 12:30, Wed 14:30, Fri 08:30
+  Room: Stirling Hall AUD (Room 301D) (Capacity: 240)
+
+
+BIOL Year 5 Courses:
+--------------------------------------------------------------------------------
+BIOL535: Selected Topics in Biology
+  Professor: George diCenzo
+  Students: 126
+  Schedule: Tue 13:30, Wed 08:30, Fri 10:30
+  Room: Chernoff Hall AUD (Room 250) (Capacity: 253)
+
+
+CANC Year 3 Courses:
+--------------------------------------------------------------------------------
+CANC380: Evolutionary Biology of Cancer
+  Professor: Tiziana Cotechini
+  Students: 64
+  Schedule: Tue 12:30, Thu 14:30, Fri 09:30
+  Room: Biosciences 1101 (Capacity: 450)
+
+
+CHEE Year 2 Courses:
+--------------------------------------------------------------------------------
+CHEE222: Process Dynamics and Numerical Methods
+  Professor: Kimberly B McAuley
+  Students: 97
+  Schedule: Tue 14:30, Wed 08:30, Thu 08:30
+  Room: Ellis Hall 324 (Capacity: 120)
+
+CHEE229: Cell Based Engineering Principles
+  Professor: Kevin De France
+  Students: 73
+  Schedule: Mon 10:30, Wed 14:30, Fri 11:30
+  Room: Dunning Hall 14 (Capacity: 152)
+
+
+CHEM Year 2 Courses:
+--------------------------------------------------------------------------------
+CHEM213: Introduction to Chemical Analysis
+  Professor: Zhe She
+  Students: 61
+  Schedule: Mon 16:30, Tue 15:30, Fri 13:30
+  Room: Humphrey Hall​ AUD (Room 102) (Capacity: 221)
+
+
+CISC Year 1 Courses:
+--------------------------------------------------------------------------------
+CISC101: Introduction to Computer Programming
+  Professor: Samir Mohammad
+  Students: 53
+  Schedule: Mon 16:30, Wed 16:30, Thu 09:30
+  Room: Ellis Hall 333 (Capacity: 70)
+
+CISC181: Digital Societies
+  Professor: Carolyn Lamb
+  Students: 113
+  Schedule: Mon 08:30, Thu 14:30, Fri 12:30
+  Room: Convocation Hall (Capacity: 183)
+
+
+CISC Year 2 Courses:
+--------------------------------------------------------------------------------
+CISC203: Discrete Structures II
+  Professor: Christian Muise
+  Students: 71
+  Schedule: Mon 10:30, Wed 16:30, Thu 15:30
+  Room: Jeffery Hall 156 (Capacity: 152)
+
+
+CISC Year 3 Courses:
+--------------------------------------------------------------------------------
+CISC352: Artificial Intelligence
+  Professor: Christian Muise
+  Students: 38
+  Schedule: Tue 08:30, Thu 15:30, Fri 13:30
+  Room: Stirling Hall 414 (Capacity: 60)
+
+
+CIVL Year 3 Courses:
+--------------------------------------------------------------------------------
+CIVL340: Geotechnical Engineering 1
+  Professor: Fady Abdelaal
+  Students: 37
+  Schedule: Mon 08:30, Tue 08:30, Fri 15:30
+  Room: Law Building 1 (Capacity: 152)
+
+
+CLST Year 1 Courses:
+--------------------------------------------------------------------------------
+CLST131: Introduction to Archaeology ll: Methods and Analysis
+  Professor: M Barbara Reeves
+  Students: 78
+  Schedule: Tue 12:30, Wed 16:30, Thu 11:30
+  Room: Convocation Hall (Capacity: 183)
+
+
+CLST Year 2 Courses:
+--------------------------------------------------------------------------------
+CLST203: Myth and Religion
+  Professor: R Drew Griffith
+  Students: 79
+  Schedule: Mon 09:30, Wed 16:30, Fri 11:30
+  Room: Stirling Hall B (Capacity: 150)
+
+
+CMPE Year 3 Courses:
+--------------------------------------------------------------------------------
+CMPE365: Algorithms I
+  Professor: James A Stewart
+  Students: 32
+  Schedule: Mon 16:30, Wed 09:30, Fri 11:30
+  Room: Ellis Hall 321 (Capacity: 136)
+
+
+COGS Year 1 Courses:
+--------------------------------------------------------------------------------
+COGS100: Introduction to Cognitive Science
+  Professor: Farhana Zulkernine
+  Students: 21
+  Schedule: Tue 16:30, Thu 16:30, Fri 16:30
+  Room: Dunning Hall 11 (Capacity: 82)
+
+
+CRSS Year 4 Courses:
+--------------------------------------------------------------------------------
+CRSS456: Molecular and Cellular Basis of Cardiovascular Disease
+  Professor: Donald Maurice
+  Students: 115
+  Schedule: Tue 09:30, Thu 13:30, Fri 13:30
+  Room: Stirling Hall B (Capacity: 150)
+
+
+DEVS Year 2 Courses:
+--------------------------------------------------------------------------------
+DEVS221: Indigenous Studies II - Resistance and Resurgence
+  Professor: Ian Fanning
+  Students: 23
+  Schedule: Mon 10:30, Wed 14:30, Thu 16:30
+  Room: Chernoff Hall AUD (Room 250) (Capacity: 253)
+
+DEVS240: Decolonizing Development
+  Professor: Ayca Tomac
+  Students: 43
+  Schedule: Mon 13:30, Tue 13:30, Wed 10:30
+  Room: Ellis Hall 324 (Capacity: 120)
+
+
+DRAM Year 2 Courses:
+--------------------------------------------------------------------------------
+DRAM242: Introduction to Theatre Production II
+  Professor: Joe Pagnan
+  Students: 95
+  Schedule: Mon 11:30, Thu 14:30, Fri 16:30
+  Room: Stirling Hall B (Capacity: 150)
+
+
+ECON Year 1 Courses:
+--------------------------------------------------------------------------------
+ECON110: Principles of Economics
+  Professor: Ian James Cromb
+  Students: 136
+  Schedule: Mon 13:30, Tue 10:30, Wed 09:30
+  Room: Biosciences 1102 (Capacity: 302)
+
+
+ECON Year 2 Courses:
+--------------------------------------------------------------------------------
+ECON222: Macroeconomic Theory I
+  Professor: Yiran Gong
+  Students: 141
+  Schedule: Tue 13:30, Thu 15:30, Fri 15:30
+  Room: Duncan McArthur AUD (Room B101/B205) (Capacity: 672)
+
+
+ECON Year 3 Courses:
+--------------------------------------------------------------------------------
+ECON320: Macroeconomic Theory II
+  Professor: Beverly Lapham
+  Students: 47
+  Schedule: Tue 16:30, Thu 16:30, Fri 09:30
+  Room: Jeffery Hall 127 (Capacity: 132)
+
+
+ECON Year 4 Courses:
+--------------------------------------------------------------------------------
+ECON426: International Macroeconomics
+  Professor: Gregor Smith
+  Students: 24
+  Schedule: Tue 15:30, Wed 16:30, Fri 08:30
+  Room: Jeffery Hall 234 (Capacity: 70)
+
+
+ELEC Year 2 Courses:
+--------------------------------------------------------------------------------
+ELEC271: Digital Systems
+  Professor: Ryan Grant
+  Students: 120
+  Schedule: Mon 12:30, Tue 15:30, Thu 12:30
+  Room: Etherington Hall AUD (Room G020/1031) (Capacity: 289)
+
+ELEC279: Introduction to Object Oriented Programming
+  Professor: Xiaodan Zhu
+  Students: 143
+  Schedule: Mon 09:30, Tue 16:30, Thu 08:30
+  Room: Dunning Hall AUD (Room 020) (Capacity: 425)
+
+
+ELEC Year 3 Courses:
+--------------------------------------------------------------------------------
+ELEC326: Probability & Random Processes
+  Professor: Saeed Gazor
+  Students: 104
+  Schedule: Mon 14:30, Wed 09:30, Fri 16:30
+  Room: Ellis Hall 324 (Capacity: 120)
+
+ELEC377: Operating Systems
+  Professor: Thomas R Dean
+  Students: 27
+  Schedule: Mon 09:30, Wed 14:30, Fri 11:30
+  Room: Humphrey Hall​ AUD (Room 102) (Capacity: 221)
+
+
+ELEC Year 4 Courses:
+--------------------------------------------------------------------------------
+ELEC451: Digital Integrated Circuit Engineering
+  Professor: Sean Whitehall
+  Students: 101
+  Schedule: Mon 10:30, Tue 15:30, Thu 12:30
+  Room: Stirling Hall B (Capacity: 150)
+
+
+ENCH Year 2 Courses:
+--------------------------------------------------------------------------------
+ENCH212: Principles of Chemical Reactivity
+  Professor: Jason Vlahakis
+  Students: 88
+  Schedule: Mon 13:30, Thu 08:30, Fri 15:30
+  Room: Chernoff Hall AUD (Room 250) (Capacity: 253)
+
+ENCH245: Applied Organic Chemistry I
+  Professor: Jason Vlahakis
+  Students: 68
+  Schedule: Mon 08:30, Wed 14:30, Fri 09:30
+  Room: Biosciences 1102 (Capacity: 302)
+
+
+ENGL Year 1 Courses:
+--------------------------------------------------------------------------------
+ENGL100: Introduction to Literary Study
+  Professor: Christopher J Fanning
+  Students: 27
+  Schedule: Tue 15:30, Thu 11:30, Fri 08:30
+  Room: Stirling Hall 414 (Capacity: 60)
+
+ENGL161: Modern Prose Fiction l: The Elements of Fiction
+  Professor: Adam Cotton
+  Students: 96
+  Schedule: Tue 10:30, Wed 11:30, Thu 15:30
+  Room: Biosciences 1101 (Capacity: 450)
+
+
+ENGL Year 2 Courses:
+--------------------------------------------------------------------------------
+ENGL215: Canadian Literature
+  Professor: Robert May
+  Students: 32
+  Schedule: Mon 14:30, Thu 16:30, Fri 13:30
+  Room: Ellis Hall 321 (Capacity: 136)
+
+ENGL235: Life Writing
+  Professor: Jesyka Taylor
+  Students: 39
+  Schedule: Mon 13:30, Tue 13:30, Wed 10:30
+  Room: Botterell Hall B143 (Capacity: 107)
+
+ENGL273: Literature and the Fantastic
+  Professor: Ruth Wehlau
+  Students: 96
+  Schedule: Tue 08:30, Wed 13:30, Fri 12:30
+  Room: Botterell Hall B147 (Capacity: 105)
+
+ENGL296: Introduction to Literary Criticism and Theory l
+  Professor: Angela Facundo
+  Students: 126
+  Schedule: Mon 09:30, Wed 08:30, Fri 10:30
+  Room: Jeffery Hall 127 (Capacity: 132)
+
+
+ENGL Year 3 Courses:
+--------------------------------------------------------------------------------
+ENGL310: Medieval Literature of the British Isles
+  Professor: Ruth Wehlau
+  Students: 84
+  Schedule: Mon 15:30, Wed 09:30, Thu 15:30
+  Room: Humphrey Hall​ AUD (Room 102) (Capacity: 221)
+
+ENGL356: British Fiction of the 19th Century
+  Professor: Heather A Evans
+  Students: 29
+  Schedule: Mon 16:30, Thu 13:30, Fri 16:30
+  Room: Botterell Hall B148 (Capacity: 30)
+
+ENGL357: 19th-Century British Literature and Visual Culture
+  Professor: Heather A Evans
+  Students: 75
+  Schedule: Tue 15:30, Wed 10:30, Thu 14:30
+  Room: Ellis Hall AUD (Room 152) (Capacity: 247)
+
+ENGL389: Context North America
+  Professor: Petra Fachinger
+  Students: 150
+  Schedule: Mon 09:30, Wed 12:30, Thu 09:30
+  Room: Chernoff Hall AUD (Room 250) (Capacity: 253)
+
+
+ENGL Year 4 Courses:
+--------------------------------------------------------------------------------
+ENGL431: Topics in Restoration and 18th-Century Literature I
+  Professor: Leslie Ritchie
+  Students: 29
+  Schedule: Mon 16:30, Thu 13:30, Fri 13:30
+  Room: Kinesiology 100 (Capacity: 173)
+
+ENGL476: Topics in Postcolonial Literature I
+  Professor: Christopher Laurence Bongie
+  Students: 108
+  Schedule: Mon 15:30, Wed 11:30, Fri 10:30
+  Room: Walter Light Hall AUD (Room 205) (Capacity: 201)
+
+ENGL482: Topics in Indigenous Literature II
+  Professor: Petra Fachinger
+  Students: 45
+  Schedule: Mon 10:30, Tue 14:30, Fri 15:30
+  Room: Stirling Hall C (Capacity: 150)
+
+ENGL486: Group III: Special Topics I
+  Professor: Veronika Kratz
+  Students: 72
+  Schedule: Mon 08:30, Wed 16:30, Thu 14:30
+  Room: Stirling Hall C (Capacity: 150)
+
+
+ENIN Year 2 Courses:
+--------------------------------------------------------------------------------
+ENIN200: Foundations of Entrepreneurship
+  Professor: Greg Bavington
+  Students: 119
+  Schedule: Wed 09:30, Thu 09:30, Fri 10:30
+  Room: Law Building 1 (Capacity: 152)
+
+
+ENPH Year 2 Courses:
+--------------------------------------------------------------------------------
+ENPH225: Mechanics
+  Professor: Mark Chen
+  Students: 62
+  Schedule: Mon 09:30, Wed 12:30, Fri 13:30
+  Room: Biosciences 1101 (Capacity: 450)
+
+
+ENPH Year 3 Courses:
+--------------------------------------------------------------------------------
+ENPH316: Mathematical Methods in Physics I
+  Professor: Lawrence M Widrow
+  Students: 57
+  Schedule: Tue 08:30, Wed 16:30, Thu 10:30
+  Room: Chernoff Hall AUD (Room 250) (Capacity: 253)
+
+
+ENSC Year 2 Courses:
+--------------------------------------------------------------------------------
+ENSC290: Introduction to Ecological Economics
+  Professor: Steven Moore
+  Students: 24
+  Schedule: Mon 12:30, Tue 08:30, Thu 16:30
+  Room: Stirling Hall 401 (Capacity: 58)
+
+
+ENSC Year 3 Courses:
+--------------------------------------------------------------------------------
+ENSC390: Sustainability
+  Professor: Diane Orihel
+  Students: 122
+  Schedule: Mon 14:30, Wed 09:30, Thu 08:30
+  Room: Walter Light Hall AUD (Room 205) (Capacity: 201)
+
+
+FILM Year 3 Courses:
+--------------------------------------------------------------------------------
+FILM390: Open Media Production
+  Professor: Gabriel Menotti
+  Students: 80
+  Schedule: Tue 09:30, Wed 10:30, Fri 10:30
+  Room: Humphrey Hall​ AUD (Room 102) (Capacity: 221)
+
+
+FREN Year 1 Courses:
+--------------------------------------------------------------------------------
+FREN150: Français intermédiaire
+  Professor: Michael Reyes
+  Students: 41
+  Schedule: Mon 08:30, Tue 14:30, Wed 16:30
+  Room: Stirling Hall 401 (Capacity: 58)
+
+
+FREN Year 2 Courses:
+--------------------------------------------------------------------------------
+FREN230: Analyse textuelle et étude de la langue
+  Professor: Julien Lefort-Favreau
+  Students: 54
+  Schedule: Tue 15:30, Wed 11:30, Fri 15:30
+  Room: Botterell Hall B143 (Capacity: 107)
+
+FREN231: Rédaction et style
+  Professor: Francesca Fiore
+  Students: 63
+  Schedule: Mon 15:30, Tue 09:30, Fri 16:30
+  Room: Kingston Hall​ 201 (Capacity: 170)
+
+
+GNDS Year 2 Courses:
+--------------------------------------------------------------------------------
+GNDS211: Feminist Histories
+  Professor: Nancy Butler
+  Students: 49
+  Schedule: Tue 10:30, Thu 09:30, Fri 12:30
+  Room: Jeffery Hall 234 (Capacity: 70)
+
+GNDS215: Introduction to Sexual and Gender Diversity
+  Professor: Elizabeth Brule
+  Students: 80
+  Schedule: Mon 16:30, Tue 08:30, Fri 13:30
+  Room: Dunning Hall 10 (Capacity: 96)
+
+
+GNDS Year 3 Courses:
+--------------------------------------------------------------------------------
+GNDS315: Feminist Pedagogies
+  Professor: Melissa Houghtaling
+  Students: 46
+  Schedule: Tue 11:30, Thu 15:30, Fri 16:30
+  Room: Chernoff Hall AUD (Room 250) (Capacity: 253)
+
+
+GPHY Year 2 Courses:
+--------------------------------------------------------------------------------
+GPHY209: Weather and Climate
+  Professor: Ian Strachan
+  Students: 38
+  Schedule: Mon 16:30, Wed 16:30, Fri 16:30
+  Room: Kinesiology 101 (Capacity: 106)
+
+
+GPHY Year 3 Courses:
+--------------------------------------------------------------------------------
+GPHY352: Gender and the City
+  Professor: Hilal Kara
+  Students: 49
+  Schedule: Tue 10:30, Wed 13:30, Thu 14:30
+  Room: Humphrey Hall​ AUD (Room 102) (Capacity: 221)
+
+
+GRMN Year 1 Courses:
+--------------------------------------------------------------------------------
+GRMN102: Beginner's German II
+  Professor: Monika Holzschuh Sator
+  Students: 137
+  Schedule: Tue 09:30, Thu 13:30, Fri 14:30
+  Room: Stirling Hall C (Capacity: 150)
+
+
+HIST Year 1 Courses:
+--------------------------------------------------------------------------------
+HIST105: Post-Confederation Canada: A History of the Present
+  Professor: Steven J Maynard
+  Students: 101
+  Schedule: Tue 13:30, Thu 16:30, Fri 12:30
+  Room: Stirling Hall AUD (Room 301D) (Capacity: 240)
+
+
+HIST Year 2 Courses:
+--------------------------------------------------------------------------------
+HIST206: The United States in the Gilded Age and Progressive Era, 1868-1920
+  Professor: Roseanne Currarino
+  Students: 135
+  Schedule: Mon 11:30, Wed 16:30, Thu 10:30
+  Room: Biosciences 1102 (Capacity: 302)
+
+
+HIST Year 3 Courses:
+--------------------------------------------------------------------------------
+HIST320: Indigenous History of North America
+  Professor: Scott Berthelette
+  Students: 67
+  Schedule: Mon 13:30, Tue 16:30, Wed 09:30
+  Room: Dunning Hall 27 (Capacity: 67)
+
+
+HLTH Year 1 Courses:
+--------------------------------------------------------------------------------
+HLTH101: Social Determinants of Health
+  Professor: Stevenson Fergus
+  Students: 62
+  Schedule: Mon 11:30, Wed 13:30, Thu 10:30
+  Room: Walter Light Hall AUD (Room 205) (Capacity: 201)
+
+
+HLTH Year 2 Courses:
+--------------------------------------------------------------------------------
+HLTH252: Introduction to Research Methods
+  Professor: Eun-Young Lee
+  Students: 116
+  Schedule: Mon 08:30, Thu 11:30, Fri 08:30
+  Room: Ellis Hall 324 (Capacity: 120)
+
+
+HLTH Year 3 Courses:
+--------------------------------------------------------------------------------
+HLTH315: Theory and Practice of Health Behaviour Change
+  Professor: Amy Latimer-Cheung
+  Students: 84
+  Schedule: Wed 08:30, Thu 14:30, Fri 10:30
+  Room: Ellis Hall 321 (Capacity: 136)
+
+
+ITLN Year 1 Courses:
+--------------------------------------------------------------------------------
+ITLN111: Beginning Italian I
+  Professor: Elena Cecchetto
+  Students: 25
+  Schedule: Mon 15:30, Tue 11:30, Fri 14:30
+  Room: Biosciences 1102 (Capacity: 302)
+
+
+KNPE Year 1 Courses:
+--------------------------------------------------------------------------------
+KNPE167: Socio-Cultural Dimensions of Sport and Physical Activity
+  Professor: Courtney Szto
+  Students: 38
+  Schedule: Tue 16:30, Wed 09:30, Fri 16:30
+  Room: Dupuis Hall 217 (Capacity: 104)
+
+
+KNPE Year 2 Courses:
+--------------------------------------------------------------------------------
+KNPE225: Advanced Human Physiology
+  Professor: Michael Tschakovsky
+  Students: 39
+  Schedule: Tue 10:30, Wed 14:30, Fri 15:30
+  Room: Stirling Hall B (Capacity: 150)
+
+KNPE255: Physical Activity, Fitness, and Health
+  Professor: Robert Ross
+  Students: 94
+  Schedule: Wed 10:30, Thu 09:30, Fri 08:30
+  Room: Biosciences 1102 (Capacity: 302)
+
+
+KNPE Year 3 Courses:
+--------------------------------------------------------------------------------
+KNPE339: Advanced Exercise Metabolism
+  Professor: Brendon Gurd
+  Students: 146
+  Schedule: Mon 14:30, Tue 09:30, Fri 16:30
+  Room: Etherington Hall AUD (Room G020/1031) (Capacity: 289)
+
+
+LATN Year 2 Courses:
+--------------------------------------------------------------------------------
+LATN209: Intermediate Latin
+  Professor: Bernard Kavanagh
+  Students: 56
+  Schedule: Tue 14:30, Wed 16:30, Thu 16:30
+  Room: Dunning Hall 12 (Capacity: 85)
+
+
+LLCU Year 2 Courses:
+--------------------------------------------------------------------------------
+LLCU214: Mafia Culture and the Power of Symbols, Rituals, and Myth
+  Professor: Antonio Nicaso
+  Students: 103
+  Schedule: Tue 16:30, Wed 16:30, Thu 10:30
+  Room: Dupuis Hall 215 (Capacity: 104)
+
+
+MATH Year 1 Courses:
+--------------------------------------------------------------------------------
+MATH130: Mathematics for Biochemistry and Life Sciences
+  Professor: Troy Day
+  Students: 96
+  Schedule: Wed 16:30, Thu 16:30, Fri 16:30
+  Room: Mackintosh-Corry Hall​ B201 (Capacity: 103)
+
+
+MATH Year 2 Courses:
+--------------------------------------------------------------------------------
+MATH228: Complex Analysis
+  Professor: Oleg I Bogoyavlenskij
+  Students: 84
+  Schedule: Tue 08:30, Wed 12:30, Thu 11:30
+  Room: Dunning Hall AUD (Room 020) (Capacity: 425)
+
+
+MATH Year 3 Courses:
+--------------------------------------------------------------------------------
+MATH314: Representations of the Symmetric Group
+  Professor: Brad Rodgers
+  Students: 132
+  Schedule: Mon 16:30, Wed 13:30, Thu 16:30
+  Room: Dunning Hall AUD (Room 020) (Capacity: 425)
+
+
+MATH Year 4 Courses:
+--------------------------------------------------------------------------------
+MATH402: Enumerative Combinatorics
+  Professor: Catherine Pfaff
+  Students: 63
+  Schedule: Mon 16:30, Tue 09:30, Thu 16:30
+  Room: Botterell Hall B147 (Capacity: 105)
+
+MATH472: Optimization and Control of Stochastic Systems
+  Professor: Serdar Yuksel
+  Students: 26
+  Schedule: Tue 11:30, Wed 16:30, Fri 11:30
+  Room: Dupuis Hall AUD (Room G01) (Capacity: 217)
+
+
+MECH Year 2 Courses:
+--------------------------------------------------------------------------------
+MECH210: Electronic Circuits and Motors for Mechatronics
+  Professor: Amy Wu
+  Students: 49
+  Schedule: Wed 12:30, Thu 14:30, Fri 14:30
+  Room: Dupuis Hall 217 (Capacity: 104)
+
+MECH221: Solid Mechanics I
+  Professor: Hao Sun
+  Students: 37
+  Schedule: Tue 10:30, Thu 09:30, Fri 11:30
+  Room: Stirling Hall 414 (Capacity: 60)
+
+MECH270: Materials Science and Engineering
+  Professor: Mark Daymond
+  Students: 146
+  Schedule: Mon 12:30, Tue 11:30, Wed 16:30
+  Room: Kinesiology 100 (Capacity: 173)
+
+
+MECH Year 3 Courses:
+--------------------------------------------------------------------------------
+MECH330: Applied Thermo II
+  Professor: Francesco Ambrogi
+  Students: 34
+  Schedule: Mon 16:30, Wed 11:30, Fri 16:30
+  Room: Dunning Hall 27 (Capacity: 67)
+
+MECH346: Heat Transfer
+  Professor: Baixuan Yang
+  Students: 75
+  Schedule: Mon 15:30, Tue 16:30, Wed 10:30
+  Room: Stirling Hall C (Capacity: 150)
+
+
+MECH Year 4 Courses:
+--------------------------------------------------------------------------------
+MECH455: Computer Integrated Manufacturing
+  Professor: Gene Zak
+  Students: 133
+  Schedule: Tue 12:30, Thu 16:30, Fri 15:30
+  Room: Humphrey Hall​ AUD (Room 102) (Capacity: 221)
+
+
+MICR Year 3 Courses:
+--------------------------------------------------------------------------------
+MICR360: Immunology
+  Professor: Sameh Basta
+  Students: 55
+  Schedule: Mon 08:30, Thu 12:30, Fri 15:30
+  Room: Biosciences 1101 (Capacity: 450)
+
+
+MUSC Year 1 Courses:
+--------------------------------------------------------------------------------
+MUSC104: Music Fundamentals
+  Professor: Cynthia Tormann
+  Students: 52
+  Schedule: Mon 14:30, Wed 09:30, Fri 11:30
+  Room: Duncan McArthur AUD (Room B101/B205) (Capacity: 672)
+
+MUSC112: Medium Ensemble
+  Professor: Sarah Moon
+  Students: 55
+  Schedule: Mon 11:30, Tue 14:30, Wed 13:30
+  Room: Chernoff Hall AUD (Room 250) (Capacity: 253)
+
+MUSC121: Applied Study I
+  Professor: Sarah Moon
+  Students: 86
+  Schedule: Mon 15:30, Tue 09:30, Fri 08:30
+  Room: Stirling Hall A (Capacity: 150)
+
+MUSC129: Keyboard Skills
+  Professor: Younggun Kim
+  Students: 121
+  Schedule: Wed 16:30, Thu 13:30, Fri 15:30
+  Room: Ellis Hall 321 (Capacity: 136)
+
+MUSC156: Introduction to Digital Audio Recording, Editing, and Mixing
+  Professor: Michael Lukaszuk
+  Students: 122
+  Schedule: Mon 13:30, Tue 13:30, Thu 14:30
+  Room: Dunning Hall AUD (Room 020) (Capacity: 425)
+
+MUSC191: Theory and Analysis I
+  Professor: Cecilia Livingston
+  Students: 42
+  Schedule: Mon 16:30, Tue 10:30, Wed 08:30
+  Room: Dupuis Hall AUD (Room G01) (Capacity: 217)
+
+
+MUSC Year 2 Courses:
+--------------------------------------------------------------------------------
+MUSC200: Small Ensemble
+  Professor: Sarah Moon
+  Students: 79
+  Schedule: Mon 14:30, Tue 10:30, Thu 16:30
+  Room: Stirling Hall A (Capacity: 150)
+
+
+MUSC Year 3 Courses:
+--------------------------------------------------------------------------------
+MUSC318: Applied Music 3A
+  Professor: Ms. Dianne Baird
+  Students: 101
+  Schedule: Wed 11:30, Thu 10:30, Fri 14:30
+  Room: Dunning Hall 14 (Capacity: 152)
+
+MUSC370: Topics in Advanced Conducting
+  Professor: Dan Tremblay
+  Students: 132
+  Schedule: Tue 11:30, Thu 13:30, Fri 08:30
+  Room: Humphrey Hall​ AUD (Room 102) (Capacity: 221)
+
+
+PHAR Year 4 Courses:
+--------------------------------------------------------------------------------
+PHAR480: Drug Discovery and Development
+  Professor: Terence Ozolins
+  Students: 77
+  Schedule: Mon 14:30, Tue 12:30, Fri 08:30
+  Room: Botterell Hall B143 (Capacity: 107)
+
+
+PHIL Year 1 Courses:
+--------------------------------------------------------------------------------
+PHIL111: What is Philosophy?
+  Professor: Jon Miller
+  Students: 125
+  Schedule: Wed 09:30, Thu 16:30, Fri 08:30
+  Room: Dunning Hall 14 (Capacity: 152)
+
+
+PHIL Year 2 Courses:
+--------------------------------------------------------------------------------
+PHIL275: Thinking Gender, Sex, and Love
+  Professor: Jacqueline M Davies
+  Students: 115
+  Schedule: Tue 15:30, Wed 12:30, Fri 16:30
+  Room: Biosciences 1102 (Capacity: 302)
+
+
+PHIL Year 3 Courses:
+--------------------------------------------------------------------------------
+PHIL324: Africana Philosophy II
+  Professor: Jon Miller
+  Students: 51
+  Schedule: Mon 13:30, Wed 15:30, Thu 09:30
+  Room: Humphrey Hall​ AUD (Room 102) (Capacity: 221)
+
+PHIL362: Further Studies in Logic
+  Professor: Adele Mercier
+  Students: 59
+  Schedule: Tue 13:30, Wed 16:30, Thu 08:30
+  Room: Humphrey Hall​ AUD (Room 102) (Capacity: 221)
+
+
+PHYS Year 1 Courses:
+--------------------------------------------------------------------------------
+PHYS118: Basic Physics
+  Professor: Anne Topper
+  Students: 109
+  Schedule: Tue 10:30, Wed 13:30, Fri 09:30
+  Room: Stirling Hall AUD (Room 301D) (Capacity: 240)
+
+
+PHYS Year 3 Courses:
+--------------------------------------------------------------------------------
+PHYS350: General Laboratory
+  Professor: Robert G Knobel
+  Students: 41
+  Schedule: Tue 15:30, Wed 15:30, Thu 14:30
+  Room: Dunning Hall 14 (Capacity: 152)
+
+
+POLS Year 2 Courses:
+--------------------------------------------------------------------------------
+POLS241: Comparative Politics: Transformations
+  Professor: Dalal Daoud
+  Students: 132
+  Schedule: Mon 11:30, Tue 16:30, Wed 13:30
+  Room: Dupuis Hall AUD (Room G01) (Capacity: 217)
+
+
+POLS Year 3 Courses:
+--------------------------------------------------------------------------------
+POLS318: The Canadian Welfare State
+  Professor: Rachel Laforest
+  Students: 83
+  Schedule: Tue 13:30, Wed 14:30, Thu 12:30
+  Room: Kinesiology 100 (Capacity: 173)
+
+POLS397: Topics in Gender and Politics
+  Professor: Mary-Rita Holland
+  Students: 92
+  Schedule: Wed 11:30, Thu 16:30, Fri 16:30
+  Room: Dunning Hall 10 (Capacity: 96)
+
+
+POLS Year 4 Courses:
+--------------------------------------------------------------------------------
+POLS471: Politics and Science in Technological Societies
+  Professor: Stephen Larin
+  Students: 84
+  Schedule: Tue 10:30, Wed 11:30, Thu 12:30
+  Room: Ellis Hall 321 (Capacity: 136)
+
+POLS478: Politics of Artificial Intelligence
+  Professor: Stephen Larin
+  Students: 134
+  Schedule: Mon 12:30, Tue 14:30, Wed 13:30
+  Room: Stirling Hall A (Capacity: 150)
+
+
+PSYC Year 1 Courses:
+--------------------------------------------------------------------------------
+PSYC100: Principles of Psychology
+  Professor: Anna Taylor
+  Students: 145
+  Schedule: Wed 13:30, Thu 11:30, Fri 10:30
+  Room: Biosciences 1102 (Capacity: 302)
+
+
+PSYC Year 2 Courses:
+--------------------------------------------------------------------------------
+PSYC251: Developmental Psychology
+  Professor: Laura Lambe
+  Students: 92
+  Schedule: Wed 12:30, Thu 12:30, Fri 16:30
+  Room: Jeffery Hall 156 (Capacity: 152)
+
+
+PSYC Year 3 Courses:
+--------------------------------------------------------------------------------
+PSYC305: Introduction to Comparative Cognition
+  Professor: Valerie Ann Kuhlmeier
+  Students: 50
+  Schedule: Mon 10:30, Tue 15:30, Fri 16:30
+  Room: Convocation Hall (Capacity: 183)
+
+PSYC337: Advanced Child Clinical Psychology
+  Professor: Luis Flores
+  Students: 115
+  Schedule: Mon 13:30, Thu 14:30, Fri 08:30
+  Room: Dupuis Hall AUD (Room G01) (Capacity: 217)
+
+PSYC343: Judgement and Decision Making
+  Professor: DAvid Hauser
+  Students: 111
+  Schedule: Mon 08:30, Thu 11:30, Fri 12:30
+  Room: Chernoff Hall 117 (Capacity: 123)
+
+PSYC397: History of Modern Psychology
+  Professor: Mary C Olmstead
+  Students: 98
+  Schedule: Tue 09:30, Wed 16:30, Fri 11:30
+  Room: Botterell Hall B139 (Capacity: 107)
+
+
+PSYC Year 4 Courses:
+--------------------------------------------------------------------------------
+PSYC436: Sexuality and Gender
+  Professor: Meredith Chivers
+  Students: 146
+  Schedule: Mon 16:30, Wed 16:30, Thu 16:30
+  Room: Jeffery Hall 155 (Capacity: 152)
+
+
+RELS Year 1 Courses:
+--------------------------------------------------------------------------------
+RELS132: Western Religions
+  Professor: Amarnath Amarasingam
+  Students: 72
+  Schedule: Tue 09:30, Thu 10:30, Fri 09:30
+  Room: Law Building 1 (Capacity: 152)
+
+
+RELS Year 2 Courses:
+--------------------------------------------------------------------------------
+RELS223: Buddhism
+  Professor: Colin Simonds
+  Students: 138
+  Schedule: Mon 15:30, Thu 16:30, Fri 14:30
+  Room: Dupuis Hall AUD (Room G01) (Capacity: 217)
+
+
+RELS Year 3 Courses:
+--------------------------------------------------------------------------------
+RELS331: Religion and Violence
+  Professor: Amarnath Amarasingam
+  Students: 63
+  Schedule: Mon 12:30, Wed 16:30, Fri 12:30
+  Room: Duncan McArthur AUD (Room B101/B205) (Capacity: 672)
+
+
+SOCY Year 2 Courses:
+--------------------------------------------------------------------------------
+SOCY211: Introduction to Statistics
+  Professor: Victoria Sytsma
+  Students: 119
+  Schedule: Mon 11:30, Wed 12:30, Fri 14:30
+  Room: Humphrey Hall​ AUD (Room 102) (Capacity: 221)
+
+SOCY226: Central Concepts in Sociological Theory
+  Professor: Thomas Abrams
+  Students: 123
+  Schedule: Mon 16:30, Tue 11:30, Thu 13:30
+  Room: Biosciences 1101 (Capacity: 450)
+
+SOCY276: Substantive Issues in Social Deviance
+  Professor: Nicole Myers
+  Students: 37
+  Schedule: Mon 14:30, Tue 12:30, Thu 11:30
+  Room: Isabel Bader Centre 329 (Capacity: 60)
+
+
+SOCY Year 3 Courses:
+--------------------------------------------------------------------------------
+SOCY301: Selected Topics in Sociology
+  Professor: Fauzia Husain
+  Students: 146
+  Schedule: Wed 12:30, Thu 16:30, Fri 12:30
+  Room: Kingston Hall​ 201 (Capacity: 170)
+
+
+SOFT Year 4 Courses:
+--------------------------------------------------------------------------------
+SOFT437: Performance Analysis
+  Professor: Samir Mohammad
+  Students: 44
+  Schedule: Mon 12:30, Tue 11:30, Wed 12:30
+  Room: Ellis Hall 321 (Capacity: 136)
+
+
+STAT Year 2 Courses:
+--------------------------------------------------------------------------------
+STAT252: Introductory Applied Probability
+  Professor: Glen Takahara
+  Students: 38
+  Schedule: Mon 11:30, Tue 10:30, Thu 15:30
+  Room: Dunning Hall AUD (Room 020) (Capacity: 425)
+
+STAT268: Statistics and Probability I
+  Professor: Yanglei Song
+  Students: 109
+  Schedule: Mon 10:30, Wed 13:30, Thu 08:30
+  Room: Law Building 1 (Capacity: 152)
+
+
+STAT Year 3 Courses:
+--------------------------------------------------------------------------------
+STAT362: R for Data Science
+  Professor: Brian Ling
+  Students: 125
+  Schedule: Mon 16:30, Wed 15:30, Fri 10:30
+  Room: Kingston Hall​ 201 (Capacity: 170)
+
+
+STAT Year 4 Courses:
+--------------------------------------------------------------------------------
+STAT473: Generalized Linear Models
+  Professor: Wenyu Jiang
+  Students: 58
+  Schedule: Mon 09:30, Tue 09:30, Fri 15:30
+  Room: Dunning Hall 14 (Capacity: 152)
+
+
+WRIT Year 1 Courses:
+--------------------------------------------------------------------------------
+WRIT125: Fundamentals of Academic Essay Writing
+  Professor: Lori Vos
+  Students: 144
+  Schedule: Tue 16:30, Wed 14:30, Thu 13:30
+  Room: Walter Light Hall AUD (Room 205) (Capacity: 201)
+
+
+WRIT Year 2 Courses:
+--------------------------------------------------------------------------------
+WRIT225: Writing for Research, Analysis, and Reflection
+  Professor: Martina Hardwick
+  Students: 63
+  Schedule: Mon 16:30, Thu 16:30, Fri 16:30
+  Room: Jeffery Hall 225 (Capacity: 65)
+
+

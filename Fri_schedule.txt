@@ -1,0 +1,380 @@
+Schedule for Fri:
+
+================================================================================
+
+08:30 - PHIL111: What is Philosophy?
+  Professor: Jon Miller
+  Room: Dunning Hall 14
+
+08:30 - MUSC121: Applied Study I
+  Professor: Sarah Moon
+  Room: Stirling Hall A
+
+08:30 - KNPE255: Physical Activity, Fitness, and Health
+  Professor: Robert Ross
+  Room: Biosciences 1102
+
+08:30 - BIOL369: Sex and Evolution
+  Professor: Adam K Chippindale
+  Room: Stirling Hall AUD (Room 301D)
+
+08:30 - HLTH252: Introduction to Research Methods
+  Professor: Eun-Young Lee
+  Room: Ellis Hall 324
+
+08:30 - PHAR480: Drug Discovery and Development
+  Professor: Terence Ozolins
+  Room: Botterell Hall B143
+
+08:30 - ARTH248: Introduction to Indigenous Arts of North America
+  Professor: Norman Vorano
+  Room: Biosciences 1101
+
+08:30 - PSYC337: Advanced Child Clinical Psychology
+  Professor: Luis Flores
+  Room: Dupuis Hall AUD (Room G01)
+
+08:30 - ANAT100: Anatomy of the Human Body
+  Professor: Leslie W MacKenzie
+  Room: Stirling Hall C
+
+08:30 - MUSC370: Topics in Advanced Conducting
+  Professor: Dan Tremblay
+  Room: Humphrey Hall​ AUD (Room 102)
+
+08:30 - ECON426: International Macroeconomics
+  Professor: Gregor Smith
+  Room: Jeffery Hall 234
+
+08:30 - ENGL100: Introduction to Literary Study
+  Professor: Christopher J Fanning
+  Room: Stirling Hall 414
+
+09:30 - ECON320: Macroeconomic Theory II
+  Professor: Beverly Lapham
+  Room: Jeffery Hall 127
+
+09:30 - APSC112: Physics II
+  Professor: Sarah Sadavoy
+  Room: Ellis Hall AUD (Room 152)
+
+09:30 - PHYS118: Basic Physics
+  Professor: Anne Topper
+  Room: Stirling Hall AUD (Room 301D)
+
+09:30 - ENCH245: Applied Organic Chemistry I
+  Professor: Jason Vlahakis
+  Room: Biosciences 1102
+
+09:30 - RELS132: Western Religions
+  Professor: Amarnath Amarasingam
+  Room: Law Building 1
+
+09:30 - CANC380: Evolutionary Biology of Cancer
+  Professor: Tiziana Cotechini
+  Room: Biosciences 1101
+
+10:30 - BIOL535: Selected Topics in Biology
+  Professor: George diCenzo
+  Room: Chernoff Hall AUD (Room 250)
+
+10:30 - STAT362: R for Data Science
+  Professor: Brian Ling
+  Room: Kingston Hall​ 201
+
+10:30 - HLTH315: Theory and Practice of Health Behaviour Change
+  Professor: Amy Latimer-Cheung
+  Room: Ellis Hall 321
+
+10:30 - ARTH451: Caravaggio and Artemisia
+  Professor: Gauvin Bailey
+  Room: Dunning Hall 14
+
+10:30 - FILM390: Open Media Production
+  Professor: Gabriel Menotti
+  Room: Humphrey Hall​ AUD (Room 102)
+
+10:30 - APSC143: Introduction to Computer Programming for Engineers
+  Professor: Samir Mohammad
+  Room: Convocation Hall
+
+10:30 - PSYC100: Principles of Psychology
+  Professor: Anna Taylor
+  Room: Biosciences 1102
+
+10:30 - ENGL476: Topics in Postcolonial Literature I
+  Professor: Christopher Laurence Bongie
+  Room: Walter Light Hall AUD (Room 205)
+
+10:30 - ENIN200: Foundations of Entrepreneurship
+  Professor: Greg Bavington
+  Room: Law Building 1
+
+10:30 - ARTH308: Gothic Art in Europe c.1150-1400
+  Professor: Matthew Reeve
+  Room: Jeffery Hall 156
+
+10:30 - ENGL296: Introduction to Literary Criticism and Theory l
+  Professor: Angela Facundo
+  Room: Jeffery Hall 127
+
+11:30 - PSYC397: History of Modern Psychology
+  Professor: Mary C Olmstead
+  Room: Botterell Hall B139
+
+11:30 - CHEE229: Cell Based Engineering Principles
+  Professor: Kevin De France
+  Room: Dunning Hall 14
+
+11:30 - MUSC104: Music Fundamentals
+  Professor: Cynthia Tormann
+  Room: Duncan McArthur AUD (Room B101/B205)
+
+11:30 - MATH472: Optimization and Control of Stochastic Systems
+  Professor: Serdar Yuksel
+  Room: Dupuis Hall AUD (Room G01)
+
+11:30 - ELEC377: Operating Systems
+  Professor: Thomas R Dean
+  Room: Humphrey Hall​ AUD (Room 102)
+
+11:30 - APSC171: Calculus I
+  Professor: Kexue Zhang
+  Room: Biosciences 1101
+
+11:30 - MECH221: Solid Mechanics I
+  Professor: Hao Sun
+  Room: Stirling Hall 414
+
+11:30 - ARTH121: Introduction to Global Art Histories
+  Professor: Gauvin Bailey
+  Room: Chernoff Hall AUD (Room 250)
+
+11:30 - CLST203: Myth and Religion
+  Professor: R Drew Griffith
+  Room: Stirling Hall B
+
+11:30 - CMPE365: Algorithms I
+  Professor: James A Stewart
+  Room: Ellis Hall 321
+
+12:30 - CISC181: Digital Societies
+  Professor: Carolyn Lamb
+  Room: Convocation Hall
+
+12:30 - APSC111: Physics I
+  Professor: Anthony J Noble
+  Room: Stirling Hall 414
+
+12:30 - PSYC343: Judgement and Decision Making
+  Professor: DAvid Hauser
+  Room: Chernoff Hall 117
+
+12:30 - SOCY301: Selected Topics in Sociology
+  Professor: Fauzia Husain
+  Room: Kingston Hall​ 201
+
+12:30 - GNDS211: Feminist Histories
+  Professor: Nancy Butler
+  Room: Jeffery Hall 234
+
+12:30 - ENGL273: Literature and the Fantastic
+  Professor: Ruth Wehlau
+  Room: Botterell Hall B147
+
+12:30 - RELS331: Religion and Violence
+  Professor: Amarnath Amarasingam
+  Room: Duncan McArthur AUD (Room B101/B205)
+
+12:30 - HIST105: Post-Confederation Canada: A History of the Present
+  Professor: Steven J Maynard
+  Room: Stirling Hall AUD (Room 301D)
+
+13:30 - BCHM102: Introduction to Biochemistry
+  Professor: Laura van Staalduinen
+  Room: Stirling Hall AUD (Room 301D)
+
+13:30 - ENGL431: Topics in Restoration and 18th-Century Literature I
+  Professor: Leslie Ritchie
+  Room: Kinesiology 100
+
+13:30 - APSC161: Engineering Graphics
+  Professor: Gene Zak
+  Room: Law Building 1
+
+13:30 - ENGL215: Canadian Literature
+  Professor: Robert May
+  Room: Ellis Hall 321
+
+13:30 - ENPH225: Mechanics
+  Professor: Mark Chen
+  Room: Biosciences 1101
+
+13:30 - CISC352: Artificial Intelligence
+  Professor: Christian Muise
+  Room: Stirling Hall 414
+
+13:30 - CRSS456: Molecular and Cellular Basis of Cardiovascular Disease
+  Professor: Donald Maurice
+  Room: Stirling Hall B
+
+13:30 - CHEM213: Introduction to Chemical Analysis
+  Professor: Zhe She
+  Room: Humphrey Hall​ AUD (Room 102)
+
+13:30 - GNDS215: Introduction to Sexual and Gender Diversity
+  Professor: Elizabeth Brule
+  Room: Dunning Hall 10
+
+14:30 - MUSC318: Applied Music 3A
+  Professor: Ms. Dianne Baird
+  Room: Dunning Hall 14
+
+14:30 - MECH210: Electronic Circuits and Motors for Mechatronics
+  Professor: Amy Wu
+  Room: Dupuis Hall 217
+
+14:30 - ITLN111: Beginning Italian I
+  Professor: Elena Cecchetto
+  Room: Biosciences 1102
+
+14:30 - APSC182: Applied Engineering Mechanics
+  Professor: Colin MacDougall
+  Room: Ellis Hall AUD (Room 152)
+
+14:30 - GRMN102: Beginner's German II
+  Professor: Monika Holzschuh Sator
+  Room: Stirling Hall C
+
+14:30 - BIOL315: Plants and Human Culture
+  Professor: Sarah Yakimowski
+  Room: Jeffery Hall 234
+
+14:30 - RELS223: Buddhism
+  Professor: Colin Simonds
+  Room: Dupuis Hall AUD (Room G01)
+
+14:30 - SOCY211: Introduction to Statistics
+  Professor: Victoria Sytsma
+  Room: Humphrey Hall​ AUD (Room 102)
+
+15:30 - MUSC129: Keyboard Skills
+  Professor: Younggun Kim
+  Room: Ellis Hall 321
+
+15:30 - ENCH212: Principles of Chemical Reactivity
+  Professor: Jason Vlahakis
+  Room: Chernoff Hall AUD (Room 250)
+
+15:30 - CIVL340: Geotechnical Engineering 1
+  Professor: Fady Abdelaal
+  Room: Law Building 1
+
+15:30 - KNPE225: Advanced Human Physiology
+  Professor: Michael Tschakovsky
+  Room: Stirling Hall B
+
+15:30 - STAT473: Generalized Linear Models
+  Professor: Wenyu Jiang
+  Room: Dunning Hall 14
+
+15:30 - FREN230: Analyse textuelle et étude de la langue
+  Professor: Julien Lefort-Favreau
+  Room: Botterell Hall B143
+
+15:30 - MICR360: Immunology
+  Professor: Sameh Basta
+  Room: Biosciences 1101
+
+15:30 - ENGL482: Topics in Indigenous Literature II
+  Professor: Petra Fachinger
+  Room: Stirling Hall C
+
+15:30 - ECON222: Macroeconomic Theory I
+  Professor: Yiran Gong
+  Room: Duncan McArthur AUD (Room B101/B205)
+
+15:30 - MECH455: Computer Integrated Manufacturing
+  Professor: Gene Zak
+  Room: Humphrey Hall​ AUD (Room 102)
+
+16:30 - COGS100: Introduction to Cognitive Science
+  Professor: Farhana Zulkernine
+  Room: Dunning Hall 11
+
+16:30 - KNPE167: Socio-Cultural Dimensions of Sport and Physical Activity
+  Professor: Courtney Szto
+  Room: Dupuis Hall 217
+
+16:30 - FREN231: Rédaction et style
+  Professor: Francesca Fiore
+  Room: Kingston Hall​ 201
+
+16:30 - BIOL103: Fundamentals of Biology: Organisms to Ecosystems
+  Professor: Christopher G Eckert
+  Room: Botterell Hall B143
+
+16:30 - MECH330: Applied Thermo II
+  Professor: Francesco Ambrogi
+  Room: Dunning Hall 27
+
+16:30 - PHIL275: Thinking Gender, Sex, and Love
+  Professor: Jacqueline M Davies
+  Room: Biosciences 1102
+
+16:30 - GPHY209: Weather and Climate
+  Professor: Ian Strachan
+  Room: Kinesiology 101
+
+16:30 - ELEC326: Probability & Random Processes
+  Professor: Saeed Gazor
+  Room: Ellis Hall 324
+
+16:30 - PSYC251: Developmental Psychology
+  Professor: Laura Lambe
+  Room: Jeffery Hall 156
+
+16:30 - PSYC305: Introduction to Comparative Cognition
+  Professor: Valerie Ann Kuhlmeier
+  Room: Convocation Hall
+
+16:30 - GNDS315: Feminist Pedagogies
+  Professor: Melissa Houghtaling
+  Room: Chernoff Hall AUD (Room 250)
+
+16:30 - WRIT225: Writing for Research, Analysis, and Reflection
+  Professor: Martina Hardwick
+  Room: Jeffery Hall 225
+
+16:30 - POLS397: Topics in Gender and Politics
+  Professor: Mary-Rita Holland
+  Room: Dunning Hall 10
+
+16:30 - ARTH292: Modern Architecture: Aesthetics, Capitalism, Industry
+  Professor: Katherine Romba
+  Room: Biosciences 1101
+
+16:30 - MATH130: Mathematics for Biochemistry and Life Sciences
+  Professor: Troy Day
+  Room: Mackintosh-Corry Hall​ B201
+
+16:30 - BCHM370: Genetics and Genomics
+  Professor: Laura van Staalduinen
+  Room: Dunning Hall 12
+
+16:30 - DRAM242: Introduction to Theatre Production II
+  Professor: Joe Pagnan
+  Room: Stirling Hall B
+
+16:30 - ANAT315: The Human Musculoskeletal System
+  Professor: Ronald Easteal
+  Room: Dupuis Hall 215
+
+16:30 - ENGL356: British Fiction of the 19th Century
+  Professor: Heather A Evans
+  Room: Botterell Hall B148
+
+16:30 - KNPE339: Advanced Exercise Metabolism
+  Professor: Brendon Gurd
+  Room: Etherington Hall AUD (Room G020/1031)
+
