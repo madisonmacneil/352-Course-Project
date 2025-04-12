@@ -29,3 +29,12 @@ df['prereq_codes'] = df['prereq_codes'].apply(clean_prereq_list)
 
 # Save cleaned CSV
 df.to_csv("bayesian/complete_courses_cleaned.csv", index=False)
+
+with open('department_info.txt', 'r') as file:
+    for line in file:
+        if ':' in line:
+            code, name = line.strip().split(':', 1)
+            dept_dict[code.strip()] = name.strip()
+
+print(f"Identified courses: {enrolled_courses}")
+print(f"The course '{major_course}' appears {course_counts[major_course]} times. Assuming major in '{dept_dict[major_prefix]}'.")
