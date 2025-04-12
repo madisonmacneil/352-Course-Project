@@ -379,6 +379,8 @@ for code in enrolled_courses:
         major_cat = 'History'
     elif student_major_prefix == 'BIOL':
         major_cat = 'Biology'
+    elif student_major_prefix == 'ENGL':
+        major_cat = 'English'
     else:
         major_cat = 'Other'
     
