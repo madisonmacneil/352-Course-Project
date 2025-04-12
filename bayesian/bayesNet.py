@@ -58,11 +58,6 @@ print(f"The course '{major_course}' appears {course_counts[major_course]} times.
 courses_df = pd.read_csv("csp/course_csp_limited.csv")
 prof_df = pd.read_csv("data/prof_qaulity_info.csv")
 
-# Extract all unique department prefixes to be valid majors
-all_course_codes = courses_df['course_code'].dropna().unique()
-major_categories = sorted(set("".join([c for c in code if not c.isdigit()]) for code in all_course_codes))
-major_categories.append('Other')  # fallback category
-
 class_size_map = dict(zip(courses_df['course_code'], courses_df['num_students']))
 prof_info_map = {}
 for _, row in prof_df.iterrows():
@@ -89,6 +84,7 @@ for code in enrolled_courses:
         "prof_difficulty": diff_val,
         "days": day_map.get(code, ["N/A"])
     }
+
 # ---------- Section 3: User Inputs ----------
 print("\nLet's learn more about you!")
 morning_pref = input("Are you a morning person or a night owl? (Enter 'morning' or 'night'): ").lower()
@@ -214,11 +210,11 @@ prob_dist = {
     },
     'major': {
         # Assume no strong correlation between major and grade for synthetic data
-        'A': {'Engineering': 0.25, 'Computing': 0.25, 'History': 0.25, 'Biology': 0.25, 'Other': 0.0},
-        'B': {'Engineering': 0.25, 'Computing': 0.25, 'History': 0.25, 'Biology': 0.25, 'Other': 0.0},
-        'C': {'Engineering': 0.25, 'Computing': 0.25, 'History': 0.25, 'Biology': 0.25, 'Other': 0.0},
-        'D': {'Engineering': 0.25, 'Computing': 0.25, 'History': 0.25, 'Biology': 0.25, 'Other': 0.0},
-        'F': {'Engineering': 0.25, 'Computing': 0.25, 'History': 0.25, 'Biology': 0.25, 'Other': 0.0}
+        'A': {'Engineering': 0.20, 'Computing': 0.20, 'History': 0.20, 'Biology': 0.20, 'Other': 0.2},
+        'B': {'Engineering': 0.20, 'Computing': 0.20, 'History': 0.20, 'Biology': 0.20, 'Other': 0.2},
+        'C': {'Engineering': 0.20, 'Computing': 0.20, 'History': 0.20, 'Biology': 0.20, 'Other': 0.2},
+        'D': {'Engineering': 0.20, 'Computing': 0.20, 'History': 0.20, 'Biology': 0.20, 'Other': 0.2},
+        'F': {'Engineering': 0.20, 'Computing': 0.20, 'History': 0.20, 'Biology': 0.20, 'Other': 0.2}
     },
     'major_match': {
         'A': {'No': 0.4, 'Yes': 0.6},
@@ -379,8 +375,6 @@ for code in enrolled_courses:
         major_cat = 'History'
     elif student_major_prefix == 'BIOL':
         major_cat = 'Biology'
-    elif student_major_prefix == 'ENGL':
-        major_cat = 'English'
     else:
         major_cat = 'Other'
     
