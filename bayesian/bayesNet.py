@@ -108,6 +108,55 @@ for code in enrolled_courses:
     }
 
 # Section 3: Prompt user for current GPA
+
+print("\nLet's learn more about you!")
+morning_pref = None
+while morning_pref not in ["morning", "night"]:
+    morning_pref = input("Are you a morning person or a night owl? (Enter 'morning' or 'night'): ").lower()
+
+# Collect info for each course
+friend_map = {}
+for course in enrolled_courses:
+    response = ""
+    while response not in ["yes", "no"]:
+        response = input(f"Do you have friends in {course}? (yes/no): ").lower()
+    friend_map[course] = response == "yes"
+
+print("\n\U0001F4D6 Your Schedule for Next Semester:")
+print(f"You are a {student_major_prefix} Major\n")
+
+# Print detailed course info
+for code in enrolled_courses:
+    info = course_info.get(code, {})
+    instructor = info.get("instructor", "N/A")
+    quality = info.get("prof_rating", "N/A")
+    difficulty = info.get("prof_difficulty", "N/A")
+    class_size = info.get("class_size", "Unknown")
+    course_name = info.get("name", "")
+    related = "Yes" if code.startswith(student_major_prefix) else "No"
+
+    # Try to get time and day from schedule
+    course_times = []
+    course_days = []
+    for line in schedule_lines:
+        if code in line:
+            time_str = line.split('-')[0].strip()
+            if time_str:
+                course_times.append(time_str)
+        elif any(day in line for day in ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]):
+            current_day = line.replace(":", "")
+            if code in schedule_lines[schedule_lines.index(line)+1]:
+                course_days.append(current_day)
+
+    print(f"\U0001F4D8 {code} - {course_name}")
+    print(f"\U0001F468‍\U0001F3EB Instructor: {instructor}")
+    print(f"⭐ Rating: {quality} | 💣 Difficulty: {difficulty}")
+    print(f"🕘 Time(s): {', '.join(course_times) if course_times else 'N/A'}")
+    print(f"📅 Days: {', '.join(course_days) if course_days else 'N/A'}")
+    print(f"🏫 Class Size: {class_size} students")
+    print(f"🧠 Related to Your Major: {related}")
+    print("".ljust(40, "-"))
+
 user_gpa = None
 while True:
     try:
@@ -368,10 +417,19 @@ for code in enrolled_courses:
             timing_cat = 'Afternoon'
         else:
             timing_cat = 'Morning'
+    
+     # morning pref
+    if morning_pref == "morning" and timing_cat == 'Morning':
+        gpa_adj = 0.2
+    elif morning_pref == "night" and timing_cat == 'Evening':
+        gpa_adj = 0.2
+    else:
+        gpa_adj = 0.0
     # GPA category (user's GPA: <2.5 Low, 2.5-3.49 Medium, >=3.5 High)
-    if user_gpa >= 3.5:
+    adjusted_gpa = min(4.3, user_gpa + gpa_adj)
+    if adjusted_gpa >= 3.5:
         gpa_cat = 'High'
-    elif user_gpa >= 2.5:
+    elif adjusted_gpa >= 2.5:
         gpa_cat = 'Medium'
     else:
         gpa_cat = 'Low'
@@ -386,11 +444,15 @@ for code in enrolled_courses:
         major_cat = 'Biology'
     else:
         major_cat = 'Other'
+
     # Major-course match (Yes if course prefix matches major prefix, else No)
     course_prefix = "".join([c for c in code if not c.isdigit()])
     match_cat = 'Yes' if course_prefix == student_major_prefix else 'No'
     # Participation category (assume Medium participation for all courses)
-    part_cat = 'Medium'
+    if friend_map[code]:
+        part_cat = 'High'
+    else:
+        part_cat = 'Medium'
     # Prerequisite average grade category from earlier input
     prereq_cat = prereq_avg_cat.get(code, 'None')
     # Append the encoded feature vector for this course
