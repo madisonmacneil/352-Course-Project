@@ -1,3 +1,9 @@
+"""
+This file is for scraping the necessary data for the CSP from queensu.ca
+Specifically getting data on the classroom spaces available on campus,
+Other Data such as courses and professors have been scraped for previously
+"""
+
 import csv
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
@@ -22,14 +28,14 @@ classrooms = [
 # Base URL
 base_url = "https://www.queensu.ca/classrooms/classrooms/"
 
-# CSV File Path
-csv_filename = "352-Course-Project/classrooms.csv"
+# CSV File Path - to data folder
+csv_filename = "../data/classrooms.csv"
 
 # Open CSV file for writing
 with open(csv_filename, mode="w", newline="", encoding="utf-8") as file:
     writer = csv.writer(file)
 
-    # Write column headers
+    # column headers
     writer.writerow(["Building", "Room Number", "Room Type", "Seats"])
 
     for classroom in classrooms:

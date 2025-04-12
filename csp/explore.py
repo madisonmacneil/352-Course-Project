@@ -2,7 +2,7 @@
 Some faculties have more than 15 courses of of the same year. For example there are 25 HIST 200 courses.
 Given our constraint of no courses from the same faculty and same year running at the same time there is a max of 15 slots for courses of the same year and faculty. 
 To accomodate for this any courses that make this constraint impossible, We remove random courses so there is a max of 10 courses for each year and faculty. 
-Thus there will be 10 random HIST 200 classes in the dataset. I chose 10 instead of 15 to give some breathing room and to allow the CSP to have more solutions. 
+Thus there will be 10 random HIST 200 classes in the dataset. I chose 10 instead of 15 to give some breathing room and to allow the CSP to solve faster.
 """
 
 import pandas as pd
@@ -11,14 +11,14 @@ import random
 
 random.seed(1)
 
-# Function to extract department code
+# extract department code
 def extract_department(course_code):
     match = re.search(r'([A-Z]+)', course_code)
     if match:
         return match.group(1)
     return "Unknown"
 
-# Function to extract year level
+# extract year level
 def extract_year(course_code):
     match = re.search(r'([A-Z]+)(\d)', course_code)
     if match:
@@ -26,7 +26,7 @@ def extract_year(course_code):
     return 0
 
 # Load the courses CSV
-courses_df = pd.read_csv('352-Course-Project/csp/course_csp.csv')
+courses_df = pd.read_csv('csp/course_csp.csv')
 
 # Add department and year columns for easier filtering
 courses_df['department'] = courses_df['course_code'].apply(extract_department)
@@ -66,9 +66,10 @@ for dept, year in excess_groups:
 
 # Save the modified dataframe
 courses_df.drop(['department', 'year'], axis=1, inplace=True)  # Remove helper columns
-courses_df.to_csv('352-Course-Project/csp/course_csp_limited.csv', index=False)
+courses_df.to_csv('csp/course_csp_limited.csv', index=False)
 
-# # Print summary
+# Print summary of what was removed to ensure worked as intented
+
 # print(f"\nModified dataset saved to: course_csp_limited.csv")
 # print(f"Total courses removed: {total_removed}")
 # print(f"Affected department-year combinations: {len(affected_dept_years)}")
@@ -82,7 +83,7 @@ courses_df.to_csv('352-Course-Project/csp/course_csp_limited.csv', index=False)
 # if len(removed_courses) > 10:
 #     print(f"  ...and {len(removed_courses) - 10} more")
 
-# Verify the changes: no department-year should have more than 10 courses now
+# Verify the changes: no department-year should have more than 10 courses 
 courses_df['department'] = courses_df['course_code'].apply(extract_department)
 courses_df['year'] = courses_df['course_code'].apply(extract_year)
 new_counts = courses_df.groupby(['department', 'year']).size()

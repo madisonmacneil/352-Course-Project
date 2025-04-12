@@ -1,37 +1,27 @@
-# Create prof preferences CSV, profs would all have opportnity to input preferences - to simulate this we will just generate some random preferences.
+""" 
+Create prof preferences CSV, profs would all have opportnity to input preferences 
+to simulate this we will just generate some random preferences.
+"""
 
 import pandas as pd
 import random
+from csp import TIME_BLOCKS, DAYS
 
-random.seed(1)
-
-TIME_BLOCKS = [
-    (8, 30),   # 8:30 AM
-    (9, 30),   # 9:30 AM
-    (10, 30),  # 10:30 AM
-    (11, 30),  # 11:30 AM
-    (12, 30),  # 12:30 PM
-    (13, 30),  # 1:30 PM
-    (14, 30),  # 2:30 PM
-    (15, 30),  # 3:30 PM
-    (16, 30),  # 4:30 PM
-]
-
-DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri"]
+random.seed(1) 
 
 # Load the courses CSV to get professors
-courses_df = pd.read_csv('352-Course-Project/csp/course_csp.csv')
+courses_df = pd.read_csv('csp/course_csp.csv')
 # Get unique professor names - some profs teach more than one course
 professors = courses_df['prof'].unique()
 
 # Generate preferences data
 preferences_data = []
 
-professor_weights = {prof: random.randint(30, 75) for prof in professors} # simulate age, older prof gets higher priority 
+professor_weights = {prof: random.randint(30, 75) for prof in professors} # simulate age, older prof gets higher priority - to simulate seniority 
 
 for prof in professors:
     # 80% chance of no exclusions - too many prof preferences kept giving no solutions so assume only 20% of profs would have preferences
-    # This number allowed for the csp to get feasable solutions more often
+    # This number allowed for the csp to get a feasable solutions more often
     if random.random() < 0.8: 
         continue
 
@@ -58,9 +48,11 @@ for prof in professors:
 
 # Create DataFrame and save to CSV
 preferences_df = pd.DataFrame(preferences_data)
-preferences_df.to_csv('352-Course-Project/csp/prof_preferences.csv', index=False)
+preferences_df.to_csv('csp/prof_preferences.csv', index=False)
 
 print(f"Generated prof_preferences.csv with {len(preferences_df)} preference entries for {len(professors)} professors")
+
+# Output for testing vvv
 
 # Print sample of the data
 print("\nSample of generated preferences:")

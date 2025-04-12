@@ -1,4 +1,6 @@
-# https://manningbooks.medium.com/constraint-satisfaction-problems-in-python-a1b4ba8dd3bb
+"""
+CSP functions and setup
+"""
 
 from ortools.sat.python import cp_model
 import re
@@ -112,18 +114,14 @@ class CourseScheduler:
     def add_professor_time_exclusion(self, professor: str, excluded_time_days: List[Tuple[int, int, List[str]]], weight: int = 10):
         """
         Add times when a professor would prefer not to teach (soft constraint)
-        
+        for the weight we randomly assign a professor an age to simulate seniority
         Args:
             professor (str): The professor's name
             excluded_time_days (List[Tuple[int, int, List[str]]]): List of (hour, minute, [days]) tuples
-            weight (int): Penalty weight for violating this preference (higher = more important)
+            weight (int): Penalty weight for violating this preference (higher = more important) 
         """
         self.professor_time_exclusions[professor] = excluded_time_days
         self.preference_weights[professor] = weight
-    
-    # def add_professor_day_preference(self, professor: str, preferred_days: List[str]):
-    #     """Add day preferences for a professor (e.g., ['Mon', 'Tue', 'Wed'])"""
-    #     self.professor_day_preferences[professor] = preferred_days
     
     def build_model(self):
         # Create variables for room and time slot assignments
@@ -312,22 +310,6 @@ class CourseScheduler:
                         # Add to list of penalties with weight
                         self.preference_penalties.append((penalty_var, weight))
     
-    # def add_professor_room_preference(self, course_code: str, preferred_rooms: List[str]):
-    #     """Add constraint for professor's room preference"""
-    #     if course_code not in [c.code for c in self.courses]:
-    #         raise ValueError(f"Course {course_code} not found")
-        
-    #     # Convert room names to indices
-    #     preferred_indices = [i for i, room in enumerate(self.rooms) if room.name in preferred_rooms]
-        
-    #     if not preferred_indices:
-    #         raise ValueError(f"None of the preferred rooms are valid for {course_code}")
-        
-    #     # Create a constraint that the room assignment must be one of the preferred rooms
-    #     self.model.AddAllowedAssignments(
-    #         [self.room_assignments[course_code]], 
-    #         [(i,) for i in preferred_indices]
-    #     )
     
     def solve(self, time_limit_seconds: int = 60) -> Optional[Dict[str, ScheduleAssignment]]:
         """Solve the course scheduling problem with soft constraints"""
@@ -573,16 +555,8 @@ def run_example():
         (2, 30, ["Mon", "Wed"])  # No 12:30 PM classes on Monday and Wednesday
     ], weight=10)  # Regular weight preference
     
-    # # Add professor day preferences
-    # scheduler.add_professor_day_preference("Dr. Smith", ["Mon", "Tue", "Wed"])
-    # scheduler.add_professor_day_preference("Dr. Johnson", ["Mon", "Wed", "Thu"])
-    # scheduler.add_professor_day_preference("Dr. Brown", ["Tue", "Thu"])
-    
     # Build the model
     scheduler.build_model()
-    
-    # # Add room preferences
-    # scheduler.add_professor_room_preference("PHYS101", ["B201", "B202"])
     
     # Solve
     solution = scheduler.solve(time_limit_seconds=60)

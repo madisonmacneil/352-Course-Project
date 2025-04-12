@@ -1,6 +1,9 @@
-# Create CSVs specifically for the CSP 
-# Create course_csp.csv which has Course Code, name of course, num of students, prof
-# create rooms.csv which has room name, capacity 
+
+"""
+Create CSVs specifically for the CSP 
+Create course_csp.csv which has Course Code, name of course, num of students, prof
+create rooms.csv which has room name, capacity 
+"""
 
 import pandas as pd
 import random
@@ -8,9 +11,9 @@ import random
 random.seed(1)
 
 # Load the CSV files
-classrooms_df = pd.read_csv('352-Course-Project/data/classrooms.csv')
-courses_df = pd.read_csv('352-Course-Project/data/working_dbs/courses_db.csv')
-instructors_df = pd.read_csv('352-Course-Project/data/working_dbs/filtered_course_instructors.csv')
+classrooms_df = pd.read_csv('data/classrooms.csv')
+courses_df = pd.read_csv('data/working_dbs/courses_db.csv')
+instructors_df = pd.read_csv('data/working_dbs/filtered_course_instructors.csv')
 
 # Process instructors data
 # Convert the courses_taught column from string to list
@@ -42,18 +45,18 @@ for _, row in courses_df.iterrows():
 course_csp_df = pd.DataFrame(course_csp_data)
 print(course_csp_df.head())
 
-course_csp_df.to_csv('352-Course-Project/csp/course_csp.csv', index=False)
+course_csp_df.to_csv('csp/course_csp.csv', index=False)
 
 # Create the rooms.csv file
 rooms_data = []
 for _, row in classrooms_df.iterrows():
     rooms_data.append({
-        'room_name': f"{row['Building']} {row['Room Number']}",
+        'room_name': f"{row['Room Number']}",
         'capacity': row['Seats']
     })
 
 rooms_df = pd.DataFrame(rooms_data)
-rooms_df.to_csv('352-Course-Project/csp/rooms.csv', index=False)
+rooms_df.to_csv('csp/rooms.csv', index=False)
 
 # Print summary statistics
 print(f"Generated course_csp.csv with {len(course_csp_df)} courses")
