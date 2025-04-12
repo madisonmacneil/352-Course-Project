@@ -5,45 +5,45 @@ Hypothetical Weekly Schedule
 
 Mon:
 ----------------------------------------
-09:30 - APSC171: Calculus I (Kexue Zhang)
-  Room: McLaughlin Hall 315
-15:30 - APSC111: Physics I (Anthony J Noble)
-  Room: Jeffery Hall 155
-15:30 - CISC101: Introduction to Computer Programming (Samir Mohammad)
-  Room: Botterell Hall B143
+09:30 - ENGL486: Group III: Special Topics I (Veronika Kratz)
+  Room: Kingston Hall​ 201
+13:30 - ENGL482: Topics in Indigenous Literature II (Petra Fachinger)
+  Room: Etherington Hall AUD (Room G020/1031)
+14:30 - CRSS456: Molecular and Cellular Basis of Cardiovascular Disease (Donald Maurice)
+  Room: Dunning Hall AUD (Room 020)
+16:30 - ENGL476: Topics in Postcolonial Literature I (Christopher Laurence Bongie)
+  Room: Duncan McArthur AUD (Room B101/B205)
+16:30 - MATH472: Optimization and Control of Stochastic Systems (Serdar Yuksel)
+  Room: Botterell Hall B148
 
 Tue:
 ----------------------------------------
-08:30 - APSC182: Applied Engineering Mechanics (Colin MacDougall)
-  Room: Stirling Hall A
-14:30 - CISC101: Introduction to Computer Programming (Samir Mohammad)
-  Room: Botterell Hall B143
-15:30 - HIST105: Post-Confederation Canada: A History of the Present (Steven J Maynard)
-  Room: Stirling Hall B
+08:30 - MATH472: Optimization and Control of Stochastic Systems (Serdar Yuksel)
+  Room: Botterell Hall B148
+09:30 - ENGL486: Group III: Special Topics I (Veronika Kratz)
+  Room: Kingston Hall​ 201
+09:30 - CRSS456: Molecular and Cellular Basis of Cardiovascular Disease (Donald Maurice)
+  Room: Dunning Hall AUD (Room 020)
+11:30 - ENGL476: Topics in Postcolonial Literature I (Christopher Laurence Bongie)
+  Room: Duncan McArthur AUD (Room B101/B205)
 
 Wed:
 ----------------------------------------
-13:30 - HIST105: Post-Confederation Canada: A History of the Present (Steven J Maynard)
-  Room: Stirling Hall B
-14:30 - APSC182: Applied Engineering Mechanics (Colin MacDougall)
-  Room: Stirling Hall A
+08:30 - MATH472: Optimization and Control of Stochastic Systems (Serdar Yuksel)
+  Room: Botterell Hall B148
+11:30 - ENGL476: Topics in Postcolonial Literature I (Christopher Laurence Bongie)
+  Room: Duncan McArthur AUD (Room B101/B205)
+16:30 - ENGL482: Topics in Indigenous Literature II (Petra Fachinger)
+  Room: Etherington Hall AUD (Room G020/1031)
 
 Thu:
 ----------------------------------------
-10:30 - APSC111: Physics I (Anthony J Noble)
-  Room: Jeffery Hall 155
-13:30 - APSC171: Calculus I (Kexue Zhang)
-  Room: McLaughlin Hall 315
-16:30 - APSC182: Applied Engineering Mechanics (Colin MacDougall)
-  Room: Stirling Hall A
+12:30 - ENGL486: Group III: Special Topics I (Veronika Kratz)
+  Room: Kingston Hall​ 201
+13:30 - CRSS456: Molecular and Cellular Basis of Cardiovascular Disease (Donald Maurice)
+  Room: Dunning Hall AUD (Room 020)
+16:30 - ENGL482: Topics in Indigenous Literature II (Petra Fachinger)
+  Room: Etherington Hall AUD (Room G020/1031)
 
 Fri:
 ----------------------------------------
-10:30 - APSC171: Calculus I (Kexue Zhang)
-  Room: McLaughlin Hall 315
-15:30 - APSC111: Physics I (Anthony J Noble)
-  Room: Jeffery Hall 155
-16:30 - CISC101: Introduction to Computer Programming (Samir Mohammad)
-  Room: Botterell Hall B143
-16:30 - HIST105: Post-Confederation Canada: A History of the Present (Steven J Maynard)
-  Room: Stirling Hall B

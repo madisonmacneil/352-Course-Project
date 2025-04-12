@@ -171,7 +171,7 @@ while True:
 
 # Section 4: Check for prerequisites for upper-year courses and prompt for grades if needed
 try:
-    prereq_df = pd.read_csv("complete_courses.csv", usecols=['course_code', 'prereq_codes'])
+    prereq_df = pd.read_csv("bayesian/complete_courses.csv", usecols=['course_code', 'prereq_codes'])
 except FileNotFoundError:
     print("Warning: 'complete_courses.csv' not found. Skipping prerequisite checks.")
     prereq_df = pd.DataFrame(columns=['course_code', 'prereq_codes'])
