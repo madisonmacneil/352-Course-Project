@@ -1,4 +1,5 @@
-# %% Imports and Data Loading
+#  Imports and Data Loading
+import re
 import pyro
 import pyro.distributions as dist
 import torch
@@ -10,10 +11,12 @@ import json
 pyro.set_rng_seed(0)
 
 # Load course information (course code, name, class size, professor)
-courses_df = pd.read_csv('csp/course_csp_limited.csv')
+courses_df = pd.read_csv('csp/course_csp.csv')
 # Load professor quality information (name, rating, difficulty, etc.)
 prof_df = pd.read_csv('data/prof_qaulity_info.csv')
 prof_df['diff_level'] = pd.to_numeric(prof_df['diff_level'], errors='coerce')  # convert 'N/A' to NaN for diff_level
+
+courses_full_df = pd.read_csv('bayesian/complete_courses.csv', usecols=['course_code', 'prereq_codes'])
 
 # Load mapping from majors to broad categories (category_map)
 category_map = {}
@@ -32,7 +35,38 @@ with open('bayesian/major_course_success_matrix.json') as f:
 dept_df = pd.read_csv('bayesian/complete_courses.csv', usecols=['department_name', 'department_code']).drop_duplicates()
 dept_to_name = {code: name for code, name in zip(dept_df['department_code'], dept_df['department_name'])}
 
-# %% Define helper functions for conditional probability tables (heuristic-based)
+#  Define helper functions for conditional probability tables (heuristic-based)
+def get_prereqs(course_code):
+    normalized_code = course_code.replace(" ", "").upper()
+    courses_full_df['normalized_code'] = courses_full_df['course_code'].str.replace(" ", "").str.upper()
+    row = courses_full_df[courses_full_df['normalized_code'] == normalized_code]
+    if row.empty:
+        return []
+    raw = row.iloc[0]['prereq_codes']
+    if pd.isna(raw):
+        return []
+    return re.findall(r'([A-Z]{3,4}\s?\d{3})', raw)
+
+def ask_user_for_prereq_grades(prereqs):
+    print("\nEnter your grades for the following prerequisites:")
+    grades = {}
+    for c in prereqs:
+        g = input(f"Grade for {c}: ").strip()
+        grades[c] = letter_to_gpa(g)
+    return grades
+
+def get_prof_of_course(code):
+    row = courses_df[courses_df['course_code'] == code]
+    return row.iloc[0]['prof'] if not row.empty else None
+
+def get_gpa_with_prof(prereq_grades, prof):
+    shared = []
+    for course, gpa in prereq_grades.items():
+        if get_prof_of_course(course) == prof:
+            shared.append(gpa)
+    return np.mean(shared) if shared else None
+
+
 def letter_to_gpa(letter):
     """Convert a letter grade to a numeric GPA (4.0 scale) for simplicity."""
     mapping = {'A': 4.0, 'B': 3.0, 'C': 2.0, 'D': 1.0, 'F': 0.0}
@@ -46,47 +80,61 @@ def get_subject_aptitude_probs(inputs):
     overall_gpa = inputs.get('overall_gpa')
     major_cat = inputs.get('major_category')
     course_cat = inputs.get('course_category')
-    # If prerequisite grade is available, use that as strongest indicator
+   
+    vec = []
+
     if prereq_grade is not None:
         if isinstance(prereq_grade, str):
             grade_val = letter_to_gpa(prereq_grade)
         else:
             grade_val = prereq_grade
         if grade_val >= 3.7:   # Excellent prerequisite performance
-            return [0.05, 0.15, 0.80]  # Mostly High aptitude
+            vec = [0.05, 0.15, 0.80]  # Mostly High aptitude
         elif grade_val >= 3.0: # Good performance
-            return [0.10, 0.60, 0.30]
+            vec = [0.10, 0.60, 0.30]
         elif grade_val >= 2.0: # Fair performance
-            return [0.30, 0.60, 0.10]
+            vec = [0.30, 0.60, 0.10]
         else:                  # Poor performance
-            return [0.70, 0.25, 0.05]
+            vec = [0.70, 0.25, 0.05]
+    
+    
+        # vec = [x / len(prereq_grade) for x in vec]
     # If GPA in this faculty is known (past courses in similar faculty)
     if gpa_faculty is not None:
         if gpa_faculty >= 3.7:
-            return [0.10, 0.30, 0.60]
+            vec = vec + np.array([0.10, 0.30, 0.60])
         elif gpa_faculty >= 3.0:
-            return [0.20, 0.50, 0.30]
+            vec = vec + np.array([0.20, 0.50, 0.30])
         elif gpa_faculty >= 2.0:
-            return [0.40, 0.50, 0.10]
+            vec = vec + np.array([0.40, 0.50, 0.10])
         else:
-            return [0.70, 0.25, 0.05]
+            vec = vec + np.array([0.70, 0.25, 0.05])
+
+        vec = [x / 2 for x in vec]
+
+    print(vec)
     # Otherwise, use overall GPA and major vs course alignment
     if major_cat == course_cat:
         # If the course is in the student's field of study
         if overall_gpa is not None and overall_gpa >= 3.7:
-            return [0.10, 0.30, 0.60]
+            vec = vec + np.array([0.10, 0.30, 0.60])
         elif overall_gpa is not None and overall_gpa >= 3.0:
-            return [0.20, 0.60, 0.20]
+            vec = vec + np.array([0.20, 0.60, 0.20])
         else:
-            return [0.50, 0.40, 0.10]
+            vec = vec + np.array([0.50, 0.40, 0.10])
+
+        print(vec)
     else:
         # Course is outside student's main field
         if overall_gpa is not None and overall_gpa >= 3.7:
-            return [0.20, 0.50, 0.30]
+            vec = vec + np.array([0.20, 0.50, 0.30])
         elif overall_gpa is not None and overall_gpa >= 3.0:
-            return [0.40, 0.50, 0.10]
+            vec = vec + np.array([0.40, 0.50, 0.10])
         else:
-            return [0.60, 0.35, 0.05]
+            vec = vec + np.array([0.60, 0.35, 0.05])
+    vec = [x / 2 for x in vec]
+    print(vec)
+    return(vec)
 
 def get_student_strength_probs(inputs):
     """Heuristic CPT for Student Strength (Low/Medium/High) given overall ability and commitments.
@@ -109,7 +157,7 @@ def get_student_strength_probs(inputs):
         if course_load > 5:  # overload of courses
             if base_strength == 'High': base_strength = 'Medium'
             elif base_strength == 'Medium': base_strength = 'Low'
-        elif course_load < 4:  # light load
+        elif course_load <= 4:  # light load
             if base_strength == 'Low': base_strength = 'Medium'
             elif base_strength == 'Medium': base_strength = 'High'
     # Adjust for job status (time and energy constraints)
@@ -142,8 +190,8 @@ def get_course_difficulty_probs(inputs):
     """Heuristic CPT for Course Difficulty (Low/Medium/High) given course attributes.
     Factors: course level, class type, additional components, professor's difficulty rating."""
     course_code = inputs.get('course_code', '')
-    class_type = inputs.get('class_type', '')
-    add_elems = inputs.get('additional_elements', [])  # list of additional elements (e.g., 'Lab', 'Project')
+    # class_type = inputs.get('class_type', '')
+    # add_elems = inputs.get('additional_elements', [])  # list of additional elements (e.g., 'Lab', 'Project')
     prof_diff = inputs.get('prof_diff')
     # Base difficulty from course level (e.g., 100-level Low, 300-level High)
     base_difficulty = 'Medium'
@@ -165,17 +213,7 @@ def get_course_difficulty_probs(inputs):
             base_difficulty = 'Medium'
         else:
             base_difficulty = 'Low'
-    # Adjust for class type (seminar courses often harder due to heavy participation/writing)
-    if 'Seminar' in class_type or 'Honours' in class_type:
-        base_difficulty = 'High'
-    # Adjust for additional course elements (labs, projects add workload/difficulty)
-    if isinstance(add_elems, str):
-        add_elems = [add_elems]
-    if any(elem in ['Lab', 'Project', 'Thesis'] for elem in add_elems):
-        if base_difficulty == 'Low':
-            base_difficulty = 'Medium'
-        elif base_difficulty == 'Medium':
-            base_difficulty = 'High'
+
     # Adjust for professor's difficulty rating (RateMyProf difficulty level)
     if prof_diff is not None:
         try:
@@ -210,13 +248,13 @@ def get_class_participation_probs(inputs):
             return [0.60, 0.40, 0.00]  # friend might slightly encourage engagement
         else:
             return [0.90, 0.10, 0.00]
-    # Medium classes (40-100 students)
-    elif class_size > 40:
+    # Medium classes (50-100 students)
+    elif class_size > 50:
         if has_friends:
             return [0.30, 0.60, 0.10]
         else:
             return [0.50, 0.50, 0.00]
-    # Small classes (<40 students)
+    # Small classes (<50 students)
     else:
         if has_friends:
             return [0.00, 0.40, 0.60]  # likely to participate a lot
@@ -228,50 +266,43 @@ def get_attendance_probs(inputs):
     If a specific attendance percentage is given, map it to a category with high certainty.
     Otherwise, use EarlyBird/NightOwl vs class timing/day to estimate attendance."""
     att_percent = inputs.get('attendance_percent')
+
+    vec = []
+
     if att_percent is not None:
         # Map attendance percentage directly to category (with minimal uncertainty)
         # High if >=66%, Medium if 33-65%, Low if <33%
         percent = att_percent if att_percent <= 100 else att_percent * 100  # handle if given 0-1 or 0-100
-        if percent >= 66:
-            return [0.0, 0.1, 0.9]   # almost certainly High attendance
-        elif percent >= 33:
-            return [0.1, 0.8, 0.1]   # mostly Medium
+        if percent >= 80:
+            vec = [0.0, 0.1, 0.9]   # almost certainly High attendance
+        elif percent >= 40:
+             vec = [0.1, 0.8, 0.1]   # mostly Medium
         else:
-            return [0.9, 0.1, 0.0]   # almost certainly Low attendance
+            vec = [0.9, 0.1, 0.0]   # almost certainly Low attendance
     # If no explicit percentage, use EarlyBird/NightOwl preference and class time/day
     early_bird = inputs.get('early_bird', False)
     class_time = inputs.get('class_time', None)
-    class_day = inputs.get('class_day', None)
     # Default base probability
-    probs = [0.2, 0.6, 0.2]  # default to medium attendance
     # Adjust for class timing relative to student's preference
     if class_time:
-        # Determine hour of class (assuming class_time is e.g. "8:30AM" or "14:00")
-        hour = None
-        time_str = str(class_time)
-        m = re.match(r'(\d+):?(\d*)\s*([AaPp][Mm])?', time_str)
-        if m:
-            hour_val = int(m.group(1))
-            ampm = m.group(3)
-            if ampm:
-                if ampm.lower().startswith('p') and hour_val != 12:
-                    hour_val += 12
-                if ampm.lower().startswith('a') and hour_val == 12:
-                    hour_val = 0
-            hour = hour_val
-        # If class is early morning and user is night owl -> likely low attendance
-        if hour is not None:
-            if hour < 10 and not early_bird:
-                probs = [0.8, 0.2, 0.0]
-            # If class is late evening and user is early bird -> likely low attendance
-            elif hour >= 17 and early_bird:
-                probs = [0.8, 0.2, 0.0]
-    # Adjust for class day (e.g., some students skip Friday classes if they can)
-    if class_day:
-        if 'fri' in str(class_day).lower() and not early_bird:
-            probs = [0.8, 0.2, 0.0]
-    return probs
 
+        for t in class_time:
+            time_str = str(t)
+            m = re.match(r'(\d+):', time_str)
+            hour = int(m.group(1))
+            # If class is early morning and user is night owl -> likely low attendance
+            if hour is not None:
+                if hour < 12 and not early_bird:
+                    vec = vec + np.array([0.8, 0.2, 0.0])
+                # early bird is likely to attend early class
+                elif hour < 12 and early_bird:
+                    vec = vec + np.array([0.0, 0.2, 0.8])
+                # afternoon class likely to be attend by night owl 
+                elif hour >= 1 and not early_bird:
+                    vec = vec + np.array([0.0, 0.2, 0.8])
+
+        vec = [x / len(class_time) for x in vec]
+    return vec
 def get_participation_marks_probs(attendance_level, participation_level):
     """CPT for Participation Marks (Low/Medium/High) based on attendance and class participation levels.
     Assumes full participation marks only if both attendance and participation are high, 
@@ -293,7 +324,7 @@ def get_participation_marks_probs(attendance_level, participation_level):
     else:
         return [0.1, 0.8, 0.1]   # Medium marks in most other cases
 
-# %% Define the Bayesian Network model using Pyro
+#  Define the Bayesian Network model using Pyro
 def bayes_net_model(inputs):
     # Sample Subject Aptitude (latent) given major background and performance
     p_apt = torch.tensor(get_subject_aptitude_probs(inputs), dtype=torch.float)
@@ -393,6 +424,12 @@ def explain_inference(course_code, user_profile):
     prof_rating = float(prof_row.iloc[0]['rating_val']) if not prof_row.empty else None
     prof_diff = float(prof_row.iloc[0]['diff_level']) if not prof_row.empty and pd.notna(prof_row.iloc[0]['diff_level']) else None
 
+    prereqs = get_prereqs(course_code)
+    print(f"DEBUG: Prereqs for {course_code} = {prereqs}")
+    prerequisite_grades = ask_user_for_prereq_grades(prereqs) if prereqs else {}
+    avg_prereq_gpa = np.mean(list(prerequisite_grades.values())) if prerequisite_grades else None
+    gpa_with_prof = get_gpa_with_prof(prerequisite_grades, professor_name)
+
     user_major = user_profile.get('major')
     if user_major in category_map:
         major_category = category_map[user_major]
@@ -411,20 +448,16 @@ def explain_inference(course_code, user_profile):
     # Model inputs
     inputs = {
         'major_category': major_category,
-        'course_category': course_category,
         'overall_gpa': user_profile.get('overall_gpa'),
         'gpa_in_faculty': user_profile.get('gpa_in_faculty'),
-        'gpa_with_prof': user_profile.get('gpa_with_prof'),
+        'gpa_with_prof': gpa_with_prof,
         'early_bird': user_profile.get('early_bird', False),
         'attendance_percent': user_profile.get('attendance_percent'),
         'class_time': user_profile.get('class_time'),
-        'class_day': user_profile.get('class_day'),
         'friends_in_class': user_profile.get('friends_in_class', False),
         'course_load': user_profile.get('course_load'),
         'job_status': user_profile.get('job_status'),
-        'prerequisite_grade': user_profile.get('prerequisite_grade'),
-        'class_type': user_profile.get('class_type', ''),
-        'additional_elements': user_profile.get('additional_elements', []),
+        'prerequisite_grade': avg_prereq_gpa,
         'class_size': class_size,
         'course_code': course_code,
         'prof_rating': prof_rating,
@@ -517,29 +550,22 @@ def explain_inference(course_code, user_profile):
     print(f"RateMyProf Rating: {prof_rating}")
     print(f"Difficulty Rating: {prof_diff}")
     print(f"Class Time       : {user_profile.get('class_time')}")
-    print(f"Class Day        : {user_profile.get('class_day')}")
-    print(f"Additional Elements: {user_profile.get('additional_elements')}")
 
     for g, p in zip(['A','B','C','D','F'], final.tolist()):
         print(f"{g}: {p:.2f}")
 
 
-# %% Example usage
+#  Example usage
 example_profile = {
-    'major': 'Business',      # Student's major
-    'overall_gpa': 3.2,               # Overall GPA
-    'gpa_in_faculty': 3.4,            # GPA in the faculty of the course (if applicable)
-    'gpa_with_prof': None,            # GPA in previous course with the same professor (if any)
+    'major': 'Computer Science',      # Student's major
+    'overall_gpa': 4.2,               # Overall GPA
+    'gpa_in_faculty': 4.3,            # GPA in the faculty of the course (if applicable)
     'early_bird': False,             # The student is a night owl (not an early bird)
-    'attendance_percent': 60,         # Expects to attend ~60% of classes
-    'class_time': '8:30AM',           # Course scheduled time
-    'class_day': 'Monday',            # Course scheduled day
-    'friends_in_class': False,        # No friends in this class
+    'attendance_percent': 50,         # Expects to attend ~60% of classes
+    'class_time': ['8:30', '12:30', '10:30'],        # Course scheduled time
+    'friends_in_class': True,        # No friends in this class
     'course_load': 5,                 # Taking 5 courses this semester
-    'job_status': 'Part-time',        # Has a part-time job
-    'prerequisite_grade': None,       # No specific prerequisite grade (or not applicable)
-    'class_type': 'Lecture',          # Class format/type
-    'additional_elements': ['Lab']    # Additional component: Lab present in course
+    'job_status': None,        # Has a part-time job
 }
-course_code = "CISC271"  # Selected course code (e.g., General Chemistry)
+course_code = "CISC423"  # Selected course code (e.g., General Chemistry)
 explain_inference(course_code, example_profile)
