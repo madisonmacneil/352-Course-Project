@@ -5,7 +5,7 @@ import random
 import re
 import itertools
 
-def generate_training_data(db_path='complete_info.db'):
+def generate_training_data(db_path='data/sql_dbs/limited_attributes.db'):
     """Generate a training dataset of natural language queries and corresponding SQL queries."""
     
     # Connect to the database
@@ -270,7 +270,7 @@ def generate_training_data(db_path='complete_info.db'):
     
     return df
 
-def save_training_data(df, output_path='course_query_training_data.csv'):
+def save_training_data(df, output_path='data/course_query_training_data.csv'):
     """Save the training data to a CSV file."""
     df.to_csv(output_path, index=False)
     print(f"Training data saved to {output_path}")

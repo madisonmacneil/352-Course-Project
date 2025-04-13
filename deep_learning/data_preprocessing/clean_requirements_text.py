@@ -1,7 +1,6 @@
 import pandas as pd 
 import re
 
-
 def extract_prerequisites(text):
     pattern = r"Prerequisites?:?\s*(.*?)(?=\s*(Corequisites|Corequisite|Exclusion|Exclusions|Recommended|$))"
     match = re.search(pattern, text, re.IGNORECASE)  # re.IGNORECASE makes it case insensitive
@@ -57,10 +56,9 @@ def remove_outcome_prefix(text):
     return None
 
 
-
 def main():
 
-    df = pd.read_csv('data/working_dbs/db.csv')
+    df = pd.read_csv('data/process_csvs/course_info/v1_db_raw.csv')
     print(df.head(5))
 
     #df has 2911 observations 
@@ -124,7 +122,7 @@ def main():
 
     department_codes = {}
 
-    with open('department_info.txt', 'r') as f:
+    with open('data/process_csvs/course_info/department_info.txt', 'r') as f:
         for line in f:
             key, value = line.strip().split(': ', 1)
             department_codes[key] = value
@@ -149,6 +147,6 @@ def main():
     df['department_name'] = dep_names
     df['year'] = years
     df['department_code'] = dep_codes
-    df.to_csv('data/myDB.csv')
+    df.to_csv('data/v2_db_requirements_parsed.csv')
 
 main()

@@ -14,7 +14,7 @@ def program_urls(path):
     for li in links:
         course_links.append(li.get_attribute("href"))
 
-    with open("links.csv", 'a') as myfile: 
+    with open("data/process_csvs/course_info/dept_links.csv", 'a') as myfile: 
         wr= csv.writer(myfile, quoting=csv.QUOTE_ALL)
         for link in course_links:
             wr.writerow([link])
@@ -45,7 +45,7 @@ def program_courses(url):
         course_info_collection.append(course_info)
 
     df = pd.DataFrame(course_info_collection, columns = ['course_code', 'course_name', 'units', 'description', 'requirements', 'faculty', 'outcomes'])
-    output_path = 'db.csv'
+    output_path = 'data/process_csvs/course_info/v1_db_raw.csv'
     df.to_csv(output_path, mode ='a', header = not os.path.exists(output_path))
     driver.quit()
 
@@ -61,9 +61,9 @@ def course_info_scrape(my_file):
             print(row[0])
             program_courses(row[0])
 
-#courses_url_by_faculty(['https://www.queensu.ca/academic-calendar/arts-science/course-descriptions/', 'https://www.queensu.ca/academic-calendar/engineering-applied-sciences/courses-instruction/'])
+courses_url_by_faculty(['https://www.queensu.ca/academic-calendar/arts-science/course-descriptions/', 'https://www.queensu.ca/academic-calendar/engineering-applied-sciences/courses-instruction/'])
 
-#course_info_scrape('courses.csv')
+course_info_scrape('data/process_csvs/course_info/v1_db_raw.csv')
 
 def get_department(pages):
     department_codes = {}
@@ -80,10 +80,10 @@ def get_department(pages):
             department_code = re.search(r"\((.*?)\)", dept_text).group(1)
             department_codes[department_code] = department_name
         
-    with open('department_info.txt', 'w') as f: 
+    with open('data/process_csvs/course_info/department_info.txt', 'w') as f: 
         for key in department_codes:
              f.write(f"{key}: {department_codes[key]}\n")
 
     driver.quit()
 
-#get_department(['https://www.queensu.ca/academic-calendar/arts-science/course-descriptions/', 'https://www.queensu.ca/academic-calendar/engineering-applied-sciences/courses-instruction/'])
+get_department(['https://www.queensu.ca/academic-calendar/arts-science/course-descriptions/', 'https://www.queensu.ca/academic-calendar/engineering-applied-sciences/courses-instruction/'])

@@ -7,7 +7,7 @@ import ast
 import re 
 
 def only_valid_courses():
-    courses_df = pd.read_csv('courses_db.csv')
+    courses_df = pd.read_csv('data/process_csvs/instructor_info/v2_requirements_parsed.csv')
 
     print(courses_df.head(5))
 
@@ -15,7 +15,7 @@ def only_valid_courses():
     for i in range(len(course_codes)):
         course_codes[i] = course_codes[i].replace(' ','')
 
-    rmp_courses = pd.read_csv('prof_classes.csv')
+    rmp_courses = pd.read_csv('data/process_csvs/instructor_info/v1_teaches_courses_raw.csv')
 
     rmp_classes = rmp_courses['courses_taught'].to_list()
 
@@ -35,13 +35,13 @@ def only_valid_courses():
         print(rmp_classes[i])
 
     rmp_courses['courses_taught'] = rmp_classes
-    rmp_courses.to_csv('prof_teaches.csv', index= False)
+    rmp_courses.to_csv('data/process_csvs/instructor_info/v2_teaches_course_valid.csv', index= False)
 
 def remove_profs_without_courses(): 
     '''
     This function removes any professor from the prof DB that does not have any associated courses.
     '''
-    df = pd.read_csv('prof_teaches.csv')
+    df = pd.read_csv('data/process_csvs/instructor_info/v2_teaches_course_valid.csv')
      # Convert 'courses_taught' column from string to list (if necessary)
     df['courses_taught'] = df['courses_taught'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
 
@@ -49,7 +49,7 @@ def remove_profs_without_courses():
     df = df[df['courses_taught'].apply(lambda x: len(x) > 0)]
 
     print(df.head(10))  # Check output before saving
-    df.to_csv('prof_teaches.csv', index=False)
+    df.to_csv('data/process_csvs/instructor_info/v2_teaches_course_valid.csv', index=False)
 
 
 def course_cross_check(): 
@@ -57,7 +57,7 @@ def course_cross_check():
     Confirm that every course that appears in the DB of profs from Rate my Prof, also appears in our DB of courses from the Queen's Official Website. 
     '''
 
-    df = pd.read_csv('prof_teaches.csv')
+    df = pd.read_csv('data/process_csvs/instructor_info/v2_teaches_course_valid.csv')
     rmp_classes = df['courses_taught'].to_list()
     all_rmp = []
     for i in range(len(rmp_classes)): 
@@ -65,7 +65,7 @@ def course_cross_check():
         for j in range(len(courses)): 
             all_rmp.append(courses[j])
 
-    courses_df = pd.read_csv('courses_db.csv')
+    courses_df = pd.read_csv('v2_db_requirements_parsed.csv')
     course_codes = courses_df['course_code'].tolist()
 
     for i in range(len(course_codes)):
@@ -86,8 +86,8 @@ def course_cross_check():
     print(len(courses_wo_profs))
 
 def instructors_to_main_db():
-    main_df = pd.read_csv('data/working_dbs/interim_db.csv')
-    prof_df = pd.read_csv('data/working_dbs/filtered_course_instructors.csv')
+    main_df = pd.read_csv('data/process_csvs/course_info/v3_db_new_attributes.csv')
+    prof_df = pd.read_csv('data/process_csvs/instructor_info/v2_teaches_course_valid.csv')
 
     courses_taught_by = {}
     count = 0 
@@ -124,7 +124,7 @@ def instructors_to_main_db():
     print(f"Courses Processed: {count}")
 
 
-    main_df.to_csv('data/Final_DB.csv', index = False)
+    main_df.to_csv('data/courses_instructors.csv', index = False)
 
 instructors_to_main_db()
 

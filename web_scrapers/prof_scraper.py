@@ -1,3 +1,7 @@
+'''
+This file gets the page links for every professor at Queen's, each to be scraped later for their information about 
+prof quality, and courses taught. 
+'''
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -121,13 +125,13 @@ def main():
                 all_prof_info.append(prof)
 
     df = pd.DataFrame(all_prof_info, columns=['name', 'rating_val', 'num_of_ratings', 'percent_would_take_again', 'diff_level', 'href'])
-    output_path = 'new_prof_info.csv'
+    output_path = 'data/prof_quality_info.csv'
 
     df.to_csv(output_path, mode='a', header=not os.path.exists(output_path))
 
     prof_hrefs = [prof['href'] for prof in all_prof_info]
 
-    with open("teacher_links.txt", "w") as f:
+    with open("data/process_csvs/instructor_info/teacher_links.txt", "w") as f:
         for link in prof_hrefs:
             f.write(link + "\n")
 

@@ -7,11 +7,11 @@ vocabulary the seq2seq model has to train on
 '''
 
 # Load the CSV (if needed)
-csv_path = 'data/Final_DB.csv'
+csv_path = 'data/courses_instructors.csv'
 df_csv = pd.read_csv(csv_path)
 
 # Connect to the existing DB
-original_conn = sqlite3.connect('complete_info.db')
+original_conn = sqlite3.connect('data/sql_dbs/complete_attrributes.db')
 
 # Query with properly quoted column name
 query = """
@@ -26,7 +26,7 @@ df = pd.read_sql_query(query, original_conn)
 original_conn.close()
 
 # Write to new DB
-new_conn = sqlite3.connect('new_courses.db')
+new_conn = sqlite3.connect('data/sql_dbs/attrributes.db')
 df.to_sql('complete_courses', new_conn, if_exists='replace', index=False)
 new_conn.close()
 

@@ -14,13 +14,13 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 # --- CONFIG ---
 API_KEY = "sk-77372cc3b1094a9ba27a8adb2faa1153"
 API_BASE = "https://api.deepseek.com"
-DB_PATH = 'db_courses.db'
+DB_PATH = 'data/sql_dbs/db_after_json_parse.db'
 FAILED_LOG = 'failed_batches.log'
-CSV_PATH = 'data/FINAL_DB.csv'
+CSV_PATH = 'data/courses_instructors.csv'
 START_INDEX = 2760 #need 210-610 done 0-1560
 BATCH_SIZE = 10
 NUM_ROWS = 150 
-MAX_THREADS = 5  # Number of threads to use for parallelism
+MAX_THREADS = 5  # Number of threads to use 
 
 # --- Setup API Client ---
 client = OpenAI(api_key=API_KEY, base_url=API_BASE)
