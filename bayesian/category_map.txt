@@ -1,0 +1,90 @@
+Mechanical Engineering: Engineering
+Electrical Engineering: Engineering
+Computer Engineering: Engineering
+Software Engineering: Engineering
+Engineering Chemistry: Engineering
+Engineering Physics: Engineering
+Civil Engineering: Engineering
+Mining Engineering: Engineering
+Geological Engineering: Engineering
+Chemical Engineering: Engineering
+Mechatronics and Robotics Engineering: Engineering
+Applied Science: Engineering
+Mining Technology: Engineering
+Computing: Computer Science
+Computing & Information Science: Computer Science
+Artificial Intelligence: Computer Science
+Computing & the Creative Arts: Computer Science
+Life Sciences: Life/Health Sciences
+Biology: Life/Health Sciences
+Microbiology & Immunology: Life/Health Sciences
+Biochemistry: Life/Health Sciences
+Neuroscience: Life/Health Sciences
+Cancer Research: Life/Health Sciences
+Pathology & Molecular Medicine: Life/Health Sciences
+Physiology: Life/Health Sciences
+Pharmacology & Toxicology: Life/Health Sciences
+Cardiorespiratory Science: Life/Health Sciences
+Community Health & Epidemiology: Life/Health Sciences
+Health Studies: Life/Health Sciences
+Reproduction & Development: Life/Health Sciences
+Drug Development & Human Toxicology: Life/Health Sciences
+Kinesiology & Physical Education: Life/Health Sciences
+Mathematics: Physical Sciences / Math
+Statistics: Physical Sciences / Math
+Statistics Multi Disciplines: Physical Sciences / Math
+Physics: Physical Sciences / Math
+Astronomy: Physical Sciences / Math
+Chemistry: Physical Sciences / Math
+Geology: Physical Sciences / Math
+Political Studies: Social Sciences
+Economics: Social Sciences
+Sociology: Social Sciences
+Gender Studies: Social Sciences
+Psychology: Social Sciences
+Cognitive Science: Social Sciences
+Employment Relations: Social Sciences
+Black Studies: Social Sciences
+Global Development Studies: Social Sciences
+International Studies: Social Sciences
+Entrepreneurship & Innovation: Social Sciences
+Politics, Philosophy, and Economics: Social Sciences
+History: Arts / Humanities
+Philosophy: Arts / Humanities
+Classical Studies: Arts / Humanities
+Religious Studies: Arts / Humanities
+Indigenous Knowledges & Perspectives: Arts / Humanities
+Jewish Studies: Arts / Humanities
+Liberal Studies: Arts / Humanities
+English Language & Literature: Arts / Humanities
+Writing: Arts / Humanities
+Creative Writing: Arts / Humanities
+French Studies: Languages / Literature
+French Language & Literature: Languages / Literature
+Languages, Literatures, and Cultures: Languages / Literature
+Language Acquisition: Languages / Literature
+Italian: Languages / Literature
+Spanish: Languages / Literature
+Portuguese: Languages / Literature
+Chinese: Languages / Literature
+Japanese: Languages / Literature
+German: Languages / Literature
+Hebrew: Languages / Literature
+Greek: Languages / Literature
+Latin: Languages / Literature
+Inuktitut: Languages / Literature
+Mohawk: Languages / Literature
+Linguistics: Languages / Literature
+Professional Internship: Business / Interdisciplinary
+Arts & Science: Interdisciplinary: Business / Interdisciplinary
+Interdisciplinary Studies: Business / Interdisciplinary
+Queen's Global Summer Program: Business / Interdisciplinary
+Bader College: Business / Interdisciplinary
+Fine Art: Fine Arts / Media
+Visual Art: Fine Arts / Media
+Art History: Fine Arts / Media
+Drama: Fine Arts / Media
+Film & Media: Fine Arts / Media
+Media & Performance Production: Fine Arts / Media
+Music: Fine Arts / Media
+Music Theatre: Fine Arts / Media

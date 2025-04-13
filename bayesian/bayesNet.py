@@ -8,6 +8,60 @@ import pandas as pd
 import numpy as np
 from sklearn.naive_bayes import CategoricalNB
 from sklearn.model_selection import train_test_split
+import json
+
+def load_major_category_map(file_path):
+    major_category_map = {}
+    with open(file_path, "r") as f:
+        for line in f:
+            if ":" in line:
+                major, category = line.strip().split(":", 1)
+                major_category_map[major.strip()] = category.strip()
+    return major_category_map
+
+def load_major_pairs_data():
+    # You can load from a file or use the data directly from your previous artifacts
+    with open('bayesian/major_course_success_matrix.json', 'r') as f:
+        return json.load(f)
+    
+# Create more comprehensive major distribution model
+class EnhancedMajorModel:
+    def __init__(self, major_pairs_data):
+        self.major_pairs_data = major_pairs_data
+        self.all_majors = self._extract_unique_majors()
+        
+    def _extract_unique_majors(self):
+        # Extract all unique majors from the pair keys
+        majors = set()
+        for key in self.major_pairs_data.keys():
+            major1, major2 = key.split('|')
+            majors.add(major1)
+            majors.add(major2)
+        return list(majors)
+    
+    def get_grade_probabilities(self, student_major, course_major):
+        """Get grade distribution when a student with student_major takes a course in course_major"""
+        key = f"{course_major}|{student_major}"
+        
+        # If exact match exists
+        if key in self.major_pairs_data:
+            return self.major_pairs_data[key]
+        
+        # Fallback: use general distribution
+        return {
+            "A": 0.2, 
+            "B": 0.3, 
+            "C": 0.3, 
+            "D": 0.15, 
+            "F": 0.05
+        }
+    
+    def sample_grade(self, student_major, course_major):
+        """Sample a grade based on student major and course major"""
+        probs = self.get_grade_probabilities(student_major, course_major)
+        grades = list(probs.keys())
+        probabilities = [probs[grade] for grade in grades]
+        return np.random.choice(grades, p=probabilities)
 
 # ---------- Section 1: Parse Schedule ----------
 try:
@@ -22,6 +76,8 @@ course_name_map = {}
 instructor_map = {}
 day_map = {}
 current_day = None
+# Initialize major-grade model
+major_model = EnhancedMajorModel(load_major_pairs_data())
 
 for line in schedule_lines:
     line = line.strip()
@@ -49,10 +105,22 @@ enrolled_courses = list(course_counts.keys())
 
 major_course = next((code for code, count in course_counts.items() if count == 3), max(course_counts, key=course_counts.get))
 major_prefix = "".join([c for c in major_course if not c.isdigit()])
-student_major_prefix = major_prefix
+dept_dict={}
 
+with open('department_info.txt', 'r') as file:
+    for line in file:
+        if ':' in line:
+            code, name = line.strip().split(':', 1)
+            dept_dict[code.strip()] = name.strip()
+student_major_prefix = {dept_dict[major_prefix]}
 print(f"Identified courses: {enrolled_courses}")
-print(f"The course '{major_course}' appears {course_counts[major_course]} times. Assuming major in '{student_major_prefix}' department.")
+print(f"The course '{major_course}' appears {course_counts[major_course]} times. Assuming major in '{dept_dict[major_prefix]}'.")
+
+student_major = dept_dict[major_prefix]
+file_path = "bayesian/category_map.txt" 
+major_category_dict = load_major_category_map(file_path)
+student_major = major_category_dict[student_major]
+print(student_major)
 
 # ---------- Section 2: Load Data ----------
 courses_df = pd.read_csv("csp/course_csp_limited.csv")
@@ -94,7 +162,7 @@ for course in enrolled_courses:
     friend_map[course] = response == "yes"
 
 print("\n\U0001F4D6 Your Schedule for Next Semester:")
-print(f"You are a {student_major_prefix} Major\n")
+print(f"You are a {student_major} Major\n")
 for code in enrolled_courses:
     info = course_info.get(code, {})
     print(f"\U0001F4D8 {code} - {info['name']}")
@@ -102,7 +170,7 @@ for code in enrolled_courses:
     print(f"⭐ Rating: {info['prof_rating']} | 💣 Difficulty: {info['prof_difficulty']}")
     print(f"📅 Days: {', '.join(set(info['days']))}")
     print(f"🏫 Class Size: {info['class_size']} students")
-    print(f"🧠 Related to Your Major: {'Yes' if code.startswith(student_major_prefix) else 'No'}")
+    print(f"🧠 Related to Your Major: {'Yes' if code.startswith(major_prefix) else 'No'}")
     print("".ljust(40, "-"))
 
 while True:
@@ -164,8 +232,7 @@ quality_levels      = ['Low', 'Medium', 'High']
 class_size_levels   = ['Small', 'Medium', 'Large']
 timing_levels       = ['Morning', 'Afternoon', 'Evening']
 gpa_levels          = ['Low', 'Medium', 'High']
-major_categories    = ['Engineering', 'Computing', 'History', 'Biology', 'Other']
-match_categories    = ['No', 'Yes']
+majors   = ["Engineering", "Computer Science / Computing", "Life Sciences / Health", "Physical Sciences / Math", "Social Sciences", "Arts / Humanities", "Languages / Literature", "Business / Interdisciplinary", "Fine Arts / Media"]
 participation_levels= ['Low', 'Medium', 'High']
 prereq_avg_levels   = ['None', 'Low', 'Medium', 'High']
 grade_levels        = ['A', 'B', 'C', 'D', 'F']
@@ -208,21 +275,8 @@ prob_dist = {
         'D': {'Low': 0.5, 'Medium': 0.4, 'High': 0.1},
         'F': {'Low': 0.7, 'Medium': 0.3, 'High': 0.0}
     },
-    'major': {
-        # Assume no strong correlation between major and grade for synthetic data
-        'A': {'Engineering': 0.20, 'Computing': 0.20, 'History': 0.20, 'Biology': 0.20, 'Other': 0.2},
-        'B': {'Engineering': 0.20, 'Computing': 0.20, 'History': 0.20, 'Biology': 0.20, 'Other': 0.2},
-        'C': {'Engineering': 0.20, 'Computing': 0.20, 'History': 0.20, 'Biology': 0.20, 'Other': 0.2},
-        'D': {'Engineering': 0.20, 'Computing': 0.20, 'History': 0.20, 'Biology': 0.20, 'Other': 0.2},
-        'F': {'Engineering': 0.20, 'Computing': 0.20, 'History': 0.20, 'Biology': 0.20, 'Other': 0.2}
-    },
-    'major_match': {
-        'A': {'No': 0.4, 'Yes': 0.6},
-        'B': {'No': 0.5, 'Yes': 0.5},
-        'C': {'No': 0.6, 'Yes': 0.4},
-        'D': {'No': 0.6, 'Yes': 0.4},
-        'F': {'No': 0.7, 'Yes': 0.3}
-    },
+    'major': load_major_pairs_data(),
+
     'participation': {
         'A': {'Low': 0.1, 'Medium': 0.3, 'High': 0.6},
         'B': {'Low': 0.2, 'Medium': 0.5, 'High': 0.3},
@@ -244,42 +298,49 @@ grade_prior = {'A': 0.20, 'B': 0.30, 'C': 0.25, 'D': 0.15, 'F': 0.10}
 # Generate synthetic dataset
 N = 2000  # number of synthetic student-course records
 synthetic_data = []
-np.random.seed(0)  # for reproducibility
-grades = list(grade_prior.keys())
-grade_probs = list(grade_prior.values())
+np.random.seed(0)
+
+# This is your real student major (e.g., 'Engineering')
+student_major = dept_dict[major_prefix]
+course_major = major_course  # the course's major or domain
 
 for _ in range(N):
-    # Sample a grade for the synthetic record
-    grade = np.random.choice(grades, p=grade_probs)
-    # Sample features based on the conditional distributions for this grade
-    diff_val = np.random.choice(difficulty_levels, p=list(prob_dist['difficulty'][grade].values()))
-    qual_val = np.random.choice(quality_levels,    p=list(prob_dist['quality'][grade].values()))
-    class_val = np.random.choice(class_size_levels, p=list(prob_dist['class_size'][grade].values()))
-    time_val  = np.random.choice(timing_levels,      p=list(prob_dist['timing'][grade].values()))
-    gpa_val   = np.random.choice(gpa_levels,         p=list(prob_dist['gpa'][grade].values()))
-    major_val = np.random.choice(major_categories,   p=list(prob_dist['major'][grade].values()))
-    match_val = np.random.choice(match_categories,   p=list(prob_dist['major_match'][grade].values()))
+    # Use your EnhancedMajorModel to sample a grade given student & course major
+    grade = major_model.sample_grade(student_major=student_major, course_major=course_major)
+    # Sample all features based on grade
+    diff_val = np.random.choice(difficulty_levels,     p=list(prob_dist['difficulty'][grade].values()))
+    qual_val = np.random.choice(quality_levels,        p=list(prob_dist['quality'][grade].values()))
+    class_val = np.random.choice(class_size_levels,    p=list(prob_dist['class_size'][grade].values()))
+    time_val  = np.random.choice(timing_levels,        p=list(prob_dist['timing'][grade].values()))
+    gpa_val   = np.random.choice(gpa_levels,           p=list(prob_dist['gpa'][grade].values()))
     part_val  = np.random.choice(participation_levels, p=list(prob_dist['participation'][grade].values()))
     prereq_val= np.random.choice(prereq_avg_levels,    p=list(prob_dist['prereq_avg'][grade].values()))
-    synthetic_data.append([diff_val, qual_val, class_val, time_val, gpa_val,
-                           major_val, match_val, part_val, prereq_val, grade])
+    major = np.random.choice(majors,  p=list(prob_dist['major'][grade].values()))
+    # Store synthetic record
+    synthetic_data.append([
+        diff_val, qual_val, class_val, time_val, gpa_val,
+        major, part_val, prereq_val, grade
+    ])
 
 # Map categories to numeric codes for model training
-difficulty_map   = {lvl: idx for idx, lvl in enumerate(difficulty_levels)}
-quality_map      = {lvl: idx for idx, lvl in enumerate(quality_levels)}
-class_map        = {lvl: idx for idx, lvl in enumerate(class_size_levels)}
-timing_map       = {lvl: idx for idx, lvl in enumerate(timing_levels)}
-gpa_map          = {lvl: idx for idx, lvl in enumerate(gpa_levels)}
-major_map        = {cat: idx for idx, cat in enumerate(major_categories)}
-match_map        = {cat: idx for idx, cat in enumerate(match_categories)}
-participation_map= {lvl: idx for idx, lvl in enumerate(participation_levels)}
-prereq_map       = {lvl: idx for idx, lvl in enumerate(prereq_avg_levels)}
-grade_map        = {gr: idx for idx, gr in enumerate(grade_levels)}
+difficulty_map    = {lvl: idx for idx, lvl in enumerate(difficulty_levels)}
+quality_map       = {lvl: idx for idx, lvl in enumerate(quality_levels)}
+class_map         = {lvl: idx for idx, lvl in enumerate(class_size_levels)}
+timing_map        = {lvl: idx for idx, lvl in enumerate(timing_levels)}
+gpa_map           = {lvl: idx for idx, lvl in enumerate(gpa_levels)}
+major_map         = {cat: idx for idx, cat in enumerate(major_model.all_majors)}
+match_map         = {cat: idx for idx, cat in enumerate(match_categories)}
+participation_map = {lvl: idx for idx, lvl in enumerate(participation_levels)}
+prereq_map        = {lvl: idx for idx, lvl in enumerate(prereq_avg_levels)}
+grade_map         = {gr: idx for idx, gr in enumerate(grade_levels)}
 
+print('this is major map', major_map)
 # Prepare feature matrix X and label vector y for the synthetic dataset
 X = []
 y = []
+print(synthetic_data)
 for record in synthetic_data:
+    print(student_major)
     diff_val, qual_val, class_val, time_val, gpa_val, major_val, match_val, part_val, prereq_val, grade = record
     X.append([
         difficulty_map[diff_val],
@@ -287,7 +348,7 @@ for record in synthetic_data:
         class_map[class_val],
         timing_map[time_val],
         gpa_map[gpa_val],
-        major_map[major_val],
+        major_map[student_major],
         match_map[match_val],
         participation_map[part_val],
         prereq_map[prereq_val]
@@ -366,17 +427,6 @@ for code in enrolled_courses:
         gpa_cat = 'Medium'
     else:
         gpa_cat = 'Low'
-    # Major category (map the student's major prefix to one of the defined major categories)
-    if student_major_prefix in ['APSC', 'MECH', 'ELEC', 'CIVL', 'CHEE', 'MINE', 'ENPH', 'MTHE', 'ENGR', 'ENSC']:
-        major_cat = 'Engineering'
-    elif student_major_prefix in ['CISC', 'SOFT', 'CMPE']:
-        major_cat = 'Computing'
-    elif student_major_prefix == 'HIST':
-        major_cat = 'History'
-    elif student_major_prefix == 'BIOL':
-        major_cat = 'Biology'
-    else:
-        major_cat = 'Other'
     
     # IMPORTANT: Make sure major_cat is in the major_map keys
     if major_cat not in major_map:
@@ -384,7 +434,7 @@ for code in enrolled_courses:
 
     # Major-course match (Yes if course prefix matches major prefix, else No)
     course_prefix = "".join([c for c in code if not c.isdigit()])
-    match_cat = 'Yes' if course_prefix == student_major_prefix else 'No'
+
     # Participation category based on friends
     if friend_map[code]:
         part_cat = 'High'
@@ -399,7 +449,6 @@ for code in enrolled_courses:
     if class_cat not in class_map: class_cat = 'Medium'
     if timing_cat not in timing_map: timing_cat = 'Afternoon'
     if gpa_cat not in gpa_map: gpa_cat = 'Medium'
-    if match_cat not in match_map: match_cat = 'No'
     if part_cat not in participation_map: part_cat = 'Medium'
     if prereq_cat not in prereq_map: prereq_cat = 'None'
     
@@ -411,7 +460,6 @@ for code in enrolled_courses:
         timing_map[timing_cat],
         gpa_map[gpa_cat],
         major_map[major_cat],  # No fallback needed as we've already sanitized
-        match_map[match_cat],
         participation_map[part_cat],
         prereq_map[prereq_cat]
     ])
@@ -421,9 +469,9 @@ user_X = np.array(user_X)
 proba_distributions = model.predict_proba(user_X)
 
 print("\nPredicted Grade Distributions:")
-# Print header for table
 header = f"{'Course':8}{'A':6}{'B':6}{'C':6}{'D':6}{'F':6}"
 print(header)
+
 # Print each course with probabilities for A, B, C, D, F
 for code, probs in zip(enrolled_courses, proba_distributions):
     # The model classes_ are [0,1,2,3,4] corresponding to [A,B,C,D,F] from our encoding

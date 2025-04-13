@@ -1,0 +1,569 @@
+{
+  "Engineering|Engineering": {
+    "A": 0.45,
+    "B": 0.3,
+    "C": 0.15,
+    "D": 0.07,
+    "F": 0.03
+  },
+  "Engineering|Computer Science": {
+    "A": 0.4,
+    "B": 0.3,
+    "C": 0.2,
+    "D": 0.07,
+    "F": 0.03
+  },
+  "Engineering|Life/Health Sciences": {
+    "A": 0.15,
+    "B": 0.25,
+    "C": 0.35,
+    "D": 0.15,
+    "F": 0.1
+  },
+  "Engineering|Physical Sciences / Math": {
+    "A": 0.3,
+    "B": 0.35,
+    "C": 0.25,
+    "D": 0.07,
+    "F": 0.03
+  },
+  "Engineering|Social Sciences": {
+    "A": 0.1,
+    "B": 0.25,
+    "C": 0.4,
+    "D": 0.15,
+    "F": 0.1
+  },
+  "Engineering|Arts / Humanities": {
+    "A": 0.1,
+    "B": 0.2,
+    "C": 0.4,
+    "D": 0.2,
+    "F": 0.1
+  },
+  "Engineering|Languages / Literature": {
+    "A": 0.05,
+    "B": 0.2,
+    "C": 0.45,
+    "D": 0.2,
+    "F": 0.1
+  },
+  "Engineering|Business / Interdisciplinary": {
+    "A": 0.15,
+    "B": 0.35,
+    "C": 0.3,
+    "D": 0.15,
+    "F": 0.05
+  },
+  "Engineering|Fine Arts / Media": {
+    "A": 0.05,
+    "B": 0.2,
+    "C": 0.4,
+    "D": 0.2,
+    "F": 0.15
+  },
+  "Computer Science|Computer Science": {
+    "A": 0.45,
+    "B": 0.35,
+    "C": 0.15,
+    "D": 0.04,
+    "F": 0.01
+  },
+  "Computer Science|Engineering": {
+    "A": 0.25,
+    "B": 0.35,
+    "C": 0.25,
+    "D": 0.1,
+    "F": 0.05
+  },
+  "Computer Science|Life/Health Sciences": {
+    "A": 0.15,
+    "B": 0.3,
+    "C": 0.3,
+    "D": 0.15,
+    "F": 0.1
+  },
+  "Computer Science|Physical Sciences / Math": {
+    "A": 0.3,
+    "B": 0.35,
+    "C": 0.25,
+    "D": 0.08,
+    "F": 0.02
+  },
+  "Computer Science|Social Sciences": {
+    "A": 0.15,
+    "B": 0.3,
+    "C": 0.35,
+    "D": 0.15,
+    "F": 0.05
+  },
+  "Computer Science|Arts / Humanities": {
+    "A": 0.1,
+    "B": 0.25,
+    "C": 0.4,
+    "D": 0.15,
+    "F": 0.1
+  },
+  "Computer Science|Languages / Literature": {
+    "A": 0.05,
+    "B": 0.2,
+    "C": 0.4,
+    "D": 0.2,
+    "F": 0.15
+  },
+  "Computer Science|Business / Interdisciplinary": {
+    "A": 0.2,
+    "B": 0.35,
+    "C": 0.3,
+    "D": 0.1,
+    "F": 0.05
+  },
+  "Computer Science|Fine Arts / Media": {
+    "A": 0.05,
+    "B": 0.15,
+    "C": 0.35,
+    "D": 0.25,
+    "F": 0.2
+  },
+  "Physical Sciences / Math|Physical Sciences / Math": {
+    "A": 0.45,
+    "B": 0.35,
+    "C": 0.15,
+    "D": 0.04,
+    "F": 0.01
+  },
+  "Physical Sciences / Math|Engineering": {
+    "A": 0.35,
+    "B": 0.35,
+    "C": 0.20,
+    "D": 0.07,
+    "F": 0.03
+  },
+  "Physical Sciences / Math|Computer Science": {
+    "A": 0.35,
+    "B": 0.35,
+    "C": 0.20,
+    "D": 0.07,
+    "F": 0.03
+  },
+  "Physical Sciences / Math|Life/Health Sciences": {
+    "A": 0.25,
+    "B": 0.35,
+    "C": 0.25,
+    "D": 0.10,
+    "F": 0.05
+  },
+  "Physical Sciences / Math|Social Sciences": {
+    "A": 0.15,
+    "B": 0.30,
+    "C": 0.35,
+    "D": 0.15,
+    "F": 0.05
+  },
+  "Physical Sciences / Math|Arts / Humanities": {
+    "A": 0.10,
+    "B": 0.25,
+    "C": 0.40,
+    "D": 0.15,
+    "F": 0.10
+  },
+  "Physical Sciences / Math|Languages / Literature": {
+    "A": 0.10,
+    "B": 0.20,
+    "C": 0.40,
+    "D": 0.20,
+    "F": 0.10
+  },
+  "Physical Sciences / Math|Business / Interdisciplinary": {
+    "A": 0.20,
+    "B": 0.30,
+    "C": 0.30,
+    "D": 0.15,
+    "F": 0.05
+  },
+  "Physical Sciences / Math|Fine Arts / Media": {
+    "A": 0.05,
+    "B": 0.15,
+    "C": 0.35,
+    "D": 0.25,
+    "F": 0.20
+  },
+  "Social Sciences|Social Sciences": {
+    "A": 0.40,
+    "B": 0.35,
+    "C": 0.15,
+    "D": 0.07,
+    "F": 0.03
+  },
+  "Social Sciences|Arts / Humanities": {
+    "A": 0.35,
+    "B": 0.35,
+    "C": 0.20,
+    "D": 0.07,
+    "F": 0.03
+  },
+  "Social Sciences|Languages / Literature": {
+    "A": 0.30,
+    "B": 0.35,
+    "C": 0.25,
+    "D": 0.07,
+    "F": 0.03
+  },
+  "Social Sciences|Life/Health Sciences": {
+    "A": 0.20,
+    "B": 0.35,
+    "C": 0.30,
+    "D": 0.10,
+    "F": 0.05
+  },
+  "Social Sciences|Physical Sciences / Math": {
+    "A": 0.15,
+    "B": 0.25,
+    "C": 0.35,
+    "D": 0.15,
+    "F": 0.10
+  },
+  "Social Sciences|Engineering": {
+    "A": 0.10,
+    "B": 0.20,
+    "C": 0.35,
+    "D": 0.20,
+    "F": 0.15
+  },
+  "Social Sciences|Computer Science": {
+    "A": 0.10,
+    "B": 0.25,
+    "C": 0.35,
+    "D": 0.20,
+    "F": 0.10
+  },
+  "Social Sciences|Business / Interdisciplinary": {
+    "A": 0.30,
+    "B": 0.35,
+    "C": 0.25,
+    "D": 0.07,
+    "F": 0.03
+  },
+  "Social Sciences|Fine Arts / Media": {
+    "A": 0.10,
+    "B": 0.20,
+    "C": 0.40,
+    "D": 0.20,
+    "F": 0.10
+  },
+  "Arts / Humanities|Arts / Humanities": {
+    "A": 0.45,
+    "B": 0.35,
+    "C": 0.15,
+    "D": 0.04,
+    "F": 0.01
+  },
+  "Arts / Humanities|Languages / Literature": {
+    "A": 0.35,
+    "B": 0.35,
+    "C": 0.20,
+    "D": 0.07,
+    "F": 0.03
+  },
+  "Arts / Humanities|Social Sciences": {
+    "A": 0.30,
+    "B": 0.35,
+    "C": 0.25,
+    "D": 0.07,
+    "F": 0.03
+  },
+  "Arts / Humanities|Life/Health Sciences": {
+    "A": 0.20,
+    "B": 0.30,
+    "C": 0.30,
+    "D": 0.15,
+    "F": 0.05
+  },
+  "Arts / Humanities|Computer Science": {
+    "A": 0.10,
+    "B": 0.20,
+    "C": 0.35,
+    "D": 0.20,
+    "F": 0.15
+  },
+  "Arts / Humanities|Engineering": {
+    "A": 0.05,
+    "B": 0.20,
+    "C": 0.35,
+    "D": 0.25,
+    "F": 0.15
+  },
+  "Arts / Humanities|Physical Sciences / Math": {
+    "A": 0.10,
+    "B": 0.25,
+    "C": 0.35,
+    "D": 0.20,
+    "F": 0.10
+  },
+  "Arts / Humanities|Business / Interdisciplinary": {
+    "A": 0.25,
+    "B": 0.35,
+    "C": 0.30,
+    "D": 0.07,
+    "F": 0.03
+  },
+  "Arts / Humanities|Fine Arts / Media": {
+    "A": 0.30,
+    "B": 0.30,
+    "C": 0.25,
+    "D": 0.10,
+    "F": 0.05
+  },
+  "Languages / Literature|Languages / Literature": {
+    "A": 0.45,
+    "B": 0.35,
+    "C": 0.15,
+    "D": 0.04,
+    "F": 0.01
+  },
+  "Languages / Literature|Arts / Humanities": {
+    "A": 0.40,
+    "B": 0.35,
+    "C": 0.15,
+    "D": 0.07,
+    "F": 0.03
+  },
+  "Languages / Literature|Social Sciences": {
+    "A": 0.30,
+    "B": 0.35,
+    "C": 0.25,
+    "D": 0.07,
+    "F": 0.03
+  },
+  "Languages / Literature|Life/Health Sciences": {
+    "A": 0.20,
+    "B": 0.30,
+    "C": 0.30,
+    "D": 0.15,
+    "F": 0.05
+  },
+  "Languages / Literature|Computer Science": {
+    "A": 0.10,
+    "B": 0.20,
+    "C": 0.35,
+    "D": 0.20,
+    "F": 0.15
+  },
+  "Languages / Literature|Engineering": {
+    "A": 0.05,
+    "B": 0.15,
+    "C": 0.35,
+    "D": 0.25,
+    "F": 0.20
+  },
+  "Languages / Literature|Physical Sciences / Math": {
+    "A": 0.10,
+    "B": 0.25,
+    "C": 0.35,
+    "D": 0.20,
+    "F": 0.10
+  },
+  "Languages / Literature|Business / Interdisciplinary": {
+    "A": 0.25,
+    "B": 0.35,
+    "C": 0.30,
+    "D": 0.07,
+    "F": 0.03
+  },
+  "Languages / Literature|Fine Arts / Media": {
+    "A": 0.25,
+    "B": 0.30,
+    "C": 0.30,
+    "D": 0.10,
+    "F": 0.05
+  },
+  "Business / Interdisciplinary|Business / Interdisciplinary": {
+    "A": 0.40,
+    "B": 0.35,
+    "C": 0.15,
+    "D": 0.07,
+    "F": 0.03
+  },
+  "Business / Interdisciplinary|Social Sciences": {
+    "A": 0.30,
+    "B": 0.35,
+    "C": 0.25,
+    "D": 0.07,
+    "F": 0.03
+  },
+  "Business / Interdisciplinary|Life/Health Sciences": {
+    "A": 0.20,
+    "B": 0.35,
+    "C": 0.30,
+    "D": 0.10,
+    "F": 0.05
+  },
+  "Business / Interdisciplinary|Engineering": {
+    "A": 0.10,
+    "B": 0.25,
+    "C": 0.35,
+    "D": 0.20,
+    "F": 0.10
+  },
+  "Business / Interdisciplinary|Computer Science": {
+    "A": 0.20,
+    "B": 0.30,
+    "C": 0.30,
+    "D": 0.15,
+    "F": 0.05
+  },
+  "Business / Interdisciplinary|Physical Sciences / Math": {
+    "A": 0.15,
+    "B": 0.30,
+    "C": 0.30,
+    "D": 0.15,
+    "F": 0.10
+  },
+  "Business / Interdisciplinary|Arts / Humanities": {
+    "A": 0.30,
+    "B": 0.35,
+    "C": 0.25,
+    "D": 0.07,
+    "F": 0.03
+  },
+  "Business / Interdisciplinary|Languages / Literature": {
+    "A": 0.20,
+    "B": 0.35,
+    "C": 0.30,
+    "D": 0.10,
+    "F": 0.05
+  },
+  "Business / Interdisciplinary|Fine Arts / Media": {
+    "A": 0.20,
+    "B": 0.30,
+    "C": 0.30,
+    "D": 0.15,
+    "F": 0.05
+  },
+  "Fine Arts / Media|Fine Arts / Media": {
+    "A": 0.45,
+    "B": 0.35,
+    "C": 0.15,
+    "D": 0.04,
+    "F": 0.01
+  },
+  "Fine Arts / Media|Languages / Literature": {
+    "A": 0.30,
+    "B": 0.35,
+    "C": 0.25,
+    "D": 0.07,
+    "F": 0.03
+  },
+  "Fine Arts / Media|Arts / Humanities": {
+    "A": 0.35,
+    "B": 0.35,
+    "C": 0.20,
+    "D": 0.07,
+    "F": 0.03
+  },
+  "Fine Arts / Media|Social Sciences": {
+    "A": 0.25,
+    "B": 0.30,
+    "C": 0.30,
+    "D": 0.10,
+    "F": 0.05
+  },
+  "Fine Arts / Media|Life/Health Sciences": {
+    "A": 0.15,
+    "B": 0.30,
+    "C": 0.35,
+    "D": 0.15,
+    "F": 0.05
+  },
+  "Fine Arts / Media|Engineering": {
+    "A": 0.05,
+    "B": 0.15,
+    "C": 0.35,
+    "D": 0.25,
+    "F": 0.20
+  },
+  "Fine Arts / Media|Computer Science": {
+    "A": 0.05,
+    "B": 0.20,
+    "C": 0.35,
+    "D": 0.25,
+    "F": 0.15
+  },
+  "Fine Arts / Media|Physical Sciences / Math": {
+    "A": 0.10,
+    "B": 0.25,
+    "C": 0.35,
+    "D": 0.20,
+    "F": 0.10
+  },
+  "Fine Arts / Media|Business / Interdisciplinary": {
+    "A": 0.25,
+    "B": 0.30,
+    "C": 0.30,
+    "D": 0.10,
+    "F": 0.05
+  },
+  "Life/Health Sciences|Life/Health Sciences": {
+    "A": 0.40,
+    "B": 0.35,
+    "C": 0.15,
+    "D": 0.07,
+    "F": 0.03
+  },
+  "Life/Health Sciences|Physical Sciences / Math": {
+    "A": 0.25,
+    "B": 0.35,
+    "C": 0.25,
+    "D": 0.10,
+    "F": 0.05
+  },
+  "Life/Health Sciences|Engineering": {
+    "A": 0.15,
+    "B": 0.25,
+    "C": 0.30,
+    "D": 0.20,
+    "F": 0.10
+  },
+  "Life/Health Sciences|Computer Science": {
+    "A": 0.10,
+    "B": 0.25,
+    "C": 0.35,
+    "D": 0.20,
+    "F": 0.10
+  },
+  "Life/Health Sciences|Social Sciences": {
+    "A": 0.25,
+    "B": 0.35,
+    "C": 0.25,
+    "D": 0.10,
+    "F": 0.05
+  },
+  "Life/Health Sciences|Arts / Humanities": {
+    "A": 0.20,
+    "B": 0.30,
+    "C": 0.30,
+    "D": 0.15,
+    "F": 0.05
+  },
+  "Life/Health Sciences|Languages / Literature": {
+    "A": 0.10,
+    "B": 0.20,
+    "C": 0.40,
+    "D": 0.20,
+    "F": 0.10
+  },
+  "Life/Health Sciences|Business / Interdisciplinary": {
+    "A": 0.20,
+    "B": 0.35,
+    "C": 0.30,
+    "D": 0.10,
+    "F": 0.05
+  },
+  "Life/Health Sciences|Fine Arts / Media": {
+    "A": 0.10,
+    "B": 0.25,
+    "C": 0.35,
+    "D": 0.20,
+    "F": 0.10
+  }
+}

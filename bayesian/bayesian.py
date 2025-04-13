@@ -1,3 +1,0 @@
-'''
-Bayesian Inference Implementation
-'''
