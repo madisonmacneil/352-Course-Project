@@ -68,81 +68,82 @@ def get_gpa_with_prof(prereq_grades, prof):
 
 
 def letter_to_gpa(letter):
-    """Convert a letter grade to a numeric GPA (4.0 scale) for simplicity."""
+    """Convert letter or numeric grades to GPA (0-4 scale)."""
+    letter = letter.strip().upper()
     mapping = {'A': 4.0, 'B': 3.0, 'C': 2.0, 'D': 1.0, 'F': 0.0}
-    return mapping.get(letter.upper(), 0.0)
+
+    if letter in mapping:
+        return mapping[letter]
+    else:
+        # Handle numeric input (0-100 scale)
+        try:
+            numeric_grade = float(letter)
+            if numeric_grade >= 85:
+                return 4.0  # A
+            elif numeric_grade >= 75:
+                return 3.0  # B
+            elif numeric_grade >= 65:
+                return 2.0  # C
+            elif numeric_grade >= 50:
+                return 1.0  # D
+            else:
+                return 0.0  # F
+        except ValueError:
+            return 0.0  # If it's neither letter nor numeric, default to 0
+
+def grade_percent_to_vec(grade_percent):
+    """Maps numerical grade percent (0-100) to aptitude vector."""
+    if grade_percent >= 90:
+        return np.array([0.05, 0.15, 0.80])  # High Aptitude
+    elif grade_percent >= 80:
+        return np.array([0.10, 0.60, 0.30])  # Good Aptitude
+    elif grade_percent >= 65:
+        return np.array([0.30, 0.60, 0.10])  # Medium Aptitude
+    elif grade_percent >= 50:
+        return np.array([0.60, 0.30, 0.10])  # Low Aptitude
+    else:
+        return np.array([0.80, 0.15, 0.05])  # Very Low Aptitude
 
 def get_subject_aptitude_probs(inputs):
-    """Heuristic CPT for Subject Aptitude (Low/Medium/High) given student background.
-    Factors considered: prerequisite grades, GPA in this faculty, overall GPA, and major-course alignment."""
+    # Conditional probability for Subject Aptitude based on inputs.
     gpa_faculty = inputs.get('gpa_in_faculty')
     prereq_grade = inputs.get('prerequisite_grade')
     overall_gpa = inputs.get('overall_gpa')
     major_cat = inputs.get('major_category')
     course_cat = inputs.get('course_category')
-   
-    vec = []
 
+    # CPT for subject aptitude
+    base_probs = [0.2, 0.4, 0.4]  # Default to a balanced distribution (Low, Medium, High)
+
+    # Example conditions for aptitude change
     if prereq_grade is not None:
-        if isinstance(prereq_grade, str):
-            grade_val = letter_to_gpa(prereq_grade)
+        if prereq_grade >= 85:
+            base_probs = [0.05, 0.25, 0.70]
+        elif prereq_grade >= 75:
+            base_probs = [0.10, 0.60, 0.30]
+        elif prereq_grade >= 65:
+            base_probs = [0.20, 0.50, 0.30]
         else:
-            grade_val = prereq_grade
-        if grade_val >= 3.7:   # Excellent prerequisite performance
-            vec = [0.05, 0.15, 0.80]  # Mostly High aptitude
-        elif grade_val >= 3.0: # Good performance
-            vec = [0.10, 0.60, 0.30]
-        elif grade_val >= 2.0: # Fair performance
-            vec = [0.30, 0.60, 0.10]
-        else:                  # Poor performance
-            vec = [0.70, 0.25, 0.05]
-    
-    
-        # vec = [x / len(prereq_grade) for x in vec]
-    # If GPA in this faculty is known (past courses in similar faculty)
+            base_probs = [0.50, 0.40, 0.10]
+
     if gpa_faculty is not None:
         if gpa_faculty >= 3.7:
-            vec = vec + np.array([0.10, 0.30, 0.60])
+            base_probs = [0.10, 0.30, 0.60]
         elif gpa_faculty >= 3.0:
-            vec = vec + np.array([0.20, 0.50, 0.30])
-        elif gpa_faculty >= 2.0:
-            vec = vec + np.array([0.40, 0.50, 0.10])
+            base_probs = [0.20, 0.50, 0.30]
         else:
-            vec = vec + np.array([0.70, 0.25, 0.05])
+            base_probs = [0.40, 0.40, 0.20]
 
-        vec = [x / 2 for x in vec]
-
-    print(vec)
-    # Otherwise, use overall GPA and major vs course alignment
-    if major_cat == course_cat:
-        # If the course is in the student's field of study
-        if overall_gpa is not None and overall_gpa >= 3.7:
-            vec = vec + np.array([0.10, 0.30, 0.60])
-        elif overall_gpa is not None and overall_gpa >= 3.0:
-            vec = vec + np.array([0.20, 0.60, 0.20])
-        else:
-            vec = vec + np.array([0.50, 0.40, 0.10])
-
-        print(vec)
-    else:
-        # Course is outside student's main field
-        if overall_gpa is not None and overall_gpa >= 3.7:
-            vec = vec + np.array([0.20, 0.50, 0.30])
-        elif overall_gpa is not None and overall_gpa >= 3.0:
-            vec = vec + np.array([0.40, 0.50, 0.10])
-        else:
-            vec = vec + np.array([0.60, 0.35, 0.05])
-    vec = [x / 2 for x in vec]
-    print(vec)
-    return(vec)
+    # Normalize probabilities
+    base_probs = np.array(base_probs) / np.sum(base_probs)
+    return base_probs.tolist()
 
 def get_student_strength_probs(inputs):
-    """Heuristic CPT for Student Strength (Low/Medium/High) given overall ability and commitments.
-    Factors: overall GPA, course load, job status, past performance with this professor."""
+    """Heuristic CPT for Student Strength (Low/Medium/High) given overall ability and commitments."""
     overall_gpa = inputs.get('overall_gpa')
     course_load = inputs.get('course_load')  # number of courses taken concurrently
     job_status = inputs.get('job_status')    # 'None', 'Part-time', 'Full-time'
-    gpa_with_prof = inputs.get('gpa_with_prof')
+
     # Start with overall GPA as base indicator of academic strength
     if overall_gpa is None:
         base_strength = 'Medium'
@@ -152,89 +153,55 @@ def get_student_strength_probs(inputs):
         base_strength = 'Medium'
     else:
         base_strength = 'Low'
-    # Adjust for course load (time availability)
+    
+    # Adjust for course load and job status
     if course_load:
         if course_load > 5:  # overload of courses
-            if base_strength == 'High': base_strength = 'Medium'
-            elif base_strength == 'Medium': base_strength = 'Low'
+            base_strength = 'Medium' if base_strength == 'High' else 'Low'
         elif course_load <= 4:  # light load
-            if base_strength == 'Low': base_strength = 'Medium'
-            elif base_strength == 'Medium': base_strength = 'High'
-    # Adjust for job status (time and energy constraints)
-    if job_status:
-        js = str(job_status).lower()
-        if 'part' in js:  # part-time job
-            if base_strength == 'High': base_strength = 'Medium'
-            elif base_strength == 'Medium': base_strength = 'Low'
-        elif 'full' in js:  # full-time job while studying
-            base_strength = 'Low'
-    # Adjust for experience with this professor
-    if gpa_with_prof is not None:
-        if gpa_with_prof >= 3.7:
-            # Did very well with this professor before -> increase strength
-            if base_strength == 'Medium': base_strength = 'High'
-            elif base_strength == 'Low': base_strength = 'Medium'
-        elif gpa_with_prof <= 3.0:
-            # Struggled with this professor -> decrease strength
-            if base_strength == 'High': base_strength = 'Medium'
-            elif base_strength == 'Medium': base_strength = 'Low'
-    # Return probability distribution based on final base_strength category
+            base_strength = 'High' if base_strength == 'Medium' else base_strength
+    
+    if job_status == 'part-time':
+        base_strength = 'Medium' if base_strength == 'High' else 'Low'
+    elif job_status == 'full-time':
+        base_strength = 'Low'
+
+    # Return probabilities based on strength
     if base_strength == 'High':
-        return [0.10, 0.20, 0.70]  # Mostly high strength
-    if base_strength == 'Medium':
+        return [0.10, 0.20, 0.70]
+    elif base_strength == 'Medium':
         return [0.10, 0.80, 0.10]
-    if base_strength == 'Low':
+    else:
         return [0.70, 0.20, 0.10]
 
 def get_course_difficulty_probs(inputs):
-    """Heuristic CPT for Course Difficulty (Low/Medium/High) given course attributes.
-    Factors: course level, class type, additional components, professor's difficulty rating."""
+    """Heuristic CPT for Course Difficulty based on course attributes."""
     course_code = inputs.get('course_code', '')
-    # class_type = inputs.get('class_type', '')
-    # add_elems = inputs.get('additional_elements', [])  # list of additional elements (e.g., 'Lab', 'Project')
     prof_diff = inputs.get('prof_diff')
-    # Base difficulty from course level (e.g., 100-level Low, 300-level High)
+
+    # Base difficulty based on course level
+    level_num = int(course_code[-3:])  # Assuming course code ends with level number
+
     base_difficulty = 'Medium'
-    # Determine course level from code (if numeric part is present)
-    level_num = None
-    for char in course_code:
-        if char.isdigit():
-            # extract continuous numeric part
-            pass
-    # (Simpler extraction using regex)
-    import re
-    m = re.search(r'\d+', course_code)
-    if m:
-        level_num = int(m.group())
-    if level_num is not None:
-        if level_num >= 300:
+    if level_num >= 300:
+        base_difficulty = 'High'
+    elif level_num >= 200:
+        base_difficulty = 'Medium'
+    else:
+        base_difficulty = 'Low'
+
+    # Adjust based on professor's difficulty rating
+    if prof_diff is not None:
+        if prof_diff >= 4.0:
             base_difficulty = 'High'
-        elif level_num >= 200:
-            base_difficulty = 'Medium'
-        else:
+        elif prof_diff <= 2.5:
             base_difficulty = 'Low'
 
-    # Adjust for professor's difficulty rating (RateMyProf difficulty level)
-    if prof_diff is not None:
-        try:
-            diff_val = float(prof_diff)
-        except:
-            diff_val = None
-        if diff_val is not None:
-            if diff_val >= 4.0:
-                base_difficulty = 'High'    # professor is known to be tough
-            elif diff_val <= 2.5:
-                # professor is easy; reduce difficulty one level
-                if base_difficulty == 'High':
-                    base_difficulty = 'Medium'
-                else:
-                    base_difficulty = 'Low'
-    # Return distribution based on base_difficulty
     if base_difficulty == 'High':
-        return [0.0, 0.3, 0.7]
-    if base_difficulty == 'Medium':
+        return [0.0, 0.3, 0.7]  # Likely hard
+    elif base_difficulty == 'Medium':
         return [0.1, 0.8, 0.1]
-    if base_difficulty == 'Low':
+    else:
         return [0.7, 0.3, 0.0]
 
 def get_class_participation_probs(inputs):
