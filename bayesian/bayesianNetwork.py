@@ -120,11 +120,11 @@ def get_subject_aptitude_probs(inputs):
         elif prof_grade >= 80:  # Good with this professor
             prof_vec = np.array([0.15, 0.35, 0.50])  # Above average aptitude
         elif prof_grade >= 75:  # Average with this professor
-            prof_vec = np.array([0.25, 0.50, 0.25])  # Average aptitude
+            prof_vec = np.array([0.25, 0.60, 0.20])  # Average aptitude
         elif prof_grade >= 70:  # Below average with this professor
-            prof_vec = np.array([0.40, 0.40, 0.20])  # Below average aptitude
+            prof_vec = np.array([0.40, 0.50, 0.10])  # Below average aptitude
         elif prof_grade >= 65:  # Poor with this professor
-            prof_vec = np.array([0.60, 0.30, 0.10])  # Low aptitude
+            prof_vec = np.array([0.60, 0.35, 0.05])  # Low aptitude
         else:  # Very poor with this professor
             prof_vec = np.array([0.80, 0.15, 0.05])  # Very low aptitude
         
@@ -156,8 +156,10 @@ def get_course_quality_probs(inputs):
             rating_vec = np.array([0.25, 0.50, 0.25])  # Neutral/average quality
         elif prof_rating >= 2.5:  # Below average professor
             rating_vec = np.array([0.45, 0.35, 0.20])  # Below average quality
+        elif prof_rating >= 1.5:  # Below average professor
+            rating_vec = np.array([0.7, 0.2, 0.10])  # Below average quality
         else:  # Poor professor
-            rating_vec = np.array([0.70, 0.20, 0.10])  # Low quality
+            rating_vec = np.array([0.80, 0.15, 0.05])  # Low quality
         
         base_vec = 0.30 * base_vec + 0.70 * rating_vec  # 70% impact from rating
     
@@ -168,7 +170,7 @@ def get_course_quality_probs(inputs):
         factors_applied += 1
         
         if prof_diff >= 4.5:  # Extremely difficult
-            diff_vec = np.array([0.75, 0.20, 0.05])  # Very low quality
+            diff_vec = np.array([0.85, 0.1, 0.05])  # Very low quality
         elif prof_diff >= 4.0:  # Very difficult
             diff_vec = np.array([0.60, 0.30, 0.10])  # Low quality
         elif prof_diff >= 3.5:  # Difficult
@@ -178,9 +180,11 @@ def get_course_quality_probs(inputs):
         elif prof_diff >= 2.5:  # Somewhat easy
             diff_vec = np.array([0.15, 0.35, 0.50])  # Above average quality
         elif prof_diff >= 2.0:  # Easy
+            diff_vec = np.array([0.10, 0.20, 0.60])  # High quality
+        elif prof_diff >= 1.0:  # Easy
             diff_vec = np.array([0.10, 0.20, 0.70])  # High quality
         else:  # Very easy
-            diff_vec = np.array([0.05, 0.15, 0.80])  # Very high quality
+            diff_vec = np.array([0.05, 0.1, 0.85])  # Very high quality
         
         base_vec = 0.40 * base_vec + 0.60 * diff_vec  # 60% impact from difficulty
     
@@ -293,72 +297,6 @@ def get_student_strength_probs(inputs):
         # Apply course load with 15% weight
         base_vec = 0.85 * base_vec + 0.15 * load_vec
     
-    # Apply professor rating effect
-    prof_rating = inputs.get('prof_rating')
-    if prof_rating is not None:
-        factors_applied += 1
-        # Strictly monotonic impact based on professor rating
-        if prof_rating >= 4.5:  # Excellent professor
-            rating_vec = np.array([0.05, 0.15, 0.80])  # Very positive
-        elif prof_rating >= 4.0:
-            rating_vec = np.array([0.10, 0.20, 0.70])  # Positive
-        elif prof_rating >= 3.5:
-            rating_vec = np.array([0.15, 0.35, 0.50])  # Slightly positive
-        elif prof_rating >= 3.0:  # Average/neutral
-            rating_vec = np.array([0.20, 0.50, 0.30])  # Neutral
-        elif prof_rating >= 2.5:
-            rating_vec = np.array([0.40, 0.40, 0.20])  # Negative
-        else:  # Poor professor
-            rating_vec = np.array([0.60, 0.30, 0.10])  # Very negative
-        
-        # Apply with 10% weight (reduced from 20%)
-        base_vec = 0.90 * base_vec + 0.10 * rating_vec
-    
-    # Professor difficulty effect
-    prof_diff = inputs.get('prof_diff')
-    if prof_diff is not None:
-        factors_applied += 1
-        # Higher difficulty = more negative impact (inverse relationship)
-        if prof_diff <= 1.5:  # Very easy
-            diff_vec = np.array([0.05, 0.15, 0.80])  # Very positive
-        elif prof_diff <= 2.5:  # Easy
-            diff_vec = np.array([0.10, 0.30, 0.60])  # Positive
-        elif prof_diff <= 3.0:  # Average/neutral
-            diff_vec = np.array([0.20, 0.50, 0.30])  # Neutral
-        elif prof_diff <= 3.5:  # Somewhat difficult
-            diff_vec = np.array([0.30, 0.50, 0.20])  # Slightly negative
-        elif prof_diff <= 4.0:  # Difficult
-            diff_vec = np.array([0.50, 0.30, 0.20])  # Negative
-        else:  # Very difficult
-            diff_vec = np.array([0.70, 0.20, 0.10])  # Very negative
-        
-        # Apply with 10% weight (reduced from 20%)
-        base_vec = 0.90 * base_vec + 0.10 * diff_vec
-    
-    # Morning/Evening person match with class time
-    early_bird = inputs.get('early_bird')
-    class_times = inputs.get('class_time', [])
-    if early_bird is not None and class_times:
-        factors_applied += 1
-        # Calculate proportion of morning classes
-        early_classes = sum(int(str(t).split(':')[0]) < 12 for t in class_times)
-        early_ratio = early_classes / len(class_times) if len(class_times) > 0 else 0
-        
-        # Match or mismatch effect
-        if early_bird and early_ratio >= 0.7:  # Morning person with morning classes
-            time_vec = np.array([0.10, 0.20, 0.70])  # Positive effect
-        elif not early_bird and early_ratio <= 0.3:  # Night person with evening classes
-            time_vec = np.array([0.10, 0.20, 0.70])  # Positive effect
-        elif early_bird and early_ratio <= 0.3:  # Morning person with evening classes
-            time_vec = np.array([0.20, 0.50, 0.30])  # Minor negative effect
-        elif not early_bird and early_ratio >= 0.7:  # Night person with morning classes
-            time_vec = np.array([0.50, 0.30, 0.20])  # Significant negative effect
-        else:  # Mixed schedule - neutral effect
-            time_vec = np.array([0.15, 0.35, 0.50])  # Neutral effect
-        
-        # Apply with 5% weight (reduced from 10%)
-        base_vec = 0.95 * base_vec + 0.05 * time_vec
-    
     # Special cases section
     
     # 1. Special case for exceptional students with excellent prerequisites
@@ -435,14 +373,6 @@ def get_student_strength_probs(inputs):
         negative_factors += 1
     if course_load is not None and course_load > 5:
         negative_factors += 1
-    if prof_rating is not None and prof_rating < 3.0:
-        negative_factors += 1
-    if prof_diff is not None and prof_diff > 3.5:
-        negative_factors += 1
-    if early_bird is not None and class_times and ((not early_bird and early_ratio >= 0.7) or (early_bird and early_ratio <= 0.3)):
-        negative_factors += 1
-    if inputs.get('friends_in_class') is False:
-        negative_factors += 1
     
     # Apply multiplicative penalty for multiple negative factors
     if negative_factors >= 3:
@@ -473,11 +403,32 @@ def get_participation_probs(inputs):
     friends_in_class = inputs.get('friends_in_class')
     if friends_in_class is not None:
         factors_applied += 1
-        friends_vec = np.array([0.10, 0.30, 0.60]) if friends_in_class else np.array([0.40, 0.40, 0.20])
+        friends_vec = np.array([0.10, 0.30, 0.60]) if friends_in_class else np.array([0.40, 0.30, 0.30])
         base_vec = 0.50 * base_vec + 0.50 * friends_vec  # 50% impact - significant
 
-    # Time match factor already handled in student strength for consistency
-    # No need to duplicate here
+       # Morning/Evening person match with class time
+    early_bird = inputs.get('early_bird')
+    class_times = inputs.get('class_time', [])
+    if early_bird is not None and class_times:
+        factors_applied += 1
+        # Calculate proportion of morning classes
+        early_classes = sum(int(str(t).split(':')[0]) < 12 for t in class_times)
+        early_ratio = early_classes / len(class_times) if len(class_times) > 0 else 0
+        
+        # Match or mismatch effect
+        if early_bird and early_ratio >= 0.5:  # Morning person with morning classes
+            time_vec = np.array([0.10, 0.20, 0.70])  # Positive effect
+        elif not early_bird and early_ratio < 0.5:  # Night person with evening classes
+            time_vec = np.array([0.10, 0.20, 0.70])  # Positive effect
+        elif early_bird and early_ratio < 0.5:  # Morning person with evening classes
+            time_vec = np.array([0.33, 0.34, 0.33])  # neutral effect
+        elif not early_bird and early_ratio >= 0.5:  # Night person with morning classes
+            time_vec = np.array([0.50, 0.30, 0.20])  # Significant negative effect
+        else:  # Mixed schedule - neutral effect
+            time_vec = np.array([0.33, 0.34, 0.33])  # Neutral effect
+        
+        # Apply with 5% weight (reduced from 10%)
+        base_vec = 0.95 * base_vec + 0.05 * time_vec
 
     if factors_applied > 0:
         base_vec = base_vec / base_vec.sum()
@@ -513,7 +464,7 @@ def expand_grade_dist_adaptive(basic_dist, inputs):
         struggling_b_weights = torch.tensor([0.20, 0.40, 0.40])  # Less B+
         
         # Extreme A+ bias for exceptional students
-        if basic_dist[0] > 0.98:  # Perfect student (this shouldn't happen for struggling students)
+        if basic_dist[0] > 0.98:  # Perfect student
             a_weights = torch.tensor([0.90, 0.08, 0.02])
         elif basic_dist[0] > 0.95:  # Nearly perfect
             a_weights = torch.tensor([0.80, 0.15, 0.05])
