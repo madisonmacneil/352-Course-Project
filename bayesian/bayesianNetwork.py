@@ -32,10 +32,6 @@ with open('bayesian/major_course_success_matrix.json') as f:
 dept_df = pd.read_csv('bayesian/complete_courses.csv', usecols=['department_name', 'department_code']).drop_duplicates()
 dept_to_name = {code: name for code, name in zip(dept_df['department_code'], dept_df['department_name'])}
 
-# -------------------------------------------------------------------------
-# Utility Functions
-# -------------------------------------------------------------------------
-
 def get_prereqs(course_code):
     """Get prerequisites for a course"""
     normalized_code = course_code.replace(" ", "").upper()
@@ -82,10 +78,6 @@ def percent_to_letter_and_gpa(percent):
     else:
         return 'F', 0.0
 
-# -------------------------------------------------------------------------
-# Factor Probability Functions
-# -------------------------------------------------------------------------
-
 def get_subject_aptitude_probs(inputs):
     base_vec = np.array([0.33, 0.34, 0.33])
     factors_applied = 0
@@ -106,7 +98,7 @@ def get_subject_aptitude_probs(inputs):
             major_vec = major_vec / major_vec.sum() if major_vec.sum() > 0 else base_vec
             base_vec = 0.30 * base_vec + 0.70 * major_vec  # 70% impact from major-course match
     
-    # Professor-specific performance factor - with stronger overall impact
+    # Professor-specific performance factor 
     prof_grade = inputs.get('prof_grade')
     if prof_grade is not None:
         factors_applied += 1
@@ -195,18 +187,13 @@ def get_course_quality_probs(inputs):
     return base_vec.tolist()
 
 def get_student_strength_probs(inputs):
-    """
-    Calculate student strength probabilities with much more realistic handling
-    of struggling students and better differentiation across the grade spectrum.
-    """
     base_vec = np.array([0.33, 0.34, 0.33])  # Neutral default
     factors_applied = 0
     
-    # Overall Grade Impact - 95% weight with more realistic probabilities
+    # Overall Grade Impact
     overall_grade = inputs.get('overall_grade')
     if overall_grade is not None:
         factors_applied += 1
-        # Much more realistic distribution across the grade spectrum
         if overall_grade >= 97:  # Near perfect
             gpa_vec = np.array([0.00, 0.00, 1.00])  # Guaranteed high strength
         elif overall_grade >= 95:  # Exceptional
@@ -220,13 +207,13 @@ def get_student_strength_probs(inputs):
         elif overall_grade >= 75:  # Above average
             gpa_vec = np.array([0.15, 0.55, 0.30])
         elif overall_grade >= 70:  # Average
-            gpa_vec = np.array([0.30, 0.60, 0.10])  # Reduced high strength
+            gpa_vec = np.array([0.30, 0.60, 0.10])  
         elif overall_grade >= 65:  # Below average
-            gpa_vec = np.array([0.60, 0.35, 0.05])  # Significantly reduced high strength
+            gpa_vec = np.array([0.60, 0.35, 0.05])  
         elif overall_grade >= 60:  # Poor
-            gpa_vec = np.array([0.80, 0.18, 0.02])  # Very low high strength probability
+            gpa_vec = np.array([0.80, 0.18, 0.02])  
         elif overall_grade >= 50:  # Failing
-            gpa_vec = np.array([0.92, 0.07, 0.01])  # Minimal high strength probability
+            gpa_vec = np.array([0.92, 0.07, 0.01])  
         elif overall_grade >= 40:  # Severely failing
             gpa_vec = np.array([0.95, 0.04, 0.01])
         elif overall_grade >= 30:  # Very poor
@@ -234,11 +221,10 @@ def get_student_strength_probs(inputs):
         else:  # Extremely poor
             gpa_vec = np.array([0.99, 0.01, 0.00])
         
-        # Overall grade has 95% weight (increased from 85%)
+        # Overall grade has 95% weight
         base_vec = 0.05 * base_vec + 0.95 * gpa_vec
 
-    # Prerequisite Impact - with strict monotonically increasing probabilities
-    # and more realistic handling of poor prerequisites
+    # Prerequisite Impact
     prereq_grade = inputs.get('prerequisite_grade')
     if prereq_grade is not None:
         factors_applied += 1
@@ -256,29 +242,28 @@ def get_student_strength_probs(inputs):
         elif prereq_grade >= 75:
             prereq_vec = np.array([0.10, 0.30, 0.60])
         elif prereq_grade >= 70:
-            prereq_vec = np.array([0.30, 0.60, 0.10])  # Reduced high strength
+            prereq_vec = np.array([0.30, 0.60, 0.10]) 
         elif prereq_grade >= 65:
-            prereq_vec = np.array([0.60, 0.35, 0.05])  # Low high strength
+            prereq_vec = np.array([0.60, 0.35, 0.05])  
         elif prereq_grade >= 60:
-            prereq_vec = np.array([0.80, 0.18, 0.02])  # Very low high strength
+            prereq_vec = np.array([0.80, 0.18, 0.02])  
         elif prereq_grade >= 50:
-            prereq_vec = np.array([0.94, 0.05, 0.01])  # Minimal high strength
+            prereq_vec = np.array([0.94, 0.05, 0.01])  
         elif prereq_grade >= 40:  # Severely failing
             prereq_vec = np.array([0.96, 0.03, 0.01])
         elif prereq_grade >= 30:  # Very poor
             prereq_vec = np.array([0.98, 0.02, 0.00])
         else:  # Extremely poor
             prereq_vec = np.array([0.99, 0.01, 0.00])
-        
-        # Prerequisite impact significant for all profiles
+
         if overall_grade is not None:
-            # With overall grade, prereqs have 60% weight (increased from 30%)
+            # With overall grade, prereqs have 60% weight 
             base_vec = 0.40 * base_vec + 0.60 * prereq_vec
         else:
-            # Without overall grade, prereqs have 95% weight (increased from 85%)
+            # Without overall grade, prereqs have 95% weight
             base_vec = 0.05 * base_vec + 0.95 * prereq_vec
     
-    # Course Load Impact - proper impact scale
+    # Course Load Impact
     course_load = inputs.get('course_load')
     if course_load is not None:
         factors_applied += 1
@@ -288,7 +273,7 @@ def get_student_strength_probs(inputs):
         elif course_load == 4:  # Good balanced load
             load_vec = np.array([0.08, 0.22, 0.70])  # Positive impact
         elif course_load == 5:  # Standard/neutral load
-            load_vec = np.array([0.15, 0.35, 0.50])  # Neutral impact
+            load_vec = np.array([0.33, 0.34, 0.33])  # Neutral impact
         elif course_load == 6:  # Heavy load
             load_vec = np.array([0.35, 0.45, 0.20])  # Negative impact
         else:  # Very heavy load (7+)
@@ -312,7 +297,6 @@ def get_student_strength_probs(inputs):
             base_vec = np.array([0.01, 0.02, 0.97])
     
     # 2. Special case for struggling students to ensure realistic outcomes
-    # This is crucial for realistic predictions for poor students
     if overall_grade is not None and overall_grade < 60:
         # Student with failing overall GPA - cap high strength probability
         # based on a realistic assessment of their likelihood to excel
@@ -337,7 +321,7 @@ def get_student_strength_probs(inputs):
             # Low strength dominates
             low_strength_prob = 1.0 - high_strength_prob - medium_strength_prob
             base_vec = np.array([low_strength_prob, medium_strength_prob, high_strength_prob])
-        elif overall_grade < 50:  # Severely failing
+        elif overall_grade < 50:  # failing
             # Cap high strength at 1% maximum
             high_strength_prob = min(high_strength_prob, 0.01)
             # Ensure medium strength is also limited
@@ -404,7 +388,7 @@ def get_participation_probs(inputs):
     if friends_in_class is not None:
         factors_applied += 1
         friends_vec = np.array([0.10, 0.30, 0.60]) if friends_in_class else np.array([0.40, 0.30, 0.30])
-        base_vec = 0.50 * base_vec + 0.50 * friends_vec  # 50% impact - significant
+        base_vec = 0.50 * base_vec + 0.50 * friends_vec  # 50% impact
 
        # Morning/Evening person match with class time
     early_bird = inputs.get('early_bird')
@@ -426,17 +410,12 @@ def get_participation_probs(inputs):
             time_vec = np.array([0.50, 0.30, 0.20])  # Significant negative effect
         else:  # Mixed schedule - neutral effect
             time_vec = np.array([0.33, 0.34, 0.33])  # Neutral effect
-        
-        # Apply with 5% weight (reduced from 10%)
+   
         base_vec = 0.95 * base_vec + 0.05 * time_vec
 
     if factors_applied > 0:
         base_vec = base_vec / base_vec.sum()
     return base_vec.tolist()
-
-# -------------------------------------------------------------------------
-# Bayesian Network Model
-# -------------------------------------------------------------------------
 
 def expand_grade_dist_adaptive(basic_dist, inputs):
     """
@@ -474,8 +453,6 @@ def expand_grade_dist_adaptive(basic_dist, inputs):
             a_weights = torch.tensor([0.60, 0.25, 0.15])
         elif basic_dist[0] > 0.60:  # Very good
             a_weights = torch.tensor([0.40, 0.30, 0.30])
-        elif basic_dist[0] > 0.30:  # Good
-            a_weights = struggling_a_weights  # Use struggling student distribution
         else:  # Average or below
             a_weights = struggling_a_weights  # Use struggling student distribution
         
@@ -484,23 +461,23 @@ def expand_grade_dist_adaptive(basic_dist, inputs):
     else:
         # For good students, use the original distribution with strong A+ bias
         if basic_dist[0] > 0.98:  # Perfect student
-            a_weights = torch.tensor([0.99, 0.01, 0.00])  # Almost all A+
+            a_weights = torch.tensor([0.99, 0.01, 0.00]) 
         elif basic_dist[0] > 0.95:  # Nearly perfect
-            a_weights = torch.tensor([0.97, 0.02, 0.01])  # Overwhelmingly A+
+            a_weights = torch.tensor([0.97, 0.02, 0.01])  
         elif basic_dist[0] > 0.90:  # Exceptional
-            a_weights = torch.tensor([0.95, 0.04, 0.01])  # Heavy A+ emphasis
+            a_weights = torch.tensor([0.95, 0.04, 0.01]) 
         elif basic_dist[0] > 0.80:  # Excellent
-            a_weights = torch.tensor([0.85, 0.10, 0.05])  # Strong A+ emphasis
+            a_weights = torch.tensor([0.85, 0.10, 0.05])  
         elif basic_dist[0] > 0.70:  # Very good
-            a_weights = torch.tensor([0.75, 0.15, 0.10])  # Moderate A+ emphasis
+            a_weights = torch.tensor([0.75, 0.15, 0.10])  
         elif basic_dist[0] > 0.60:  # Good
-            a_weights = torch.tensor([0.65, 0.20, 0.15])  # Mild A+ emphasis
+            a_weights = torch.tensor([0.65, 0.20, 0.15])  
         elif basic_dist[0] > 0.40:  # Above average
-            a_weights = torch.tensor([0.55, 0.25, 0.20])  # Standard distribution
+            a_weights = torch.tensor([0.55, 0.25, 0.20])  
         elif basic_dist[0] > 0.20:  # Average 
-            a_weights = torch.tensor([0.45, 0.30, 0.25])  # Lower A+ probability
+            a_weights = torch.tensor([0.45, 0.30, 0.25])  
         else:  # Below average
-            a_weights = torch.tensor([0.35, 0.35, 0.30])  # Minimal A+ probability
+            a_weights = torch.tensor([0.35, 0.35, 0.30]) 
         
         # Standard B weights
         b_weights = torch.tensor([0.40, 0.40, 0.20])    # B+, B, B-
@@ -538,10 +515,6 @@ def expand_grade_dist_adaptive(basic_dist, inputs):
     return expanded_dist
 
 def bayes_net_model(inputs):
-    """
-    Final Bayesian network model with realistic outcomes for all student profiles,
-    especially more accurate for struggling students.
-    """
     p_apt = torch.tensor(get_subject_aptitude_probs(inputs), dtype=torch.float)
     subject_aptitude = pyro.sample("subject_aptitude", dist.Categorical(p_apt))
 
@@ -556,29 +529,27 @@ def bayes_net_model(inputs):
 
     grade_cpt = torch.zeros((3, 3, 3, 3, 5))
 
-    # First, fill all combinations with a reasonable fallback distribution
+    # fill all combinations with a reasonable fallback distribution
     for a in range(3):
         for q in range(3):
             for s in range(3):
                 for p in range(3):
-                    # Default grade distribution (C average)
+                    # Default grade distribution 
                     grade_dist = [0.15, 0.20, 0.30, 0.25, 0.10]
                     grade_cpt[a, q, s, p] = torch.tensor(grade_dist)
     
-    # Strong student strength factor - dominates the outcome
-    # LOW student strength (s=0) - much more realistic for struggling students
-    for a in range(3):
+    # Strong student strength factor
         for q in range(3):
             for p in range(3):
                 grade_cpt[a, q, 0, p] = torch.tensor([0.00, 0.05, 0.15, 0.35, 0.45])
     
-    # MEDIUM student strength (s=1)
+    # MEDIUM student strength 
     for a in range(3):
         for q in range(3):
             for p in range(3):
                 grade_cpt[a, q, 1, p] = torch.tensor([0.10, 0.30, 0.40, 0.15, 0.05])
     
-    # HIGH student strength (s=2) - baseline high performance
+    # HIGH student strength
     for a in range(3):
         for q in range(3):
             for p in range(3):
@@ -586,7 +557,7 @@ def bayes_net_model(inputs):
     
     # Now apply modifiers for other factors
     
-    # Course quality modifiers - more impactful for struggling students
+    # Course quality modifiers 
     for a in range(3):
         for p in range(3):
             # LOW quality reduces grade outcomes
@@ -599,7 +570,7 @@ def bayes_net_model(inputs):
             grade_cpt[a, 2, 1, p] = torch.tensor([0.20, 0.40, 0.30, 0.08, 0.02])
             grade_cpt[a, 2, 0, p] = torch.tensor([0.03, 0.10, 0.20, 0.32, 0.35])
     
-    # Subject aptitude modifiers - more realistic for poor aptitude
+    # Subject aptitude modifiers 
     for q in range(3):
         for p in range(3):
             # LOW aptitude reduces grade outcomes
@@ -636,14 +607,7 @@ def bayes_net_model(inputs):
 
         return final_grade
 
-# -------------------------------------------------------------------------
-# Inference and Prediction Functions
-# -------------------------------------------------------------------------
 def run_inference(course_code, user_profile, num_samples=10000):
-    """
-    Final inference function with robust error handling and 10,000 samples
-    for maximum consistency in results.
-    """
     try:
         # Get course information
         course_row = courses_df[courses_df['course_code'] == course_code]
@@ -683,7 +647,6 @@ def run_inference(course_code, user_profile, num_samples=10000):
                     # Try to convert to float first (numerical grade)
                     prereq_grades[c] = float(g)
 
-                
                 # Calculate average
                 avg_prereq_grade = sum(prereq_grades.values()) / len(prereq_grades) if prereq_grades else None
         
@@ -735,7 +698,6 @@ def run_inference(course_code, user_profile, num_samples=10000):
         print(f"  Friends in class: {'Yes' if user_profile.get('friends_in_class', False) else 'No'}")
         print(f"  Morning person: {'Yes' if user_profile.get('early_bird', False) else 'No'}")
         
-        # Run prediction with increased samples for consistency
         predictive = pyro.infer.Predictive(bayes_net_model, num_samples=num_samples)
         samples = predictive(inputs)
         
@@ -743,9 +705,9 @@ def run_inference(course_code, user_profile, num_samples=10000):
         final_grade_samples = samples["final_grade"].numpy()
         final_grade_dist = np.bincount(final_grade_samples, minlength=13) / num_samples
         
-        # Grade letters and percentages - aligned with the provided scale
+        # Grade letters and percentages 
         grade_letters = ['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'D-', 'F']
-        grade_percentages = [92, 87, 82, 78, 75, 71, 68, 65, 61, 58, 55, 51, 40]
+        grade_percentages = [90, 85, 80, 77, 73, 70, 67, 63, 60, 57, 53, 50, 25]
         
         # Create the distribution dictionary
         result = {
@@ -871,15 +833,11 @@ def run_grade_prediction():
         
     return course_code, user_profile, prediction
 
-# -------------------------------------------------------------------------
 # Sensitivity Analysis
-# -------------------------------------------------------------------------
 
 def run_sensitivity_analysis(course_code, base_profile, num_samples=2000):
     """
     Run sensitivity analysis for different factors affecting the grade.
-    Shows changes in detailed letter grades rather than just GPA.
-    Uses more samples for greater consistency and handles prerequisite grades more intelligently.
     """
     print(f"\n=== RUNNING SENSITIVITY ANALYSIS FOR {course_code} ===")
     
@@ -905,8 +863,7 @@ def run_sensitivity_analysis(course_code, base_profile, num_samples=2000):
     def run_with_modified_profile(modified_profile, factor_name, factor_value):
         # Deep copy profile to avoid modifying the original
         test_profile = modified_profile.copy()
-        
-        # For prerequisite grades, we need special handling
+
         if factor_name == 'Prerequisite Grade':
             test_profile['prerequisite_grade'] = factor_value
             # Create a new prereq_grades dict that matches the desired average
@@ -920,10 +877,10 @@ def run_sensitivity_analysis(course_code, base_profile, num_samples=2000):
                     scale_factor = factor_value / orig_avg
                     new_grades = {}
                     for course, grade in orig_grades.items():
-                        # Scale each grade, but cap at 100 and floor at min(original, 50)
+                        # Scale each grade, but cap at 100 and floor at min(original, 25)
                         new_grade = min(100, grade * scale_factor)
-                        # Don't let grades drop below the original or 50 (whichever is less)
-                        new_grade = max(min(grade, 50), new_grade)
+                        # Don't let grades drop below the original or 25
+                        new_grade = max(min(grade, 25), new_grade)
                         new_grades[course] = new_grade
                     
                     # Recalculate the actual average after capping
@@ -974,7 +931,6 @@ def run_sensitivity_analysis(course_code, base_profile, num_samples=2000):
     
     # Baseline prediction
     print("\n=== BASELINE PREDICTION ===")
-    # Use more samples for baseline for greater stability
     baseline_result = run_inference(course_code, base_profile, num_samples*2)
     baseline_letter = baseline_result['avg_letter']
     baseline_percent = baseline_result['avg_percent']
@@ -984,17 +940,17 @@ def run_sensitivity_analysis(course_code, base_profile, num_samples=2000):
     baseline_dist = {k: v for k, v in baseline_result.items() 
                     if k in ['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'D-', 'F']}
     
-    # 1. Prerequisite Grade Sensitivity - more granularity at higher grades
+    # 1. Prerequisite Grade Sensitivity 
     print("\n=== PREREQUISITE GRADE SENSITIVITY ===")
-    prereq_grades = [50, 65, 75, 85, 90, 95, 100]  # Added 90 and 100 for more granularity
+    prereq_grades = [25, 50, 65, 75, 85, 90, 95, 100] 
     
     for grade in prereq_grades:
         print(f"Testing with prerequisite grade: {grade}%")
         run_with_modified_profile(base_profile, 'Prerequisite Grade', grade)
     
-    # 2. Overall Grade Sensitivity - more granularity at higher grades
+    # 2. Overall Grade Sensitivity 
     print("\n=== OVERALL GRADE SENSITIVITY ===")
-    overall_grades = [60, 70, 80, 85, 90, 95, 100]  # More granularity at higher grades
+    overall_grades = [25, 50, 65, 75, 85, 90, 95, 100]  
     
     for grade in overall_grades:
         print(f"Testing with overall grade: {grade}%")
@@ -1004,7 +960,7 @@ def run_sensitivity_analysis(course_code, base_profile, num_samples=2000):
     
     # 3. Course Load Sensitivity
     print("\n=== COURSE LOAD SENSITIVITY ===")
-    course_loads = [3, 4, 5, 6, 7]  # Range from light to heavy
+    course_loads = [3, 4, 5, 6, 7]  
     
     for load in course_loads:
         print(f"Testing with course load: {load}")
@@ -1032,7 +988,7 @@ def run_sensitivity_analysis(course_code, base_profile, num_samples=2000):
     
     # 6. Professor Rating Sensitivity
     print("\n=== PROFESSOR RATING SENSITIVITY ===")
-    prof_ratings = [2.5, 3.0, 3.5, 4.0, 4.5]  # Range from poor to excellent
+    prof_ratings = [0.5, 1.5, 2.5, 3.0, 3.5, 4.0, 4.5]  # Range from poor to excellent
     
     for rating in prof_ratings:
         print(f"Testing with professor rating: {rating}/5.0")
@@ -1042,7 +998,7 @@ def run_sensitivity_analysis(course_code, base_profile, num_samples=2000):
     
     # 7. Professor Difficulty Sensitivity
     print("\n=== PROFESSOR DIFFICULTY SENSITIVITY ===")
-    prof_difficulties = [1.5, 2.5, 3.5, 4.5]  # Range from easy to very difficult
+    prof_difficulties = [0.5, 1.5, 2.5, 3.5, 4.5]  # Range from easy to very difficult
     
     for difficulty in prof_difficulties:
         print(f"Testing with professor difficulty: {difficulty}/5.0")
@@ -1052,7 +1008,6 @@ def run_sensitivity_analysis(course_code, base_profile, num_samples=2000):
     
     # 8. Class Time Sensitivity with early bird preference
     print("\n=== CLASS TIME SENSITIVITY ===")
-    
     # Different class time scenarios
     early_bird = base_profile.get('early_bird', False)
     scenarios_description = "morning" if early_bird else "afternoon/evening"
@@ -1060,7 +1015,6 @@ def run_sensitivity_analysis(course_code, base_profile, num_samples=2000):
     class_time_scenarios = [
         (["8:30", "9:30", "10:30"], f"All morning classes (best for {scenarios_description} person)"),
         (["12:30", "13:30", "14:30"], "All afternoon classes"),
-        (["16:30", "17:30", "18:30"], f"All evening classes (worst for {scenarios_description} person)"),
         (["8:30", "12:30", "16:30"], "Mixed classes")
     ]
     
@@ -1070,7 +1024,6 @@ def run_sensitivity_analysis(course_code, base_profile, num_samples=2000):
         modified_profile['class_time'] = times
         run_with_modified_profile(modified_profile, 'Class Times', description)
     
-    # Print comprehensive sensitivity analysis results
     print("\n=============================================")
     print("SENSITIVITY ANALYSIS SUMMARY")
     print("=============================================")
@@ -1086,8 +1039,7 @@ def run_sensitivity_analysis(course_code, base_profile, num_samples=2000):
     
     # Get baseline grade index for comparison
     baseline_grade_idx = grade_order.get(baseline_letter, 6)  # Default to C if not found
-    
-    # Print results by factor
+
     for factor, results in sensitivity_results.items():
         print(f"\n{factor} Sensitivity:")
         print("-" * 90)
@@ -1177,8 +1129,7 @@ def run_sensitivity_analysis(course_code, base_profile, num_samples=2000):
 
 def test_student_profiles():
     """
-    Test different student profiles to see how the revised model responds.
-    Demonstrates that exceptional students receive appropriate grades.
+    Test different student profiles to see how the model responds.
     """
     print("\n=============================================")
     print("TESTING STUDENT PROFILES")
@@ -1203,7 +1154,7 @@ def test_student_profiles():
             "name": "Excellent Student",
             "profile": {
                 "major": "Life/Health Sciences",
-                "overall_grade": 95,
+                "overall_grade": 90,
                 "course_load": 4,
                 "friends_in_class": True,
                 "early_bird": True,
@@ -1216,7 +1167,7 @@ def test_student_profiles():
             "name": "Good Student",
             "profile": {
                 "major": "Life/Health Sciences",
-                "overall_grade": 85,
+                "overall_grade": 80,
                 "course_load": 5,
                 "friends_in_class": True,
                 "early_bird": True,
@@ -1229,7 +1180,7 @@ def test_student_profiles():
             "name": "Average Student",
             "profile": {
                 "major": "Life/Health Sciences",
-                "overall_grade": 75,
+                "overall_grade": 70,
                 "course_load": 5,
                 "friends_in_class": False,
                 "early_bird": False,
@@ -1242,7 +1193,7 @@ def test_student_profiles():
             "name": "Struggling Student",
             "profile": {
                 "major": "Life/Health Sciences",
-                "overall_grade": 65,
+                "overall_grade": 60,
                 "course_load": 6,
                 "friends_in_class": False,
                 "early_bird": False,
@@ -1255,7 +1206,7 @@ def test_student_profiles():
             "name": "Failing Student",
             "profile": {
                 "major": "Life/Health Sciences",
-                "overall_grade": 55,
+                "overall_grade": 25,
                 "course_load": 7,
                 "friends_in_class": False,
                 "early_bird": False,
@@ -1321,11 +1272,6 @@ def test_student_profiles():
     
     return results
 
-
-# -------------------------------------------------------------------------
-# Main Function
-# -------------------------------------------------------------------------
-
 def main():
     print("\n=============================================")
     print("BAYESIAN GRADE PREDICTION SYSTEM")
@@ -1333,12 +1279,13 @@ def main():
 
     course_code, user_profile, prediction = run_grade_prediction()
 
-    # Ask for sensitivity
-    response = input("\nRun simple sensitivity analysis on prereq grade? (y/n): ").strip().lower()
+    # Ask for sensitivity and test students
+    response = input("\nRun sensitivity analysis / test student profiles (y/n): ").strip().lower()
     if response.startswith('y'):
         run_sensitivity_analysis(course_code, user_profile)
+        test_student_profiles()
 
-    test_student_profiles()
+    
 
 if __name__ == "__main__":
     main()
