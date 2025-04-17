@@ -5,3 +5,7 @@ pandas
 ortools
 spacy
 torch 
+pyro-ppl
+tqdm
+beautifulsoup4
+openai
