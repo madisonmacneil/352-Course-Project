@@ -1,65 +1,43 @@
-# Bayesian Grade Prediction System 🧠📊
+# 📊 Bayesian Grade Prediction
+
+A probabilistic model that predicts grade distributions in Queen’s University courses using student background, class structure, and professor data.
 
 ---
 
-## 🔍 Overview
+## 🔍 What It Does
 
-The system uses probabilistic inference to estimate the likelihood of a student receiving each possible letter grade (A+ to F) based on a rich set of inputs including:
-
-- Major-course alignment
-- Historical success with a given professor
-- Professor difficulty and ratings
-- Prerequisite grades
-- Overall GPA
-- Course load
-- Class schedule preferences
-- Social participation (e.g., friends in class)
-
-Each grade is generated via sampling from a CPT (Conditional Probability Table) and then expanded into a 13-point letter scale using adaptive logic.
+- Uses a Bayesian Network built with Pyro (PyTorch)
+- Models latent variables: Subject Aptitude, Course Quality, Student Strength, Participation
+- Computes a distribution over final grades (A+ to F)
+- Estimates expected GPA
 
 ---
 
-## 📁 Files
+## 📁 Key Files
 
-| File                                 | Description                                                                                                |
-| ------------------------------------ | ---------------------------------------------------------------------------------------------------------- |
-| `bayesianNetwork.py`               | Main implementation. Handles data loading, network definition, conditional sampling, and grade prediction. |
-| `complete_courses.csv`             | Maps course codes to prerequisites and departments.                                                        |
-| `category_map.txt`                 | Converts majors and departments into broad academic categories for compatibility modeling.                 |
-| `major_course_success_matrix.json` | Contains historical success distributions (A-F) for major-course combinations.                             |
-| `prof_qaulity_info.csv`            | Ratings and difficulty levels for professors, scraped from RateMyProfessors.                               |
-| `course_csp.csv`                   | (Optional) Used to match courses to professors for more personalized predictions.                          |
+- `bayesianNetwork.py`: Core grade prediction script
+- `category_map.txt`: Maps majors and departments to categories
+- `major_course_success_matrix.json`: Success probabilities per major-course combo
+- `complete_courses.csv`: Prerequisite and department info
+- `prof_qaulity_info.csv`: Ratings and difficulty per professor
 
 ---
 
-## 🚀 How to Run
-
-To use the Bayesian network:
-
-Install dependencies:
+## ▶️ How to Run
 
 ```bash
-pip install pyro-ppl torch pandas numpy
+python bayesianNetwork.py
 ```
 
+The script will prompt for:
 
-To execute the Bayesian grade prediction system:
-
-Ensure all required data files are in place across the bayesian/, data/, and csp/ directories.
-
-Run the script:
-
-python bayesianNetwork.py
-
-Follow the prompts to enter:
-
-Course code (e.g., CISC352)
-
-Your major, GPA, and course load
-
-Your class schedule and whether you have friends in the course
-
-Prerequisite grades for relevant courses
+- Course code
+- Major
+- GPA
+- Course load
+- Prerequisite grades
+- Morning/evening preference
+- Social context (friends in class)
 
 For filling in the prompts:
 
